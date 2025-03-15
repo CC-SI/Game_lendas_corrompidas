@@ -1,0 +1,20 @@
+.import/
+.export/
+
+# Arquivos de cache e temporários
+*.tmp
+*.log
+*.cfg
+*.mono/
+.mono/
+
+# Pasta oculta de dependências da Godot
+.godot/
+
+# Exclui builds específicas para exportação
+*.pck
+*.exe
+*.apk
+*.zip
+*.tar.gz
+*.xcodeproj
