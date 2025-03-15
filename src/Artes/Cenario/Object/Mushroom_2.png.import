@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Mushroom_2.png-32e665efe5e364149da9efccb155448e.stex"
+path="res://.import/Mushroom_2.png-f25937afb93cd57ec9cd447777a83764.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Artes/Cenario/Object/Mushroom_2.png"
-dest_files=[ "res://.import/Mushroom_2.png-32e665efe5e364149da9efccb155448e.stex" ]
+source_file="res://src/Artes/Cenario/Object/Mushroom_2.png"
+dest_files=[ "res://.import/Mushroom_2.png-f25937afb93cd57ec9cd447777a83764.stex" ]
 
 [params]
 
