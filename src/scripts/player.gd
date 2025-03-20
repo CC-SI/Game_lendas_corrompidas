@@ -10,9 +10,9 @@ extends KinematicBody2D
 export var velocidade: float = 450
 export var forca_pulo: float = 1000
 export var velocidade_queda: float = 30 
-
+export var dashForce = 1000
 var direcao = Vector2.ZERO
-
+var ladoPersonagem = 1
 # "onready" faz com que a variável seja inicializada apenas quando o nó estiver pronto.
 # Isso evita erros caso tentemos acessar um nó que ainda não foi carregado no jogo.
 onready var animationPlayer = $AnimationPlayer # Referência ao componente de animação
@@ -24,7 +24,7 @@ func _process(delta):
 		
 	_move_slide() # chamando função 
 	_move_jump() # chamando função 
-	
+	dash()
 	direcao = move_and_slide(direcao, Vector2.UP)
 
 func _move_slide(): # Função de movimentação para os lados ( Esquerda / Direita )
@@ -32,10 +32,12 @@ func _move_slide(): # Função de movimentação para os lados ( Esquerda / Dire
 		direcao.x = -velocidade # Move o personagem para a esquerda
 		animationPlayer.play("andando") # Toca a animação de andar
 		spritePlayer.flip_h = true # Vira o sprite para a esquerda
+		ladoPersonagem = -1
 	elif Input.is_action_pressed("ui_right"): # Se a tecla de andar para a direita for pressionada...
 		direcao.x = velocidade # Move o personagem para a direita
 		animationPlayer.play("andando") # Toca a animação de andar
 		spritePlayer.flip_h = false # Vira o sprite para a direita
+		ladoPersonagem = 1
 	else:
 		animationPlayer.play("parado") # Se nenhuma tecla for pressionada, toca a animação de parado
 	
@@ -44,3 +46,9 @@ func _move_jump(): # Função de pulo
 	if (Input.is_action_just_pressed("ui_accept") and is_on_floor()):
 		direcao.y = -forca_pulo
 		
+func dash():
+	if Input.is_action_just_pressed("dash"):
+		if ladoPersonagem == -1:
+			direcao.x = -dashForce
+		elif ladoPersonagem == 1:
+			direcao.x = dashForce

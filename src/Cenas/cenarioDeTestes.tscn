@@ -127,6 +127,7 @@ shape = SubResource( 4 )
 position = Vector2( 95, 385 )
 velocidade = 200.0
 forca_pulo = 600.0
+dashForce = 1500
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 8 )]
 position = Vector2( 937, 428 )
