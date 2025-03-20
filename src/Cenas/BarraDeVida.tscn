@@ -1,0 +1,5 @@
+[gd_scene format=2]
+
+[node name="Barra de vida" type="ProgressBar"]
+margin_right = 158.0
+margin_bottom = 14.0

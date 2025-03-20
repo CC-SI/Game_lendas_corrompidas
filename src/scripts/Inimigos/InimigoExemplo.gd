@@ -6,10 +6,17 @@ export var tempo_limite_parado: float = 1.5
 onready var player = $"../Player"
 onready var sprite = $Sprite
 onready var animation = $AnimationPlayer
+onready var barraDeVida = $"Barra de vida"
 
 var direction = Vector2.ZERO
 var posicao_anterio = Vector2.ZERO
 var tempo_preso = 0.0
+var vidaMaxima: int = 10
+var vidaAtual: int = 8
+
+func _ready():
+	barraDeVida.max_value = vidaMaxima
+	barraDeVida.value = vidaAtual
 
 func _process(delta):
 	direction.x = (player.global_position.x - global_position.x)

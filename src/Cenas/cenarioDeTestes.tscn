@@ -7,7 +7,7 @@
 [ext_resource path="res://src/Texturas/Cenario/Tiles/6.png" type="Texture" id=5]
 [ext_resource path="res://src/Texturas/Cenario/BG/BG.png" type="Texture" id=6]
 [ext_resource path="res://src/Cenas/Player.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/Cenas/InimigoSonic.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/Cenas/inimigoSegueJogador.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 702.5, 64 )
@@ -15,14 +15,14 @@ extents = Vector2( 702.5, 64 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8.5, 233.5 )
 
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 10.5, 234.5 )
+
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 38.375, 38 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 141.5, 39.25 )
-
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 10.5, 234.5 )
 
 [node name="Cenario de testes" type="Node2D"]
 position = Vector2( -17, 0 )
@@ -96,6 +96,13 @@ shape = SubResource( 1 )
 position = Vector2( -1.5, 223.5 )
 shape = SubResource( 2 )
 
+[node name="Parede Invisivel Direita" type="StaticBody2D" parent="."]
+position = Vector2( 1364, 304 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Parede Invisivel Direita"]
+position = Vector2( 15.5, -69.5 )
+shape = SubResource( 5 )
+
 [node name="Objeto 1" type="StaticBody2D" parent="."]
 position = Vector2( 46, 4 )
 
@@ -127,14 +134,7 @@ shape = SubResource( 4 )
 position = Vector2( 95, 385 )
 velocidade = 200.0
 forca_pulo = 600.0
-dashForce = 1500
+dashForce = 5000
 
-[node name="KinematicBody2D" parent="." instance=ExtResource( 8 )]
-position = Vector2( 937, 428 )
-
-[node name="Parede Invisivel Direita" type="StaticBody2D" parent="."]
-position = Vector2( 1364, 304 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Parede Invisivel Direita"]
-position = Vector2( 15.5, -69.5 )
-shape = SubResource( 5 )
+[node name="Inimigo Segue Jogador" parent="." instance=ExtResource( 8 )]
+position = Vector2( 919, 428 )
