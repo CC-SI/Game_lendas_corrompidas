@@ -16,5 +16,9 @@ func _process(delta):
 		
 	if (Input.is_action_just_pressed("ui_up") and is_on_floor()):
 		direcao.y = -forca_pulo
-	
+	attack ()
 	direcao = move_and_slide(direcao, Vector2(0,-1))
+
+func attack() -> void:
+	if Input.is_action_just_pressed ("ui_attack") and is_on_floor():
+		pass
