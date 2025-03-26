@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/Texturas/Player/player.png" type="Texture" id=1]
+[ext_resource path="res://src/scripts/Player/player.gd" type="Script" id=2]
+[ext_resource path="res://src/Cenas/BarraDeVida.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 29.5, 45 )
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 43, 2, 22, 33 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "andando"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 47, 26, 30 ), Rect2( 29, 47, 22, 29 ), Rect2( 54, 45, 28, 29 ), Rect2( 86, 48, 21, 29 ), Rect2( 109, 46, 33, 27 ), Rect2( 144, 43, 26, 30 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "parado"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 19, 2, 22, 33 ), Rect2( 43, 2, 22, 33 ), Rect2( 67, 2, 22, 33 ), Rect2( 92, 2, 21, 33 ), Rect2( 116, 2, 21, 34 ) ]
+}
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 21.25, 33 )
+scale = Vector2( 3.02381, 2.94118 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 43, 2, 22, 33 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 19.5, 28 )
+shape = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/andando = SubResource( 4 )
+anims/parado = SubResource( 1 )
+
+[node name="Barra de vida" parent="." instance=ExtResource( 3 )]
+margin_left = -21.0
+margin_top = -29.0
+margin_right = 59.0
+margin_bottom = -15.0
