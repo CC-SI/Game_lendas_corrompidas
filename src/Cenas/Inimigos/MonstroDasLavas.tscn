@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/Texturas/Inimigos/Inimigo 1/Arcade - Legend of Heroes - Cheng.png" type="Texture" id=1]
+[ext_resource path="res://src/scripts/Inimigos/MonstroDasLavas.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 25.5, 33.5 )
+
+[node name="MonstroDaLavas" type="Node2D"]
+
+[node name="MonstroDaLavas" type="KinematicBody2D" parent="."]
+script = ExtResource( 2 )
+nome_do_inimigo = "MonstroDaLavas"
+
+[node name="Sprite" type="Sprite" parent="MonstroDaLavas"]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 4, 5, 59, 76 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MonstroDaLavas"]
+position = Vector2( -0.5, 0.5 )
+shape = SubResource( 1 )
