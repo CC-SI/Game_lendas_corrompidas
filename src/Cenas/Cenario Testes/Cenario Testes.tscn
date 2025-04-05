@@ -20,7 +20,7 @@ scale = Vector2( 1.497, 1.12933 )
 texture = ExtResource( 3 )
 
 [node name="Fundo2" type="Sprite" parent="."]
-position = Vector2( 2387.75, 145 )
+position = Vector2( 2379, 178 )
 scale = Vector2( 2.1665, 1.16 )
 texture = ExtResource( 3 )
 flip_h = true

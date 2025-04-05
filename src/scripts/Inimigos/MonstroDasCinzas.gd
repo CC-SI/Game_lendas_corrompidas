@@ -11,6 +11,7 @@ var atirando = false
 onready var timer_tiro = Timer.new()
 
 func _ready():
+	$Sprite.flip_h = true
 	velocidade = 30
 	add_child(timer_tiro)
 	timer_tiro.wait_time = intervalo_tiro

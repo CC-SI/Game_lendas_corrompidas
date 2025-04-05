@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://src/Texturas/Inimigos/Inimigo 1/Arcade - Legend of Heroes - Cheng.png" type="Texture" id=1]
+[ext_resource path="res://src/Texturas/Inimigos/Monstro das Cinzas/Sega Genesis 32X - Shadow Dancer The Secret of Shinobi - Armored Monster.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/Inimigos/MonstroDasCinzas.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -18,8 +18,9 @@ nome_do_inimigo = "MonstroDasCinzas"
 [node name="Sprite" type="Sprite" parent="MonstroDaLavas"]
 position = Vector2( 0, -1 )
 texture = ExtResource( 1 )
+flip_h = true
 region_enabled = true
-region_rect = Rect2( 4, 5, 59, 76 )
+region_rect = Rect2( 120, 16, 60, 112 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MonstroDaLavas"]
 position = Vector2( -0.5, 0.5 )
