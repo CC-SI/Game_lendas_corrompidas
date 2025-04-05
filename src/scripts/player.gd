@@ -17,7 +17,7 @@ var inimigo_na_area = []
 var inimigos = ["Morcego", "MonstroDaLavas"]
 
 func _ready():
-	DadosGlobais.vidas = 10
+	DadosGlobais.vidas = 3
 
 
 func _process(delta):
@@ -30,6 +30,11 @@ func _process(delta):
 	direcao = move_and_slide(direcao, Vector2.UP)
 	
 	verificar_mordida()
+	morrer()
+
+func levar_dano(valor):
+	DadosGlobais.vidas -= valor
+	print("Player levou ", valor, " de dano! Vidas restantes: ", DadosGlobais.vidas)
 
 func movePlayer():
 	direcao.x = 0
@@ -90,3 +95,7 @@ func verificar_mordida():
 func mudarLadoSprite():
 	sprite.flip_h = lado != 1
 	area2d.scale.x = lado
+	
+func morrer():
+	if (DadosGlobais.vidas == 0):
+		queue_free()
