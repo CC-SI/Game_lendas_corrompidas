@@ -23,6 +23,9 @@ var inimigos = ["Morcego", "MonstroDasCinzas"]
 
 func _ready():
 	DadosGlobais.vidas = 3
+	$Camera2D.limit_top = 10
+	$Camera2D.limit_bottom = get_viewport().size.y
+	$Camera2D.limit_left = 0
 
 func _process(delta):
 	movePlayer()
