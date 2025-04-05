@@ -14,23 +14,21 @@ onready var sprite = $Sprite
 onready var area2d = $Mordida
 
 var inimigo_na_area = []
-var inimigos = ["Morcego", "MonstroDaLavas"]
+var inimigos_no_uivo = []
+
+var inimigos = ["Morcego", "MonstroDasCinzas"]
 
 func _ready():
 	DadosGlobais.vidas = 3
 
 
 func _process(delta):
-	
-	var posicaoX = global_position.x
-
 	movePlayer()
 	mudarLadoSprite()
-	
 	direcao = move_and_slide(direcao, Vector2.UP)
-	
 	verificar_mordida()
 	morrer()
+	usar_uivo() 
 
 func levar_dano(valor):
 	DadosGlobais.vidas -= valor
@@ -97,6 +95,24 @@ func verificar_mordida():
 		if (not isAcertou):
 			print("Mordida aplicada, mas não atingiu ninguém")
 			
+
+func usar_uivo():
+	if (Input.is_action_just_pressed("uivo")):
+		for inimigo in inimigos_no_uivo:
+			inimigo.aplicar_lentidao(1)
+		print("Uivo usado em %d inimigos!" % inimigos_no_uivo.size())
+				 
+		
+func _on_Uivo_body_entered(body):
+	if (body is InimigoBase):
+		inimigos_no_uivo.append(body)
+
+
+func _on_Uivo_body_exited(body):
+	if (body is InimigoBase):
+		inimigos_no_uivo.erase(body)
+	
+	
 func mudarLadoSprite():
 	sprite.flip_h = lado != 1
 	area2d.scale.x = lado
