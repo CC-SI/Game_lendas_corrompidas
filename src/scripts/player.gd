@@ -36,6 +36,11 @@ func levar_dano(valor):
 	DadosGlobais.vidas -= valor
 	print("Player levou ", valor, " de dano! Vidas restantes: ", DadosGlobais.vidas)
 
+func aplicar_lentidao(duracao):
+	velocidade = 100
+	yield(get_tree().create_timer(duracao), "timeout")
+	velocidade = 400
+
 func movePlayer():
 	direcao.x = 0
 	direcao.y += gravidade
