@@ -75,10 +75,10 @@ position = Vector2( 0, 171 )
 shape = SubResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 125, 282 )
+position = Vector2( 589, 284 )
 
 [node name="Morcego" parent="." instance=ExtResource( 4 )]
-position = Vector2( 549, 131 )
+position = Vector2( 432, 98 )
 
-[node name="MonstroDaLavas" parent="." instance=ExtResource( 5 )]
-position = Vector2( 765, 306 )
+[node name="MonstroDasCinzas" parent="." instance=ExtResource( 5 )]
+position = Vector2( 62, 305 )
