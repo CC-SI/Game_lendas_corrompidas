@@ -47,6 +47,9 @@ visible = false
 position = Vector2( -2, -5 )
 shape = SubResource( 3 )
 
+[node name="Position2D" type="Position2D" parent="Player"]
+position = Vector2( 11, -5 )
+
 [connection signal="body_entered" from="Player/Mordida" to="Player" method="_on_ZonaDeAtaque_body_entered"]
 [connection signal="body_exited" from="Player/Mordida" to="Player" method="_on_ZonaDeAtaque_body_exited"]
 [connection signal="body_entered" from="Player/Uivo" to="Player" method="_on_Uivo_body_entered"]
