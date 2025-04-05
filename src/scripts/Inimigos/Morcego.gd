@@ -1,6 +1,5 @@
 extends InimigoBase
 
-export var velocidade = 100
 export var alcance_ataque = 10.0
 export var tempo_re_ataque = 5.0
 export var distancia_maxima = 100  
