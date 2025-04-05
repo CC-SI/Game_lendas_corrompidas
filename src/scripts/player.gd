@@ -118,4 +118,13 @@ func mudarLadoSprite():
 
 func morrer():
 	if DadosGlobais.vidas <= 0:
-		queue_free()
+		# Inicia o fade do sprite
+		for i in range(10, -1, -1):
+			sprite.modulate.a = i / 10.0  # Vai de 1.0 até 0.0 (transparente)
+			yield(get_tree().create_timer(0.05), "timeout")  # Pequena pausa entre os fades
+
+		# Espera um pouco após o fade
+		yield(get_tree().create_timer(0.5), "timeout")
+
+		get_tree().change_scene("res://src/Cenas/GameOver.tscn")
+
