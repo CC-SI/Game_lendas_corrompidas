@@ -1,0 +1,1315 @@
+{
+	"frames": {
+		"Armature_attack_00.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_01.png": {
+			"frame": {
+				"x": 1403,
+				"y": 1,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_02.png": {
+			"frame": {
+				"x": 2805,
+				"y": 1,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_03.png": {
+			"frame": {
+				"x": 4207,
+				"y": 1,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_04.png": {
+			"frame": {
+				"x": 5609,
+				"y": 1,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_05.png": {
+			"frame": {
+				"x": 7011,
+				"y": 1,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_06.png": {
+			"frame": {
+				"x": 1,
+				"y": 918,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_07.png": {
+			"frame": {
+				"x": 1403,
+				"y": 918,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_08.png": {
+			"frame": {
+				"x": 2805,
+				"y": 918,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_09.png": {
+			"frame": {
+				"x": 4207,
+				"y": 918,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_10.png": {
+			"frame": {
+				"x": 5609,
+				"y": 918,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_11.png": {
+			"frame": {
+				"x": 7011,
+				"y": 918,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_12.png": {
+			"frame": {
+				"x": 1,
+				"y": 1835,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_13.png": {
+			"frame": {
+				"x": 1403,
+				"y": 1835,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_14.png": {
+			"frame": {
+				"x": 2805,
+				"y": 1835,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_15.png": {
+			"frame": {
+				"x": 4207,
+				"y": 1835,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_16.png": {
+			"frame": {
+				"x": 5609,
+				"y": 1835,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_17.png": {
+			"frame": {
+				"x": 7011,
+				"y": 1835,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_18.png": {
+			"frame": {
+				"x": 1,
+				"y": 2752,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_19.png": {
+			"frame": {
+				"x": 1403,
+				"y": 2752,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_20.png": {
+			"frame": {
+				"x": 2805,
+				"y": 2752,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_21.png": {
+			"frame": {
+				"x": 4207,
+				"y": 2752,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_22.png": {
+			"frame": {
+				"x": 5609,
+				"y": 2752,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_23.png": {
+			"frame": {
+				"x": 7011,
+				"y": 2752,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_24.png": {
+			"frame": {
+				"x": 1,
+				"y": 3669,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_25.png": {
+			"frame": {
+				"x": 1403,
+				"y": 3669,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_26.png": {
+			"frame": {
+				"x": 2805,
+				"y": 3669,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_27.png": {
+			"frame": {
+				"x": 4207,
+				"y": 3669,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_28.png": {
+			"frame": {
+				"x": 5609,
+				"y": 3669,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_29.png": {
+			"frame": {
+				"x": 7011,
+				"y": 3669,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_30.png": {
+			"frame": {
+				"x": 1,
+				"y": 4586,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_31.png": {
+			"frame": {
+				"x": 1403,
+				"y": 4586,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_32.png": {
+			"frame": {
+				"x": 2805,
+				"y": 4586,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_33.png": {
+			"frame": {
+				"x": 4207,
+				"y": 4586,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_34.png": {
+			"frame": {
+				"x": 5609,
+				"y": 4586,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_35.png": {
+			"frame": {
+				"x": 7011,
+				"y": 4586,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_36.png": {
+			"frame": {
+				"x": 1,
+				"y": 5503,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_37.png": {
+			"frame": {
+				"x": 1403,
+				"y": 5503,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_38.png": {
+			"frame": {
+				"x": 2805,
+				"y": 5503,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_39.png": {
+			"frame": {
+				"x": 4207,
+				"y": 5503,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_40.png": {
+			"frame": {
+				"x": 5609,
+				"y": 5503,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_41.png": {
+			"frame": {
+				"x": 7011,
+				"y": 5503,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_42.png": {
+			"frame": {
+				"x": 1,
+				"y": 6420,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_43.png": {
+			"frame": {
+				"x": 1403,
+				"y": 6420,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_44.png": {
+			"frame": {
+				"x": 2805,
+				"y": 6420,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_45.png": {
+			"frame": {
+				"x": 4207,
+				"y": 6420,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_46.png": {
+			"frame": {
+				"x": 5609,
+				"y": 6420,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_47.png": {
+			"frame": {
+				"x": 7011,
+				"y": 6420,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_48.png": {
+			"frame": {
+				"x": 1,
+				"y": 7337,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_49.png": {
+			"frame": {
+				"x": 1403,
+				"y": 7337,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_50.png": {
+			"frame": {
+				"x": 2805,
+				"y": 7337,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_51.png": {
+			"frame": {
+				"x": 4207,
+				"y": 7337,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_52.png": {
+			"frame": {
+				"x": 5609,
+				"y": 7337,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_53.png": {
+			"frame": {
+				"x": 7011,
+				"y": 7337,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_54.png": {
+			"frame": {
+				"x": 8413,
+				"y": 1,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_55.png": {
+			"frame": {
+				"x": 8413,
+				"y": 918,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_56.png": {
+			"frame": {
+				"x": 8413,
+				"y": 1835,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_57.png": {
+			"frame": {
+				"x": 8413,
+				"y": 2752,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_58.png": {
+			"frame": {
+				"x": 8413,
+				"y": 3669,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_59.png": {
+			"frame": {
+				"x": 8413,
+				"y": 4586,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_60.png": {
+			"frame": {
+				"x": 8413,
+				"y": 5503,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_61.png": {
+			"frame": {
+				"x": 8413,
+				"y": 6420,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_62.png": {
+			"frame": {
+				"x": 8413,
+				"y": 7337,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_63.png": {
+			"frame": {
+				"x": 1,
+				"y": 8254,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_attack_64.png": {
+			"frame": {
+				"x": 1403,
+				"y": 8254,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "spritesheet.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 9814,
+			"h": 9170
+		},
+		"scale": "1"
+	}
+}
