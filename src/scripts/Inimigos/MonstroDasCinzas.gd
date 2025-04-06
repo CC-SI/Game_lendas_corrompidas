@@ -1,7 +1,7 @@
 extends InimigoBase
 
 export var intervalo_tiro = 1.5
-export var bolaDeFogo = preload("res://src/Cenas/BlocoDeFogo.tscn")
+export var bolaDeFogo = preload("res://src/Cenas/Inimigos/BlocoDeFogo.tscn")
 
 var perseguindo = false
 var alvo = null

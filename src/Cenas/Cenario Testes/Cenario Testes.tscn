@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/Texturas/Cenario/Tiles/2.png" type="Texture" id=1]
-[ext_resource path="res://src/Cenas/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Cenas/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Texturas/Cenario/BG/BG.png" type="Texture" id=3]
 [ext_resource path="res://src/Cenas/Inimigos/Morcego.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Cenas/Inimigos/MonstroDasLavas.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/Cenas/BarraDeVida.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/Cenas/Player/BarraDeVida.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1115.5, 10 )

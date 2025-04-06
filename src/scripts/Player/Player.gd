@@ -1,58 +1,48 @@
 extends KinematicBody2D
 
-var bolaDeFogo = preload("res://src/Cenas/BlocoDeFogo.tscn")
-
+# -- CONFIGURAÇÕES --
 export var velocidade = 400
 export var gravidade = 50
 export var forca_pulo = 700
 export var force_dash = 1500
+var bolaDeFogo = preload("res://src/Cenas/Player/BolaDeFogo.tscn")
 
+# -- ESTADO --
 var lado = 1
 var pulos_restantes = 1
 var direcao = Vector2.ZERO
 
+# -- REFERÊNCIAS --
 onready var camera = $Camera2D
 onready var sprite = $Sprite
 onready var area2d = $Mordida
 onready var position2D = $Position2D
 
+# -- CONTROLE DE INIMIGOS --
 var inimigo_na_area = []
 var inimigos_no_uivo = []
+var inimigos = DadosGlobais.LISTA_INIMIGOS
 
-var inimigos = ["Morcego", "MonstroDasCinzas"]
-
+# -- READY --
 func _ready():
 	DadosGlobais.vidas = 3
-	$Camera2D.limit_top = 10
-	$Camera2D.limit_bottom = get_viewport().size.y
-	$Camera2D.limit_left = 0
+	camera.limit_top = 10
+	camera.limit_bottom = get_viewport().size.y
+	camera.limit_left = 0
 
+# -- PROCESSO PRINCIPAL --
 func _process(delta):
 	movePlayer()
 	mudarLadoSprite()
 	direcao = move_and_slide(direcao, Vector2.UP)
+
 	verificar_mordida()
-	morrer()
 	usar_uivo()
-	atirar()
+	atirar_bola()
+	morrer()
 
-func atirar():
-	if Input.is_action_just_pressed("atirar"):
-		var bola = bolaDeFogo.instance()
-		get_parent().add_child(bola)
-		bola.global_position = position2D.global_position
-			
-		
 
-func levar_dano(valor):
-	DadosGlobais.vidas -= valor
-	print("Player levou ", valor, " de dano! Vidas restantes: ", DadosGlobais.vidas)
-
-func aplicar_lentidao(duracao):
-	velocidade = 100
-	yield(get_tree().create_timer(duracao), "timeout")
-	velocidade = 400
-
+# MOVIMENTAÇÃO E CONTROLES 
 func movePlayer():
 	direcao.x = 0
 	direcao.y += gravidade
@@ -73,22 +63,26 @@ func movePlayer():
 			pulos_restantes -= 1
 
 	if Input.is_action_just_pressed("dash"):
-		if lado == 1:
-			direcao.x = force_dash
-		elif lado == -1:
-			direcao.x = -force_dash
+		direcao.x = lado * force_dash
 
-func _on_ZonaDeAtaque_body_entered(body):
-	print("Entrou na zona: " + body.name)
-	for nameInimigo in inimigos:
-		if body.name == nameInimigo:
-			inimigo_na_area.append(body)
+func mudarLadoSprite():
+	sprite.flip_h = lado != 1
+	area2d.scale.x = lado
+	position2D.position.x = abs(position2D.position.x) * lado
 
-func _on_ZonaDeAtaque_body_exited(body):
-	print("Saiu da zona: " + body.name)
-	for nameInimigo in inimigos:
-		if body.name == nameInimigo:
-			inimigo_na_area.erase(body)
+
+# ATAQUES E HABILIDADES
+func atirar_bola():
+	if Input.is_action_just_pressed("atirar"):
+		var bola = bolaDeFogo.instance()
+		get_parent().add_child(bola)
+
+		var offset = Vector2(40 * lado, 0)
+		bola.global_position = position2D.global_position + offset
+		var body_bola = bola.get_node("Bola de Fogo")
+
+		body_bola.atirarBola(lado)
+		body_bola.connect("acertou_inimigo", self, "_on_bola_acertou")
 
 func verificar_mordida():
 	if Input.is_action_just_pressed("mordida"):
@@ -106,6 +100,32 @@ func usar_uivo():
 		for inimigo in inimigos_no_uivo:
 			inimigo.aplicar_lentidao(1)
 		print("Uivo usado em %d inimigos!" % inimigos_no_uivo.size())
+		
+#RECEBER E APLICAR DANO 
+func _on_bola_acertou(inimigo):
+	if inimigo.has_method("levar_dano"):
+		inimigo.levar_dano(3)
+
+func levar_dano(valor):
+	DadosGlobais.vidas -= valor
+	print("Player levou ", valor, " de dano! Vidas restantes: ", DadosGlobais.vidas)
+
+func aplicar_lentidao(duracao):
+	velocidade = 100
+	yield(get_tree().create_timer(duracao), "timeout")
+	velocidade = 400
+
+
+#ÁREAS DE INTERAÇÃO
+func _on_ZonaDeAtaque_body_entered(body):
+	if body.name in inimigos:
+		inimigo_na_area.append(body)
+		print("Entrou na zona: " + body.name)
+
+func _on_ZonaDeAtaque_body_exited(body):
+	if body.name in inimigos:
+		inimigo_na_area.erase(body)
+		print("Saiu da zona: " + body.name)
 
 func _on_Uivo_body_entered(body):
 	if body is InimigoBase:
@@ -115,19 +135,12 @@ func _on_Uivo_body_exited(body):
 	if body is InimigoBase:
 		inimigos_no_uivo.erase(body)
 
-func mudarLadoSprite():
-	sprite.flip_h = lado != 1
-	area2d.scale.x = lado
 
+#GAME OVER 
 func morrer():
 	if DadosGlobais.vidas <= 0:
-		# Inicia o fade do sprite
 		for i in range(10, -1, -1):
-			sprite.modulate.a = i / 10.0  # Vai de 1.0 até 0.0 (transparente)
-			yield(get_tree().create_timer(0.05), "timeout")  # Pequena pausa entre os fades
-
-		# Espera um pouco após o fade
+			sprite.modulate.a = i / 10.0
+			yield(get_tree().create_timer(0.05), "timeout")
 		yield(get_tree().create_timer(0.5), "timeout")
-
 		get_tree().change_scene("res://src/Cenas/GameOver.tscn")
-
