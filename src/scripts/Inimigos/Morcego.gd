@@ -23,7 +23,7 @@ func _ready():
 	timer.one_shot = true
 	timer.connect("timeout", self, "_on_Timer_timeout")
 
-func _physics_process(delta):
+func _process(delta):
 	tempo += delta
 
 	match estado:
