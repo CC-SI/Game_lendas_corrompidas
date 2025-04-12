@@ -111,7 +111,7 @@ func levar_dano(valor):
 	print("Player levou ", valor, " de dano! Vidas restantes: ", DadosGlobais.vidas)
 
 func aplicar_lentidao(duracao):
-	velocidade = 100
+	velocidade = 0
 	yield(get_tree().create_timer(duracao), "timeout")
 	velocidade = 400
 
