@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/Texturas/Cenario/Tiles/2.png" type="Texture" id=1]
 [ext_resource path="res://src/Cenas/Player/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/Cenas/Inimigos/Morcego.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Cenas/Inimigos/MonstroDasLavas.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Cenas/Player/BarraDeVida.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/Cenas/Inimigos/Curupira.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1115.5, 10 )
@@ -120,10 +121,10 @@ position = Vector2( 0, 171 )
 shape = SubResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 604, 404 )
+position = Vector2( 1113, 404 )
 
 [node name="Morcego" parent="." instance=ExtResource( 4 )]
-position = Vector2( 429, 190 )
+position = Vector2( 724, 187 )
 
 [node name="MonstroDasCinzas" parent="." instance=ExtResource( 5 )]
 position = Vector2( 42, 431 )
@@ -132,3 +133,6 @@ position = Vector2( 42, 431 )
 layer = 1
 
 [node name="BarraDeVida" parent="ParallaxBackground" instance=ExtResource( 6 )]
+
+[node name="Curupira" parent="." instance=ExtResource( 7 )]
+position = Vector2( 2126, 426 )
