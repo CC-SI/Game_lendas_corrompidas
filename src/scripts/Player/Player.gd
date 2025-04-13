@@ -29,6 +29,7 @@ func _ready():
 	camera.limit_top = 10
 	camera.limit_bottom = get_viewport().size.y
 	camera.limit_left = 0
+	DadosGlobais.player = self
 
 # -- PROCESSO PRINCIPAL --
 func _process(delta):
