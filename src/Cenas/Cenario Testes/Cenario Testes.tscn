@@ -15,6 +15,7 @@ extents = Vector2( 1115.5, 10 )
 extents = Vector2( 10, 181 )
 
 [node name="CenarioTestes" type="Node2D"]
+position = Vector2( 192, 6 )
 
 [node name="Fundo" type="Sprite" parent="."]
 position = Vector2( 564.5, 167.999 )
@@ -121,7 +122,7 @@ position = Vector2( 0, 171 )
 shape = SubResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1113, 404 )
+position = Vector2( 1469, 406 )
 
 [node name="Morcego" parent="." instance=ExtResource( 4 )]
 position = Vector2( 724, 187 )
