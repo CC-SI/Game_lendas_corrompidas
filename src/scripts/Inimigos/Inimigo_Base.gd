@@ -2,8 +2,25 @@ extends KinematicBody2D
 class_name InimigoBase
 
 export var vidas = 3
+export var gravidade = 300
 export var nome_do_inimigo = "Inimigo"
+
 var velocidade = 100
+var direcao = Vector2.ZERO
+
+func follow_player():
+	var direcao_horizontal = DadosGlobais.player.global_position.x - global_position.x
+
+	if direcao_horizontal != 0:
+		var novo_lado = 1 if direcao_horizontal > 0 else -1
+		if has_method("mudarLadoSprite"):
+			self.lado = novo_lado
+			call("mudarLadoSprite")
+			
+	direcao = (DadosGlobais.player.global_position - global_position).normalized()
+	direcao.y += gravidade
+	direcao *= velocidade
+	move_and_slide(direcao, Vector2.UP)
 
 func levar_dano(valor):
 	vidas -= valor
