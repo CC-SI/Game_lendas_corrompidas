@@ -2,8 +2,11 @@ extends Node
 
 const LISTA_INIMIGOS = [
 	"Morcego", 
-	"MonstroDaLavas"
+	"MonstroDaLavas",
+	"Curupira"
 ]
+
+var player = null
 
 var vidas = 0
 
