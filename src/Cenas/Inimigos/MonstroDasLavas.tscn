@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://src/Texturas/Inimigos/Monstro das Cinzas/Sega Genesis 32X - Shadow Dancer The Secret of Shinobi - Armored Monster.png" type="Texture" id=1]
+[ext_resource path="res://src/Texturas/Inimigos/Monstro das Cinzas/animacao_parado.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/Inimigos/MonstroDasCinzas.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -16,11 +16,11 @@ script = ExtResource( 2 )
 nome_do_inimigo = "MonstroDasCinzas"
 
 [node name="Sprite" type="Sprite" parent="MonstroDaLavas"]
-position = Vector2( 0, -1 )
+scale = Vector2( 0.101168, 0.106618 )
 texture = ExtResource( 1 )
 flip_h = true
 region_enabled = true
-region_rect = Rect2( 120, 16, 60, 112 )
+region_rect = Rect2( 318, 117, 803, 799 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MonstroDaLavas"]
 position = Vector2( -0.5, 0.5 )
@@ -35,5 +35,8 @@ shape = SubResource( 2 )
 [node name="Position2D" type="Position2D" parent="MonstroDaLavas"]
 position = Vector2( 1, -76 )
 
+[node name="Timer" type="Timer" parent="MonstroDaLavas"]
+
 [connection signal="body_entered" from="MonstroDaLavas/Area2D" to="MonstroDaLavas" method="_on_ZonaVisao_body_entered"]
 [connection signal="body_exited" from="MonstroDaLavas/Area2D" to="MonstroDaLavas" method="_on_ZonaVisao_body_exited"]
+[connection signal="timeout" from="MonstroDaLavas/Timer" to="MonstroDaLavas" method="_on_Timer_timeout"]
