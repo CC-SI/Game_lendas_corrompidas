@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-signal acertou_inimigo(inimigo)  # Emite o node do inimigo
+signal acertou_inimigo(inimigo) 
 
 export var velocidade_x = 300
 export var distancia_maxima = 400
