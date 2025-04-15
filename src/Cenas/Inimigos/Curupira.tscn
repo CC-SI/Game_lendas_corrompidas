@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/Texturas/Inimigos/Inimigo 1/Arcade - Legend of Heroes - Cheng.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/Inimigos/Curupira.gd" type="Script" id=2]
+[ext_resource path="res://src/Texturas/Cenario/Tiles/tileset.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 23.5, 34.5 )
@@ -11,6 +12,12 @@ extents = Vector2( 297.5, 116.625 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 23, 38.25 )
+
+[sub_resource type="CapsuleShape2D" id=4]
+height = 42.0
+
+[sub_resource type="CapsuleShape2D" id=5]
+height = 37.077
 
 [node name="Curupira" type="Node2D"]
 position = Vector2( 475, 269 )
@@ -40,6 +47,98 @@ shape = SubResource( 2 )
 position = Vector2( 25, -1.75 )
 shape = SubResource( 3 )
 
+[node name="Timer" type="Timer" parent="Curupira"]
+
+[node name="AssobioTimer" type="Timer" parent="Curupira"]
+
+[node name="PositionTop" type="Position2D" parent="Curupira"]
+position = Vector2( -2, -55 )
+
+[node name="PositionEsq" type="Position2D" parent="Curupira"]
+position = Vector2( -44, 3 )
+
+[node name="PositionDir" type="Position2D" parent="Curupira"]
+position = Vector2( 44, -3 )
+
+[node name="Zona 1" type="Area2D" parent="Curupira"]
+position = Vector2( -90, 9 )
+
+[node name="Sprite" type="Sprite" parent="Curupira/Zona 1"]
+position = Vector2( 0, -4 )
+scale = Vector2( 0.0455032, 0.0404638 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 23, 25, 467, 1460 )
+
+[node name="Sprite2" type="Sprite" parent="Curupira/Zona 1"]
+position = Vector2( 198.625, -4.46143 )
+scale = Vector2( 0.0455032, 0.0404638 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 23, 25, 467, 1460 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Curupira/Zona 1"]
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Curupira/Zona 1"]
+position = Vector2( 198.625, -0.461456 )
+shape = SubResource( 4 )
+
+[node name="Zona 2" type="Area2D" parent="Curupira"]
+
+[node name="Sprite" type="Sprite" parent="Curupira/Zona 2"]
+position = Vector2( -233.375, 9.53857 )
+scale = Vector2( 0.0455032, 0.0404638 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 23, 25, 467, 1460 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Curupira/Zona 2"]
+position = Vector2( -233, 8.99994 )
+shape = SubResource( 5 )
+
+[node name="Sprite2" type="Sprite" parent="Curupira/Zona 2"]
+position = Vector2( 247.625, 5.53857 )
+scale = Vector2( 0.0455032, 0.0404638 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 23, 25, 467, 1460 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Curupira/Zona 2"]
+position = Vector2( 248, 4.99991 )
+shape = SubResource( 5 )
+
+[node name="Zona 3" type="Area2D" parent="Curupira"]
+
+[node name="Sprite" type="Sprite" parent="Curupira/Zona 3"]
+position = Vector2( 427.625, 3.53857 )
+scale = Vector2( 0.0455032, 0.0404638 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 23, 25, 467, 1460 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Curupira/Zona 3"]
+position = Vector2( 427.625, 7.53854 )
+shape = SubResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="Curupira/Zona 3"]
+position = Vector2( -451.375, 8.53857 )
+scale = Vector2( 0.0455032, 0.0404638 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 23, 25, 467, 1460 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Curupira/Zona 3"]
+position = Vector2( -451.375, 12.5385 )
+shape = SubResource( 4 )
+
 [connection signal="body_entered" from="Curupira/Zona de corrida" to="Curupira" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Curupira/Zona de corrida" to="Curupira" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Curupira/Chute" to="Curupira" method="_on_Chute_body_entered"]
+[connection signal="timeout" from="Curupira/Timer" to="Curupira" method="_on_assobio_timeout"]
+[connection signal="timeout" from="Curupira/Timer" to="Curupira" method="_on_pos_assobio_timeout"]
+[connection signal="timeout" from="Curupira/Timer" to="Curupira" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Curupira/AssobioTimer" to="Curupira" method="_on_assobio_timeout"]
+[connection signal="body_entered" from="Curupira/Zona 1" to="Curupira" method="_on_Zona_1_body_entered"]
+[connection signal="body_entered" from="Curupira/Zona 2" to="Curupira" method="_on_Zona_2_body_entered"]
+[connection signal="body_entered" from="Curupira/Zona 3" to="Curupira" method="_on_Zona_3_body_entered"]
