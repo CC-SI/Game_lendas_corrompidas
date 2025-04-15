@@ -10,11 +10,17 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "KinematicBody2D",
+"class": "BolaDeFogoBase",
+"language": "GDScript",
+"path": "res://src/scripts/Inimigos/Bolas de fogo/BolaDeFogoBase.gd"
+}, {
+"base": "KinematicBody2D",
 "class": "InimigoBase",
 "language": "GDScript",
 "path": "res://src/scripts/Inimigos/Inimigo_Base.gd"
 } ]
 _global_script_class_icons={
+"BolaDeFogoBase": "",
 "InimigoBase": ""
 }
 
