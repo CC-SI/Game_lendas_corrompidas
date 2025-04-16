@@ -1,7 +1,7 @@
 extends InimigoBase
 
 export var intervalo_tiro = 1.5
-export var bolaDeFogo = preload("res://src/Cenas/Inimigos/BlocoDeFogo.tscn")
+export var blocoDeFogo = preload("res://src/Cenas/Inimigos/BlocoDeFogo.tscn")
 
 var perseguindo = false
 var alvo = null
@@ -85,7 +85,7 @@ func _atirar():
 		var angulo = lerp(angulo_inicial, angulo_final, t)
 		var nova_direcao = direcao_base.rotated(angulo)
 
-		var bola = bolaDeFogo.instance()
+		var bola = blocoDeFogo.instance()
 		get_parent().add_child(bola)
 
 		var pos_offset = nova_direcao * 16
@@ -93,4 +93,3 @@ func _atirar():
 
 		if bola.has_method("set_direcao"):
 			bola.set_direcao(nova_direcao)
-

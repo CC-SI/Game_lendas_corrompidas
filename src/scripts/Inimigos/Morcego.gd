@@ -21,7 +21,6 @@ func _ready():
 	add_child(timer)
 	timer.wait_time = tempo_re_ataque
 	timer.one_shot = true
-	timer.connect("timeout", self, "_on_Timer_timeout")
 
 func _process(delta):
 	tempo += delta
