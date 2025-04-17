@@ -1,0 +1,435 @@
+{
+	"frames": {
+		"Armature_dead_00.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 1050,
+				"h": 800
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1050,
+				"h": 800
+			},
+			"sourceSize": {
+				"w": 1050,
+				"h": 800
+			}
+		},
+		"Armature_dead_01.png": {
+			"frame": {
+				"x": 1053,
+				"y": 1,
+				"w": 1050,
+				"h": 800
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1050,
+				"h": 800
+			},
+			"sourceSize": {
+				"w": 1050,
+				"h": 800
+			}
+		},
+		"Armature_dead_02.png": {
+			"frame": {
+				"x": 2105,
+				"y": 1,
+				"w": 1050,
+				"h": 800
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1050,
+				"h": 800
+			},
+			"sourceSize": {
+				"w": 1050,
+				"h": 800
+			}
+		},
+		"Armature_dead_03.png": {
+			"frame": {
+				"x": 3157,
+				"y": 1,
+				"w": 1050,
+				"h": 800
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1050,
+				"h": 800
+			},
+			"sourceSize": {
+				"w": 1050,
+				"h": 800
+			}
+		},
+		"Armature_dead_04.png": {
+			"frame": {
+				"x": 1,
+				"y": 803,
+				"w": 1050,
+				"h": 800
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1050,
+				"h": 800
+			},
+			"sourceSize": {
+				"w": 1050,
+				"h": 800
+			}
+		},
+		"Armature_dead_05.png": {
+			"frame": {
+				"x": 1053,
+				"y": 803,
+				"w": 1050,
+				"h": 800
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1050,
+				"h": 800
+			},
+			"sourceSize": {
+				"w": 1050,
+				"h": 800
+			}
+		},
+		"Armature_dead_06.png": {
+			"frame": {
+				"x": 2105,
+				"y": 803,
+				"w": 1050,
+				"h": 800
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1050,
+				"h": 800
+			},
+			"sourceSize": {
+				"w": 1050,
+				"h": 800
+			}
+		},
+		"Armature_dead_07.png": {
+			"frame": {
+				"x": 3157,
+				"y": 803,
+				"w": 1050,
+				"h": 800
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1050,
+				"h": 800
+			},
+			"sourceSize": {
+				"w": 1050,
+				"h": 800
+			}
+		},
+		"Armature_dead_08.png": {
+			"frame": {
+				"x": 1,
+				"y": 1605,
+				"w": 1050,
+				"h": 800
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1050,
+				"h": 800
+			},
+			"sourceSize": {
+				"w": 1050,
+				"h": 800
+			}
+		},
+		"Armature_dead_09.png": {
+			"frame": {
+				"x": 1053,
+				"y": 1605,
+				"w": 1050,
+				"h": 800
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1050,
+				"h": 800
+			},
+			"sourceSize": {
+				"w": 1050,
+				"h": 800
+			}
+		},
+		"Armature_dead_10.png": {
+			"frame": {
+				"x": 2105,
+				"y": 1605,
+				"w": 1050,
+				"h": 800
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1050,
+				"h": 800
+			},
+			"sourceSize": {
+				"w": 1050,
+				"h": 800
+			}
+		},
+		"Armature_dead_11.png": {
+			"frame": {
+				"x": 3157,
+				"y": 1605,
+				"w": 1050,
+				"h": 800
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1050,
+				"h": 800
+			},
+			"sourceSize": {
+				"w": 1050,
+				"h": 800
+			}
+		},
+		"Armature_dead_12.png": {
+			"frame": {
+				"x": 1,
+				"y": 2407,
+				"w": 1050,
+				"h": 800
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1050,
+				"h": 800
+			},
+			"sourceSize": {
+				"w": 1050,
+				"h": 800
+			}
+		},
+		"Armature_dead_13.png": {
+			"frame": {
+				"x": 1053,
+				"y": 2407,
+				"w": 1050,
+				"h": 800
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1050,
+				"h": 800
+			},
+			"sourceSize": {
+				"w": 1050,
+				"h": 800
+			}
+		},
+		"Armature_dead_14.png": {
+			"frame": {
+				"x": 2105,
+				"y": 2407,
+				"w": 1050,
+				"h": 800
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1050,
+				"h": 800
+			},
+			"sourceSize": {
+				"w": 1050,
+				"h": 800
+			}
+		},
+		"Armature_dead_15.png": {
+			"frame": {
+				"x": 3157,
+				"y": 2407,
+				"w": 1050,
+				"h": 800
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1050,
+				"h": 800
+			},
+			"sourceSize": {
+				"w": 1050,
+				"h": 800
+			}
+		},
+		"Armature_dead_16.png": {
+			"frame": {
+				"x": 1,
+				"y": 3209,
+				"w": 1050,
+				"h": 800
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1050,
+				"h": 800
+			},
+			"sourceSize": {
+				"w": 1050,
+				"h": 800
+			}
+		},
+		"Armature_dead_17.png": {
+			"frame": {
+				"x": 1053,
+				"y": 3209,
+				"w": 1050,
+				"h": 800
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1050,
+				"h": 800
+			},
+			"sourceSize": {
+				"w": 1050,
+				"h": 800
+			}
+		},
+		"Armature_dead_18.png": {
+			"frame": {
+				"x": 2105,
+				"y": 3209,
+				"w": 1050,
+				"h": 800
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1050,
+				"h": 800
+			},
+			"sourceSize": {
+				"w": 1050,
+				"h": 800
+			}
+		},
+		"Armature_dead_19.png": {
+			"frame": {
+				"x": 3157,
+				"y": 3209,
+				"w": 1050,
+				"h": 800
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1050,
+				"h": 800
+			},
+			"sourceSize": {
+				"w": 1050,
+				"h": 800
+			}
+		},
+		"Armature_dead_20.png": {
+			"frame": {
+				"x": 4209,
+				"y": 1,
+				"w": 1050,
+				"h": 800
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1050,
+				"h": 800
+			},
+			"sourceSize": {
+				"w": 1050,
+				"h": 800
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "spritesheet.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 5260,
+			"h": 4010
+		},
+		"scale": "1"
+	}
+}

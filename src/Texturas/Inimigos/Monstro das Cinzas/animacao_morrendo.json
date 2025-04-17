@@ -62,8 +62,8 @@
 		},
 		"Armature_death_03.png": {
 			"frame": {
-				"x": 1,
-				"y": 918,
+				"x": 4207,
+				"y": 1,
 				"w": 1400,
 				"h": 915
 			},
@@ -82,7 +82,7 @@
 		},
 		"Armature_death_04.png": {
 			"frame": {
-				"x": 1403,
+				"x": 1,
 				"y": 918,
 				"w": 1400,
 				"h": 915
@@ -102,7 +102,7 @@
 		},
 		"Armature_death_05.png": {
 			"frame": {
-				"x": 2805,
+				"x": 1403,
 				"y": 918,
 				"w": 1400,
 				"h": 915
@@ -122,8 +122,8 @@
 		},
 		"Armature_death_06.png": {
 			"frame": {
-				"x": 1,
-				"y": 1835,
+				"x": 2805,
+				"y": 918,
 				"w": 1400,
 				"h": 915
 			},
@@ -141,186 +141,6 @@
 			}
 		},
 		"Armature_death_07.png": {
-			"frame": {
-				"x": 1403,
-				"y": 1835,
-				"w": 1400,
-				"h": 915
-			},
-			"rotated": false,
-			"trimmed": false,
-			"spriteSourceSize": {
-				"x": 0,
-				"y": 0,
-				"w": 1400,
-				"h": 915
-			},
-			"sourceSize": {
-				"w": 1400,
-				"h": 915
-			}
-		},
-		"Armature_death_08.png": {
-			"frame": {
-				"x": 2805,
-				"y": 1835,
-				"w": 1400,
-				"h": 915
-			},
-			"rotated": false,
-			"trimmed": false,
-			"spriteSourceSize": {
-				"x": 0,
-				"y": 0,
-				"w": 1400,
-				"h": 915
-			},
-			"sourceSize": {
-				"w": 1400,
-				"h": 915
-			}
-		},
-		"Armature_death_09.png": {
-			"frame": {
-				"x": 1,
-				"y": 2752,
-				"w": 1400,
-				"h": 915
-			},
-			"rotated": false,
-			"trimmed": false,
-			"spriteSourceSize": {
-				"x": 0,
-				"y": 0,
-				"w": 1400,
-				"h": 915
-			},
-			"sourceSize": {
-				"w": 1400,
-				"h": 915
-			}
-		},
-		"Armature_death_10.png": {
-			"frame": {
-				"x": 1403,
-				"y": 2752,
-				"w": 1400,
-				"h": 915
-			},
-			"rotated": false,
-			"trimmed": false,
-			"spriteSourceSize": {
-				"x": 0,
-				"y": 0,
-				"w": 1400,
-				"h": 915
-			},
-			"sourceSize": {
-				"w": 1400,
-				"h": 915
-			}
-		},
-		"Armature_death_11.png": {
-			"frame": {
-				"x": 2805,
-				"y": 2752,
-				"w": 1400,
-				"h": 915
-			},
-			"rotated": false,
-			"trimmed": false,
-			"spriteSourceSize": {
-				"x": 0,
-				"y": 0,
-				"w": 1400,
-				"h": 915
-			},
-			"sourceSize": {
-				"w": 1400,
-				"h": 915
-			}
-		},
-		"Armature_death_12.png": {
-			"frame": {
-				"x": 1,
-				"y": 3669,
-				"w": 1400,
-				"h": 915
-			},
-			"rotated": false,
-			"trimmed": false,
-			"spriteSourceSize": {
-				"x": 0,
-				"y": 0,
-				"w": 1400,
-				"h": 915
-			},
-			"sourceSize": {
-				"w": 1400,
-				"h": 915
-			}
-		},
-		"Armature_death_13.png": {
-			"frame": {
-				"x": 1403,
-				"y": 3669,
-				"w": 1400,
-				"h": 915
-			},
-			"rotated": false,
-			"trimmed": false,
-			"spriteSourceSize": {
-				"x": 0,
-				"y": 0,
-				"w": 1400,
-				"h": 915
-			},
-			"sourceSize": {
-				"w": 1400,
-				"h": 915
-			}
-		},
-		"Armature_death_14.png": {
-			"frame": {
-				"x": 2805,
-				"y": 3669,
-				"w": 1400,
-				"h": 915
-			},
-			"rotated": false,
-			"trimmed": false,
-			"spriteSourceSize": {
-				"x": 0,
-				"y": 0,
-				"w": 1400,
-				"h": 915
-			},
-			"sourceSize": {
-				"w": 1400,
-				"h": 915
-			}
-		},
-		"Armature_death_15.png": {
-			"frame": {
-				"x": 4207,
-				"y": 1,
-				"w": 1400,
-				"h": 915
-			},
-			"rotated": false,
-			"trimmed": false,
-			"spriteSourceSize": {
-				"x": 0,
-				"y": 0,
-				"w": 1400,
-				"h": 915
-			},
-			"sourceSize": {
-				"w": 1400,
-				"h": 915
-			}
-		},
-		"Armature_death_16.png": {
 			"frame": {
 				"x": 4207,
 				"y": 918,
@@ -340,10 +160,550 @@
 				"h": 915
 			}
 		},
-		"Armature_death_17.png": {
+		"Armature_death_08.png": {
+			"frame": {
+				"x": 1,
+				"y": 1835,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_09.png": {
+			"frame": {
+				"x": 1403,
+				"y": 1835,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_10.png": {
+			"frame": {
+				"x": 2805,
+				"y": 1835,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_11.png": {
 			"frame": {
 				"x": 4207,
 				"y": 1835,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_12.png": {
+			"frame": {
+				"x": 1,
+				"y": 2752,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_13.png": {
+			"frame": {
+				"x": 1403,
+				"y": 2752,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_14.png": {
+			"frame": {
+				"x": 2805,
+				"y": 2752,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_15.png": {
+			"frame": {
+				"x": 4207,
+				"y": 2752,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_16.png": {
+			"frame": {
+				"x": 1,
+				"y": 3669,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_17.png": {
+			"frame": {
+				"x": 1403,
+				"y": 3669,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_18.png": {
+			"frame": {
+				"x": 2805,
+				"y": 3669,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_19.png": {
+			"frame": {
+				"x": 4207,
+				"y": 3669,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_20.png": {
+			"frame": {
+				"x": 1,
+				"y": 4586,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_21.png": {
+			"frame": {
+				"x": 1403,
+				"y": 4586,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_22.png": {
+			"frame": {
+				"x": 2805,
+				"y": 4586,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_23.png": {
+			"frame": {
+				"x": 4207,
+				"y": 4586,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_24.png": {
+			"frame": {
+				"x": 1,
+				"y": 5503,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_25.png": {
+			"frame": {
+				"x": 1403,
+				"y": 5503,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_26.png": {
+			"frame": {
+				"x": 2805,
+				"y": 5503,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_27.png": {
+			"frame": {
+				"x": 4207,
+				"y": 5503,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_28.png": {
+			"frame": {
+				"x": 5609,
+				"y": 1,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_29.png": {
+			"frame": {
+				"x": 5609,
+				"y": 918,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_30.png": {
+			"frame": {
+				"x": 5609,
+				"y": 1835,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_31.png": {
+			"frame": {
+				"x": 5609,
+				"y": 2752,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_32.png": {
+			"frame": {
+				"x": 5609,
+				"y": 3669,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_33.png": {
+			"frame": {
+				"x": 5609,
+				"y": 4586,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_34.png": {
+			"frame": {
+				"x": 5609,
+				"y": 5503,
+				"w": 1400,
+				"h": 915
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1400,
+				"h": 915
+			},
+			"sourceSize": {
+				"w": 1400,
+				"h": 915
+			}
+		},
+		"Armature_death_35.png": {
+			"frame": {
+				"x": 1,
+				"y": 6420,
 				"w": 1400,
 				"h": 915
 			},
@@ -367,8 +727,8 @@
 		"image": "spritesheet.png",
 		"format": "RGBA8888",
 		"size": {
-			"w": 5608,
-			"h": 4585
+			"w": 7010,
+			"h": 7336
 		},
 		"scale": "1"
 	}
