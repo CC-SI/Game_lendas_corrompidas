@@ -84,23 +84,19 @@ func atirar_bola():
 
 		body_bola.atirarBola(lado)
 		body_bola.connect("acertou_inimigo", self, "_on_bola_acertou")
-
+		
 func verificar_mordida():
 	if Input.is_action_just_pressed("mordida"):
 		var isAcertou = false
 		for inimigo in inimigo_na_area:
 			inimigo.levar_dano(1)
-			print("Acertou: ", inimigo.nome_do_inimigo)
 			isAcertou = true
 			break
-		if not isAcertou:
-			print("Mordida aplicada, mas não atingiu ninguém")
 
 func usar_uivo():
 	if Input.is_action_just_pressed("uivo"):
 		for inimigo in inimigos_no_uivo:
 			inimigo.aplicar_lentidao(1)
-		print("Uivo usado em %d inimigos!" % inimigos_no_uivo.size())
 		
 #RECEBER E APLICAR DANO 
 func _on_bola_acertou(inimigo):
@@ -109,7 +105,6 @@ func _on_bola_acertou(inimigo):
 
 func levar_dano(valor):
 	DadosGlobais.vidas -= valor
-	print("Player levou ", valor, " de dano! Vidas restantes: ", DadosGlobais.vidas)
 
 func aplicar_lentidao(duracao):
 	velocidade = 0
@@ -121,13 +116,13 @@ func aplicar_lentidao(duracao):
 func _on_ZonaDeAtaque_body_entered(body):
 	if body.name in inimigos:
 		inimigo_na_area.append(body)
-		print("Entrou na zona: " + body.name)
+		
+	
 
 func _on_ZonaDeAtaque_body_exited(body):
 	if body.name in inimigos:
 		inimigo_na_area.erase(body)
-		print("Saiu da zona: " + body.name)
-
+		
 func _on_Uivo_body_entered(body):
 	if body is InimigoBase:
 		inimigos_no_uivo.append(body)
