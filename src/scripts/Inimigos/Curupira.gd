@@ -23,11 +23,12 @@ var isAttacking = false
 var last_attack = ""
 var same_attack_count = 0
 var can_attack = false
-
+var isAssobio = false
 var isPostAssobio = false
+var is_parado: bool = false 
 
 func _ready():
-	timer.start(10)
+	timer.start(2)
 	disable_area2D()
 	velocidade = 300
 
@@ -35,11 +36,31 @@ func _process(delta):
 	follow_player()
 	mudarLadoSprite()
 
-	if not isAttacking and isOutZone and can_attack:
+	if not isAttacking and isOutZone and can_attack and not is_parado:
 		decides_to_attack()
+	
+	if isAssobio:
+		assobio()
+		
+	if not is_parado:
+		ativar_defesa(true)
+	else:
+		ativar_defesa(false)
+		
+	if current_attacks >= 5:
+		isAssobio = true
+		print("Assobio on")
+		yield(get_tree().create_timer(3), "timeout")
+		is_parado = true
+		velocidade = 0
+		current_attacks = 0
+	else:
+		isAssobio = false
 
 func decides_to_attack():
 	var attack_choice = ""
+	isAssobio = false
+	
 	if last_attack == "tp":
 		attack_choice = "bola_de_fogo"
 	elif last_attack == "bola_de_fogo":
@@ -49,30 +70,53 @@ func decides_to_attack():
 		
 	if same_attack_count >= 2:
 		attack_choice = "tp" if last_attack != "tp" else "bola_de_fogo"
-		same_attack_count = 0
+		same_attack_count = 0	
 	
 	if attack_choice == "tp":
 		tp()
-		print("Deu tp")
 		current_attacks += 1
 	elif attack_choice == "bola_de_fogo":
 		_bola_de_fogo()
-		print("bola de fogo")
 		current_attacks += 1
 	else:
 		same_attack_count = 1
+	
 	last_attack = attack_choice
+	
+	print(current_attacks)
 
+	
+
+func assobio():
+	if isAssobio and not is_parado:
+		
+		# Ativa as zonas de ataque
+		yield(get_tree().create_timer(5), "timeout")
+		enable_area2D()
+		
+		# Desativa as zonas de ataque 
+		yield(get_tree().create_timer(5), "timeout")
+		disable_area2D()
+		
+		# Descansando
+		yield(get_tree().create_timer(5), "timeout")
+		current_attacks = 0
+		isAssobio = false
+		is_parado = false
+		velocidade = 300
+		
 func tp():
 	isAttacking = true
 	tp_player()
-	velocidade = 1
+	if not is_parado:
+		velocidade = 1
 	yield(get_tree().create_timer(1), "timeout")
-	velocidade = 300
+	if not is_parado:
+		velocidade = 300
 	
 	isAttacking = false
 	can_attack = false
-	timer.start(10) 
+	timer.start(2)
 
 func _bola_de_fogo():
 	var intervalBetweenBolls = rand_range(0.5, 1.2)
@@ -99,24 +143,23 @@ func _bola_de_fogo():
 	yield(get_tree().create_timer(1.0), "timeout")
 	isAttacking = false
 	can_attack = false
-	timer.start(10) 
+	timer.start(2)
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("player"):
 		playerList.append(body)
 		isOutZone = false
-		print("Entrou")
 
 func _on_Area2D_body_exited(body):
 	if playerList.has(body):
 		playerList.erase(body)
 		isOutZone = true
-		print("Saiu")
 
 func _on_Chute_body_entered(body):
 	if body.is_in_group("player"):
 		current_attacks += 1
 		aplicar_dano(1)
+		print("Ataques: ", current_attacks) 
 
 func mudarLadoSprite():
 	sprite.flip_h = lado != 1
@@ -128,17 +171,14 @@ func _on_Timer_timeout():
 func _on_Zona_1_body_entered(body):
 	if body.is_in_group("player"):
 		aplicar_dano(1)
-		print("player encostou em mim")
 
 func _on_Zona_2_body_entered(body):
 	if body.is_in_group("player"):
 		aplicar_dano(1)
-		print("player encostou em mim")
 
 func _on_Zona_3_body_entered(body):
 	if body.is_in_group("player"):
 		aplicar_dano(1)
-		print("player encostou em mim")
 
 func disable_area2D():
 	zona1.visible = false

@@ -7,6 +7,7 @@ export var nome_do_inimigo = "Inimigo"
 
 var velocidade = 100
 var direcao = Vector2.ZERO
+var escudo_ativo = false
 
 func tp_player():
 	velocidade = 300
@@ -17,8 +18,9 @@ func tp_player():
 
 	print("Teleporte realizado para: ", global_position)
 
-
-
+func ativar_defesa(isActive):
+	escudo_ativo = isActive
+	
 func follow_player():
 	var direction_x = DadosGlobais.player.global_position.x - global_position.x
 	
@@ -34,6 +36,9 @@ func follow_player():
 	move_and_slide(direcao, Vector2.UP) 
 
 func levar_dano(valor):
+	if escudo_ativo:
+		return
+	
 	vidas -= valor
 	if vidas <= 0:
 		morrer()
