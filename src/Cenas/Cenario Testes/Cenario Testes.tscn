@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/Texturas/Cenario/Tiles/2.png" type="Texture" id=1]
 [ext_resource path="res://src/Cenas/Player/Player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,11 @@
 [ext_resource path="res://src/Cenas/Inimigos/MonstroDasLavas.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Cenas/Player/BarraDeVida.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/Cenas/Inimigos/Curupira.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/Cenas/Espiritos da Floresta/Espirito.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/scripts/Npc01.gd" type="Script" id=9]
+[ext_resource path="res://src/Fonts/EastmanRomanTrial-Bold.otf" type="DynamicFontData" id=10]
+[ext_resource path="res://src/Cenas/Tayrin/Tayrin.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/images333-removebg-preview.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2892.75, 10 )
@@ -17,11 +22,22 @@ extents = Vector2( 567.25, 10 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 10, 181 )
 
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 330, 195 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 17
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 17
+font_data = ExtResource( 10 )
+
 [node name="CenarioTestes" type="Node2D"]
 position = Vector2( 192, 6 )
 
 [node name="Fundo" type="Sprite" parent="."]
-position = Vector2( 564.5, 167.999 )
+position = Vector2( 597, 167 )
 scale = Vector2( 1.497, 1.12933 )
 texture = ExtResource( 3 )
 
@@ -296,7 +312,7 @@ shape = SubResource( 2 )
 position = Vector2( 2965, 133 )
 
 [node name="Morcego" parent="." instance=ExtResource( 4 )]
-position = Vector2( 724, 187 )
+position = Vector2( 722, 187 )
 
 [node name="MonstroDasCinzas" parent="." instance=ExtResource( 5 )]
 position = Vector2( 42, 431 )
@@ -308,3 +324,63 @@ layer = 1
 
 [node name="Curupira" parent="." instance=ExtResource( 7 )]
 position = Vector2( 2126, 426 )
+
+[node name="Espirito" parent="." instance=ExtResource( 8 )]
+position = Vector2( 771, 376 )
+scale = Vector2( 0.2, 0.2 )
+
+[node name="Detector" type="Area2D" parent="Espirito"]
+position = Vector2( -75, -5 )
+collision_layer = 32
+collision_mask = 32
+
+[node name="Shape2D" type="CollisionShape2D" parent="Espirito/Detector"]
+position = Vector2( 25, 75.0001 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Espirito"]
+
+[node name="Sprite" type="Sprite" parent="Espirito/CanvasLayer"]
+position = Vector2( 971, 297 )
+scale = Vector2( 0.77718, 0.724551 )
+texture = ExtResource( 12 )
+script = ExtResource( 9 )
+
+[node name="Panel" type="Panel" parent="Espirito/CanvasLayer/Sprite"]
+anchor_left = 0.236
+anchor_top = 0.089
+anchor_right = 0.244
+anchor_bottom = 0.105
+margin_left = -148.036
+margin_top = -80.863
+margin_right = 2.556
+margin_bottom = 4.465
+
+[node name="Label" type="Label" parent="Espirito/CanvasLayer/Sprite/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -72.5
+margin_top = -38.0
+margin_right = 75.5
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 5 )
+align = 1
+autowrap = true
+
+[node name="LabelAviso" type="Label" parent="Espirito"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -250.0
+margin_top = -660.0
+margin_right = 330.0
+margin_bottom = -350.0
+custom_fonts/font = SubResource( 6 )
+align = 1
+autowrap = true
+
+[node name="Tayrin" parent="." instance=ExtResource( 11 )]
+position = Vector2( 411, 333 )
+scale = Vector2( 0.2, 0.2 )

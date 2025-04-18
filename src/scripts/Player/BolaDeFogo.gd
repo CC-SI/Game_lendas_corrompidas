@@ -18,7 +18,7 @@ func _ready():
 	yield(get_tree().create_timer(3.0), "timeout")
 	queue_free()
 
-func _process(delta):
+func _process(_delta):
 	move_and_slide(velocidade)
 	
 	var distancia_percorrida = global_position.distance_to(posicao_inicial)
