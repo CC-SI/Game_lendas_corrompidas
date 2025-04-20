@@ -8,6 +8,7 @@ export var force_dash = 1500
 var bolaDeFogo = preload("res://src/Cenas/Player/BolaDeFogo.tscn")
 
 # -- ESTADO --
+var estado_jogador = "padrão"
 var lado = 1
 var pulos_restantes = 1
 var direcao = Vector2.ZERO
@@ -41,6 +42,7 @@ func _process(delta):
 	usar_uivo()
 	atirar_bola()
 	morrer()
+	estado_jogador = "padrão"
 
 
 # MOVIMENTAÇÃO E CONTROLES 
@@ -65,6 +67,7 @@ func movePlayer():
 
 	if Input.is_action_just_pressed("dash"):
 		direcao.x = lado * force_dash
+		estado_jogador = "dash"
 
 func mudarLadoSprite():
 	sprite.flip_h = lado != 1
@@ -87,6 +90,7 @@ func atirar_bola():
 		
 func verificar_mordida():
 	if Input.is_action_just_pressed("mordida"):
+		estado_jogador = "mordida"
 		var isAcertou = false
 		for inimigo in inimigo_na_area:
 			inimigo.levar_dano(1)
@@ -95,6 +99,7 @@ func verificar_mordida():
 
 func usar_uivo():
 	if Input.is_action_just_pressed("uivo"):
+		estado_jogador = "uivo"
 		for inimigo in inimigos_no_uivo:
 			inimigo.aplicar_lentidao(1)
 		
@@ -135,6 +140,7 @@ func _on_Uivo_body_exited(body):
 #GAME OVER 
 func morrer():
 	if DadosGlobais.vidas <= 0:
+		estado_jogador = "morto"
 		for i in range(10, -1, -1):
 			sprite.modulate.a = i / 10.0
 			yield(get_tree().create_timer(0.05), "timeout")
