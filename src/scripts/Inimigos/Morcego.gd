@@ -7,6 +7,7 @@ export var velocidade_descendo = 200
 export var velocidade_subindo = 250
 
 var alvo = null
+var esta_atacando = true
 var estado = "voando"
 var player_na_zona = false
 var posicao_inicial = Vector2.ZERO
@@ -27,6 +28,7 @@ func _process(delta):
 
 	match estado:
 		"voando":
+			esta_atacando = false
 			var deslocamento_vertical = sin(tempo * 2.0) * 10
 			var deslocamento_horizontal = direcao_voo * velocidade * delta
 			global_position.x += deslocamento_horizontal
@@ -37,6 +39,7 @@ func _process(delta):
 				sprite.flip_h = direcao_voo < 0
 
 		"descendo":
+			esta_atacando = true
 			if alvo and alvo.is_inside_tree():
 				var direcao_para_alvo = alvo.global_position - global_position
 				if direcao_para_alvo.length() <= alcance_ataque:
@@ -50,6 +53,7 @@ func _process(delta):
 				estado = "voltando"
 
 		"voltando":
+			esta_atacando = false
 			var direcao_volta = posicao_inicial - global_position
 			if direcao_volta.length() > 2:
 				move_and_slide(direcao_volta.normalized() * velocidade_subindo)

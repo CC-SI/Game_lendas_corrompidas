@@ -9,6 +9,8 @@ var velocidade = 100
 var direcao = Vector2.ZERO
 var escudo_ativo = false
 
+var esta_morto = false
+
 func tp_player():
 	velocidade = 300
 	var position_target = DadosGlobais.player.global_position
@@ -54,4 +56,4 @@ func aplicar_lentidao(duracao):
 	velocidade = 100
 
 func morrer():
-	queue_free()
+	esta_morto = true

@@ -1,0 +1,33 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=8 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "atacando"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "morrendo"
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "voando"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=4]
+advance_condition = "esta_voando"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=5]
+advance_condition = "esta_atacando"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=6]
+advance_condition = "esta_morto"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=7]
+advance_condition = "esta_morto"
+
+[resource]
+states/atacando/node = SubResource( 1 )
+states/atacando/position = Vector2( 828, 137 )
+states/morrendo/node = SubResource( 2 )
+states/morrendo/position = Vector2( 591, 255 )
+states/voando/node = SubResource( 3 )
+states/voando/position = Vector2( 358, 137 )
+transitions = [ "atacando", "voando", SubResource( 4 ), "voando", "atacando", SubResource( 5 ), "voando", "morrendo", SubResource( 6 ), "atacando", "morrendo", SubResource( 7 ) ]
+start_node = "voando"
+end_node = "morrendo"

@@ -1,9 +1,21 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/Texturas/Inimigos/Morcego/animacao_voando.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/Inimigos/Morcego.gd" type="Script" id=2]
 [ext_resource path="res://src/Texturas/Inimigos/Morcego/animacao_atacando.png" type="Texture" id=3]
 [ext_resource path="res://src/Texturas/Inimigos/Morcego/animacao_morrendo.png" type="Texture" id=4]
+[ext_resource path="res://src/scripts/Inimigos/Morcego/animacao_morcego.gd" type="Script" id=5]
+[ext_resource path="res://src/Animacoes/Inimigos/Morcego/maquina_estados_morcego.tres" type="AnimationNodeStateMachine" id=6]
+
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 120.0
+height = 195.83
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 920, 728 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 216, 156 )
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -18,18 +30,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionShape2D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -48, 24 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -301,15 +301,7 @@ tracks/7/keys = {
 "values": [ -65.5 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=8]
-radius = 120.0
-height = 195.83
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 172.5, 120.75 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 12.5, 12 )
+[sub_resource type="AnimationNodeStateMachinePlayback" id=9]
 
 [node name="Morcego" type="Node2D"]
 
@@ -321,8 +313,27 @@ texture = ExtResource( 1 )
 flip_h = true
 hframes = 5
 vframes = 5
-frame = 7
+frame = 1
 region_rect = Rect2( 197, 14, 33, 42 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Morcego"]
+position = Vector2( -48, 94.2211 )
+rotation = -1.14319
+shape = SubResource( 8 )
+
+[node name="Zona de Ataque" type="Area2D" parent="Morcego"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Morcego/Zona de Ataque"]
+position = Vector2( 0, 120 )
+shape = SubResource( 2 )
+
+[node name="Atacou Player" type="Area2D" parent="Morcego"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Morcego/Atacou Player"]
+position = Vector2( -48, 20 )
+shape = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="Morcego"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Morcego"]
 anims/RESET = SubResource( 4 )
@@ -330,25 +341,17 @@ anims/atacando = SubResource( 5 )
 anims/morrendo = SubResource( 6 )
 anims/voando = SubResource( 7 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Morcego"]
-position = Vector2( -48, 24 )
-rotation = -1.14319
-shape = SubResource( 8 )
+[node name="AnimationTree" type="AnimationTree" parent="Morcego"]
+tree_root = ExtResource( 6 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 9 )
+parameters/conditions/esta_atacando = false
+parameters/conditions/esta_morto = false
+parameters/conditions/esta_voando = false
 
-[node name="Zona de Ataque" type="Area2D" parent="Morcego"]
-position = Vector2( 0, 8 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Morcego/Zona de Ataque"]
-position = Vector2( 6.5, 28.25 )
-shape = SubResource( 2 )
-
-[node name="Atacou Player" type="Area2D" parent="Morcego"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Morcego/Atacou Player"]
-position = Vector2( 0.5, 12 )
-shape = SubResource( 3 )
-
-[node name="Timer" type="Timer" parent="Morcego"]
+[node name="AnimacaoMorcego" type="Node2D" parent="Morcego"]
+script = ExtResource( 5 )
 
 [connection signal="body_entered" from="Morcego/Zona de Ataque" to="Morcego" method="_on_Zona_de_Ataque_body_entered"]
 [connection signal="body_exited" from="Morcego/Zona de Ataque" to="Morcego" method="_on_Zona_de_Ataque_body_exited"]
