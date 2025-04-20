@@ -1,0 +1,72 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=17 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "atacando"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "comecando_ataque"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "morrendo"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "parado"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "andando"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "andando"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id=14]
+blend_point_0/node = SubResource( 11 )
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource( 12 )
+blend_point_1/pos = 1.0
+blend_point_2/node = SubResource( 13 )
+blend_point_2/pos = -1.0
+
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "terminando_ataque"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+advance_condition = "esta_morto"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+advance_condition = "esta_morto"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+advance_condition = "esta_morto"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+advance_condition = "esta_morto"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+advance_condition = "esta_movimentando"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+advance_condition = "esta_atacando"
+
+[resource]
+states/atacando/node = SubResource( 18 )
+states/atacando/position = Vector2( 694, 229.296 )
+states/comecando_ataque/node = SubResource( 19 )
+states/comecando_ataque/position = Vector2( 694, 133 )
+states/morrendo/node = SubResource( 10 )
+states/morrendo/position = Vector2( 442, 320 )
+states/movimentacao/node = SubResource( 14 )
+states/movimentacao/position = Vector2( 442, 133 )
+states/terminando_ataque/node = SubResource( 20 )
+states/terminando_ataque/position = Vector2( 694, 320 )
+transitions = [ "movimentacao", "morrendo", SubResource( 17 ), "comecando_ataque", "atacando", SubResource( 21 ), "terminando_ataque", "movimentacao", SubResource( 22 ), "atacando", "morrendo", SubResource( 23 ), "terminando_ataque", "morrendo", SubResource( 24 ), "comecando_ataque", "morrendo", SubResource( 25 ), "atacando", "terminando_ataque", SubResource( 26 ), "movimentacao", "comecando_ataque", SubResource( 27 ) ]
+start_node = "movimentacao"
+end_node = "morrendo"
+graph_offset = Vector2( -118, 44.296 )
