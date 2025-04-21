@@ -108,7 +108,3 @@ func _on_Timer_timeout():
 		alvo = get_tree().get_nodes_in_group("player")[0]
 		estado = "descendo"
 		print("Morcego atacando novamente após 5s.")
-
-func morrer():
-	print("Morcego morreu, fez barulho de morte!")
-	queue_free()
