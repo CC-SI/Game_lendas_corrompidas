@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/Texturas/Inimigos/Morcego/animacao_voando.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/Inimigos/Morcego.gd" type="Script" id=2]
@@ -12,25 +12,7 @@ radius = 120.0
 height = 195.83
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 920, 728 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 216, 156 )
-
-[sub_resource type="Animation" id=4]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("CollisionShape2D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
+extents = Vector2( 3692, 2934 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "atacando"
@@ -85,54 +67,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 3 ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("CollisionShape2D:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -88, 64 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("CollisionShape2D:rotation_degrees")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ -29.1 ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("CollisionShape2D:shape:radius")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 120.0 ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("CollisionShape2D:shape:height")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 195.83 ]
-}
 
 [sub_resource type="Animation" id=6]
 resource_name = "morrendo"
@@ -186,17 +120,19 @@ tracks/3/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 5, 6, 7, 8, 10, 11, 12, 13, 15, 16, 17, 18, 20, 21, 22, 23, 24 ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("CollisionShape2D:disabled")
+tracks/4/type = "method"
+tracks/4/path = NodePath("..")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
+"times": PoolRealArray( 0.833333 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -252,54 +188,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 5, 6, 7, 8, 10, 11, 12, 13, 15, 16, 17, 18, 20, 21, 22, 23, 4 ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("CollisionShape2D:shape:radius")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 120.0 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("CollisionShape2D:shape:height")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 195.83 ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("CollisionShape2D:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0, 0.416667 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( -48, 104 ), Vector2( -48, 8 ) ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("CollisionShape2D:rotation_degrees")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ -65.5 ]
-}
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=9]
 
@@ -309,34 +197,34 @@ tracks/7/keys = {
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Morcego"]
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 flip_h = true
-hframes = 5
-vframes = 5
-frame = 1
+hframes = 4
+vframes = 4
+frame = 10
 region_rect = Rect2( 197, 14, 33, 42 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Morcego"]
-position = Vector2( -48, 94.2211 )
+position = Vector2( -48, 56 )
 rotation = -1.14319
 shape = SubResource( 8 )
 
 [node name="Zona de Ataque" type="Area2D" parent="Morcego"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Morcego/Zona de Ataque"]
-position = Vector2( 0, 120 )
+position = Vector2( 156, 1850 )
 shape = SubResource( 2 )
 
 [node name="Atacou Player" type="Area2D" parent="Morcego"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Morcego/Atacou Player"]
-position = Vector2( -48, 20 )
-shape = SubResource( 3 )
+position = Vector2( -88, 64 )
+rotation = -0.507891
+shape = SubResource( 8 )
 
 [node name="Timer" type="Timer" parent="Morcego"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Morcego"]
-anims/RESET = SubResource( 4 )
 anims/atacando = SubResource( 5 )
 anims/morrendo = SubResource( 6 )
 anims/voando = SubResource( 7 )
