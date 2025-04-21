@@ -7,7 +7,7 @@ export var velocidade_descendo = 200
 export var velocidade_subindo = 250
 
 var alvo = null
-var esta_atacando = true
+var esta_atacando = false
 var estado = "voando"
 var player_na_zona = false
 var posicao_inicial = Vector2.ZERO
