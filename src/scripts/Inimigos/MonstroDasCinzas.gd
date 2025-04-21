@@ -13,7 +13,6 @@ onready var timer_tiro = Timer.new()
 onready var timer_ataque = Timer.new()
 
 func _ready():
-	$Sprite.flip_h = true
 	velocidade = 30
 
 	add_child(timer_tiro)
@@ -34,11 +33,13 @@ func _process(delta):
 			iniciar_ataque()
 
 		if not atirando:
-			var direcao = (alvo.global_position - global_position).normalized()
+			direcao = (alvo.global_position - global_position).normalized()
 			direcao.y = 0
 			move_and_slide(direcao * velocidade)
-			$Sprite.flip_h = direcao.x < 0
-			$Area2D.scale.x = -1 if direcao.x < 0 else 1
+			$Sprite.flip_h = direcao.x > 0
+			$Area2D.scale.x = 1 if direcao.x < 0 else -1
+			$Position2D.position.x = abs($Position2D.position.x) * direcao.x
+			$CollisionShape2D.position.x = abs($CollisionShape2D.position.x) * direcao.x
 
 func _on_ZonaVisao_body_entered(body):
 	if body.is_in_group("player"):
