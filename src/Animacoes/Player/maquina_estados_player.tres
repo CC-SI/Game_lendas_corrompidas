@@ -32,9 +32,9 @@ blend_point_1/pos = Vector2( 1, 0 )
 blend_point_2/node = SubResource( 19 )
 blend_point_2/pos = Vector2( 0, 0 )
 blend_point_3/node = SubResource( 20 )
-blend_point_3/pos = Vector2( 0, 1 )
+blend_point_3/pos = Vector2( 0, -0.1 )
 blend_point_4/node = SubResource( 21 )
-blend_point_4/pos = Vector2( 0, -1 )
+blend_point_4/pos = Vector2( 0, 0.1 )
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id=23]
@@ -66,6 +66,7 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=31]
 advance_condition = "dash"
+priority = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=32]
 advance_condition = "esta_mordendo"
@@ -87,4 +88,4 @@ states/uivando/position = Vector2( 630, 209 )
 transitions = [ "movimentacao", "morrendo", SubResource( 24 ), "dash", "morrendo", SubResource( 25 ), "uivando", "morrendo", SubResource( 26 ), "mordendo", "morrendo", SubResource( 27 ), "mordendo", "movimentacao", SubResource( 28 ), "uivando", "movimentacao", SubResource( 29 ), "dash", "movimentacao", SubResource( 30 ), "movimentacao", "dash", SubResource( 31 ), "movimentacao", "mordendo", SubResource( 32 ), "movimentacao", "uivando", SubResource( 33 ) ]
 start_node = "movimentacao"
 end_node = "morrendo"
-graph_offset = Vector2( -180, -76.336 )
+graph_offset = Vector2( -175, -15.336 )
