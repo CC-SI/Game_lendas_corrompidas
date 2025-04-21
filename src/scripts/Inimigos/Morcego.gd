@@ -15,6 +15,8 @@ var tempo = 0.0
 var direcao_voo = 1 
 
 onready var sprite = $Sprite
+onready var atacou_player = $"Atacou Player"
+onready var collider = $CollisionShape2D
 onready var timer = Timer.new()
 
 func _ready():
@@ -37,6 +39,8 @@ func _process(delta):
 			if abs(global_position.x - posicao_inicial.x) > distancia_maxima:
 				direcao_voo *= -1
 				sprite.flip_h = direcao_voo < 0
+				collider.position.x = abs(collider.position.x) * direcao_voo
+				atacou_player = 1 if direcao_voo < 0 else -1
 
 		"descendo":
 			esta_atacando = true
@@ -49,6 +53,8 @@ func _process(delta):
 				else:
 					move_and_slide(direcao_para_alvo.normalized() * velocidade_descendo)
 					sprite.flip_h = direcao_para_alvo.x < 0
+					collider.position.x = abs(collider.position.x) * direcao_para_alvo.x
+					atacou_player = 1 if direcao_para_alvo.x < 0 else -1
 			else:
 				estado = "voltando"
 
@@ -58,6 +64,8 @@ func _process(delta):
 			if direcao_volta.length() > 2:
 				move_and_slide(direcao_volta.normalized() * velocidade_subindo)
 				sprite.flip_h = direcao_volta.x < 0
+				collider.position.x = abs(collider.position.x) * direcao_volta.x
+				atacou_player = 1 if direcao_volta.x < 0 else -1
 			else:
 				global_position = posicao_inicial
 				estado = "voando"
