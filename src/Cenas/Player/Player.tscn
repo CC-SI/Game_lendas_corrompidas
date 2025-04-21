@@ -467,7 +467,7 @@ script = ExtResource( 2 )
 texture = ExtResource( 6 )
 hframes = 4
 vframes = 6
-frame = 2
+frame = 7
 region_rect = Rect2( 92, 2, 21, 33 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -516,10 +516,8 @@ position = Vector2( 472, 16 )
 [node name="Camera2D" type="Camera2D" parent="Player"]
 offset = Vector2( 0, -50 )
 current = true
-zoom = Vector2( 1.5, 1.5 )
+zoom = Vector2( 0.8, 0.8 )
 smoothing_enabled = true
-editor_draw_limits = true
-editor_draw_drag_margin = true
 
 [node name="Tayrin" parent="Player" instance=ExtResource( 10 )]
 position = Vector2( -448, -416 )
