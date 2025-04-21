@@ -18,6 +18,8 @@ onready var camera = $Camera2D
 onready var sprite = $Sprite
 onready var area2d = $Mordida
 onready var position2D = $Position2D
+onready var collider = $CollisionShape2D
+onready var tayrin = $Tayrin
 
 # -- CONTROLE DE INIMIGOS --
 var inimigo_na_area = []
@@ -72,7 +74,8 @@ func mudarLadoSprite():
 	sprite.flip_h = lado != 1
 	area2d.scale.x = lado
 	position2D.position.x = abs(position2D.position.x) * lado
-
+	collider.position.x = abs(collider.position.x) * lado
+	tayrin.position.x = abs(tayrin.position.x) * -lado
 
 # ATAQUES E HABILIDADES
 func atirar_bola():
