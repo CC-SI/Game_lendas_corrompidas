@@ -8,7 +8,7 @@ export var force_dash = 1500
 var bolaDeFogo = preload("res://src/Cenas/Player/BolaDeFogo.tscn")
 
 # -- ESTADO --
-var estado_jogador = "padrão"
+var estado_jogador = "padrao"
 var lado = 1
 var pulos_restantes = 1
 var direcao = Vector2.ZERO
@@ -42,7 +42,6 @@ func _process(delta):
 	usar_uivo()
 	atirar_bola()
 	morrer()
-	estado_jogador = "padrão"
 
 
 # MOVIMENTAÇÃO E CONTROLES 
