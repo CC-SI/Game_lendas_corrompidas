@@ -29,9 +29,9 @@ var inimigos = DadosGlobais.LISTA_INIMIGOS
 # -- READY --
 func _ready():
 	DadosGlobais.vidas = 3
-	camera.limit_top = 10
-	camera.limit_bottom = get_viewport().size.y
-	camera.limit_left = 0
+	#camera.limit_top = 10
+	#camera.limit_bottom = get_viewport().size.y
+	#camera.limit_left = 0
 	DadosGlobais.player = self
 
 # -- PROCESSO PRINCIPAL --
