@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bgm-fase.ogg-545bbe768f7480604fa75cfd9957b077.oggstr"
+
+[deps]
+
+source_file="res://src/Som/bgm-fase.ogg"
+dest_files=[ "res://.import/bgm-fase.ogg-545bbe768f7480604fa75cfd9957b077.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
