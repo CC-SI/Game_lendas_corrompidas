@@ -30,6 +30,10 @@ config/name="Lendas corrompidas"
 run/main_scene="res://src/Cenas/Cenario Testes/Cenario Testes.tscn"
 config/icon="res://icon.png"
 
+[audio]
+
+default_bus_layout="res://src/Som/default_bus_layout.tres"
+
 [autoload]
 
 DadosGlobais="*res://src/scripts/DadosGlobais.gd"
