@@ -1,4 +1,4 @@
-extends Sprite 
+extends Node2D
 
 export(Array, String) var falas = ["Aqui já foi o meu lar.",
 	"Eles... eles acabaram com tudo..."]
@@ -10,19 +10,6 @@ var dialogo_ativo = false
 func _ready():
 	$LabelAviso.visible = false
 	$Panel.visible = false
-
-func _on_Area2D_body_entered(body):
-	if body.name == "Jogador":  
-		jogador_perto = true
-		$LabelAviso.visible = true
-
-func _on_Area2D_body_exited(body):
-	if body.name == "Jogador":
-		jogador_perto = false
-		$LabelAviso.visible = false
-		$Panel.visible = false
-		dialogo_ativo = false
-		indice_fala = 0
 
 func _process(_delta):
 	if jogador_perto and Input.is_action_just_pressed("interact") and not dialogo_ativo:
@@ -42,6 +29,19 @@ func avancar_fala():
 	if indice_fala < falas.size():
 		mostrar_fala()
 	else:
+		$Panel.visible = false
+		dialogo_ativo = false
+		indice_fala = 0
+
+func _on_Detector_body_entered(body):
+	if body.name == "Jogador":  
+		jogador_perto = true
+		$LabelAviso.visible = true
+
+func _on_Detector_body_exited(body):
+	if body.name == "Jogador":
+		jogador_perto = false
+		$LabelAviso.visible = false
 		$Panel.visible = false
 		dialogo_ativo = false
 		indice_fala = 0
