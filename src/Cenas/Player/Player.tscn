@@ -13,9 +13,8 @@
 [ext_resource path="res://src/scripts/Player/animacao_player.gd" type="Script" id=11]
 [ext_resource path="res://src/Animacoes/Player/maquina_estados_player.tres" type="AnimationNodeStateMachine" id=12]
 
-[sub_resource type="CapsuleShape2D" id=13]
-radius = 170.0
-height = 422.802
+[sub_resource type="RectangleShape2D" id=36]
+extents = Vector2( 169, 368.5 )
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -464,15 +463,16 @@ collision_mask = 33
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Player"]
+position = Vector2( -85, 0 )
 texture = ExtResource( 6 )
 hframes = 4
 vframes = 6
-frame = 7
+frame = 13
 region_rect = Rect2( 92, 2, 21, 33 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2( 80, 72 )
-shape = SubResource( 13 )
+position = Vector2( 0, 79.5 )
+shape = SubResource( 36 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 anims/RESET = SubResource( 4 )
@@ -494,7 +494,7 @@ parameters/conditions/dash = false
 parameters/conditions/esta_mordendo = false
 parameters/conditions/esta_morto = false
 parameters/conditions/esta_uivando = false
-parameters/movimentacao/blend_position = Vector2( 0, 0.00483084 )
+parameters/movimentacao/blend_position = Vector2( -0.000794291, 0 )
 
 [node name="ControladorAnimacao" type="Node2D" parent="Player"]
 script = ExtResource( 11 )
@@ -502,7 +502,7 @@ script = ExtResource( 11 )
 [node name="Mordida" type="Area2D" parent="Player"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Mordida"]
-position = Vector2( 472, 16 )
+position = Vector2( 450, 16 )
 shape = SubResource( 2 )
 
 [node name="Uivo" type="Area2D" parent="Player"]
@@ -511,7 +511,7 @@ shape = SubResource( 2 )
 shape = SubResource( 3 )
 
 [node name="Position2D" type="Position2D" parent="Player"]
-position = Vector2( 472, 16 )
+position = Vector2( 350, 16 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 offset = Vector2( 0, -50 )
@@ -520,7 +520,7 @@ zoom = Vector2( 0.8, 0.8 )
 smoothing_enabled = true
 
 [node name="Tayrin" parent="Player" instance=ExtResource( 10 )]
-position = Vector2( -448, -416 )
+position = Vector2( -533, -416 )
 scale = Vector2( 0.5, 0.5 )
 
 [connection signal="body_entered" from="Player/Mordida" to="Player" method="_on_ZonaDeAtaque_body_entered"]

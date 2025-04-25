@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/Texturas/Inimigos/Morcego/animacao_voando.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/Inimigos/Morcego.gd" type="Script" id=2]
@@ -8,11 +8,14 @@
 [ext_resource path="res://src/Animacoes/Inimigos/Morcego/maquina_estados_morcego.tres" type="AnimationNodeStateMachine" id=6]
 
 [sub_resource type="CapsuleShape2D" id=8]
-radius = 120.0
+radius = 149.067
 height = 195.83
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 3692, 2934 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 248, 200 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "atacando"
@@ -197,15 +200,15 @@ tracks/3/keys = {
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Morcego"]
-texture = ExtResource( 3 )
+position = Vector2( 50, 0 )
+texture = ExtResource( 1 )
 flip_h = true
-hframes = 4
-vframes = 4
-frame = 10
+hframes = 5
+vframes = 5
 region_rect = Rect2( 197, 14, 33, 42 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Morcego"]
-position = Vector2( -48, 56 )
+position = Vector2( 0, 56 )
 rotation = -1.14319
 shape = SubResource( 8 )
 
@@ -218,9 +221,8 @@ shape = SubResource( 2 )
 [node name="Atacou Player" type="Area2D" parent="Morcego"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Morcego/Atacou Player"]
-position = Vector2( -88, 64 )
-rotation = -0.507891
-shape = SubResource( 8 )
+position = Vector2( 0, 56 )
+shape = SubResource( 10 )
 
 [node name="Timer" type="Timer" parent="Morcego"]
 
