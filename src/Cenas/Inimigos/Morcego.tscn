@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/Texturas/Inimigos/Morcego/animacao_voando.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/Inimigos/Morcego.gd" type="Script" id=2]
@@ -6,6 +6,12 @@
 [ext_resource path="res://src/Texturas/Inimigos/Morcego/animacao_morrendo.png" type="Texture" id=4]
 [ext_resource path="res://src/scripts/Inimigos/Morcego/animacao_morcego.gd" type="Script" id=5]
 [ext_resource path="res://src/Animacoes/Inimigos/Morcego/maquina_estados_morcego.tres" type="AnimationNodeStateMachine" id=6]
+[ext_resource path="res://src/Shaders/flash_branco.gdshader" type="Shader" id=7]
+
+[sub_resource type="ShaderMaterial" id=12]
+shader = ExtResource( 7 )
+shader_param/flash = false
+shader_param/flash_strength = 1.0
 
 [sub_resource type="CapsuleShape2D" id=8]
 radius = 149.067
@@ -200,11 +206,13 @@ tracks/3/keys = {
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Morcego"]
+material = SubResource( 12 )
 position = Vector2( 50, 0 )
 texture = ExtResource( 1 )
 flip_h = true
 hframes = 5
 vframes = 5
+frame = 21
 region_rect = Rect2( 197, 14, 33, 42 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Morcego"]
