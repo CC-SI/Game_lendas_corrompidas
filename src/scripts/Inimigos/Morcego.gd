@@ -31,6 +31,7 @@ func _process(delta):
 	match estado:
 		"voando":
 			esta_atacando = false
+			mudar_lado_sprite(direcao_voo)
 			var deslocamento_vertical = sin(tempo * 2.0) * 10
 			var deslocamento_horizontal = direcao_voo * velocidade * delta
 			global_position.x += deslocamento_horizontal
@@ -38,9 +39,6 @@ func _process(delta):
 			
 			if abs(global_position.x - posicao_inicial.x) > distancia_maxima:
 				direcao_voo *= -1
-				sprite.flip_h = direcao_voo < 0
-				collider.position.x = abs(collider.position.x) * direcao_voo
-				atacou_player = 1 if direcao_voo < 0 else -1
 
 		"descendo":
 			esta_atacando = true
@@ -51,10 +49,9 @@ func _process(delta):
 					alvo = null
 					print("Bateu no player e está voltando!")
 				else:
-					move_and_slide(direcao_para_alvo.normalized() * velocidade_descendo)
-					sprite.flip_h = direcao_para_alvo.x < 0
-					collider.position.x = abs(collider.position.x) * direcao_para_alvo.x
-					atacou_player = 1 if direcao_para_alvo.x < 0 else -1
+					direcao_para_alvo = direcao_para_alvo.normalized()
+					move_and_slide(direcao_para_alvo * velocidade_descendo)
+					mudar_lado_sprite(direcao_para_alvo.x)
 			else:
 				estado = "voltando"
 
@@ -62,10 +59,9 @@ func _process(delta):
 			esta_atacando = false
 			var direcao_volta = posicao_inicial - global_position
 			if direcao_volta.length() > 2:
-				move_and_slide(direcao_volta.normalized() * velocidade_subindo)
-				sprite.flip_h = direcao_volta.x < 0
-				collider.position.x = abs(collider.position.x) * direcao_volta.x
-				atacou_player = 1 if direcao_volta.x < 0 else -1
+				direcao_volta = direcao_volta.normalized()
+				move_and_slide(direcao_volta * velocidade_subindo)
+				mudar_lado_sprite(direcao_volta.x)
 			else:
 				global_position = posicao_inicial
 				estado = "voando"
@@ -74,6 +70,9 @@ func _process(delta):
 				if player_na_zona:
 					timer.start()
 
+func mudar_lado_sprite(direcao):
+	sprite.flip_h = direcao < 0
+	sprite.position.x = abs(sprite.position.x) * direcao
 
 func _on_Zona_de_Ataque_body_entered(body):
 	if body.is_in_group("player"):
