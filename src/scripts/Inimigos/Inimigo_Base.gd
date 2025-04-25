@@ -41,6 +41,11 @@ func levar_dano(valor):
 	if escudo_ativo:
 		return
 	
+	var material = $Sprite.material
+	material.set_shader_param("flash", true)
+	yield(get_tree().create_timer(0.25), "timeout")
+	material.set_shader_param("flash", false)
+	
 	vidas -= valor
 	if vidas <= 0:
 		morrer()
