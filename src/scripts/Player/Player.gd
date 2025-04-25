@@ -110,6 +110,17 @@ func _on_bola_acertou(inimigo):
 		inimigo.levar_dano(3)
 
 func levar_dano(valor):
+	var material = sprite.material
+	material.set_shader_param("flash", true)
+	
+	velocidade = 0
+	
+	yield(get_tree().create_timer(0.25), "timeout")
+	material.set_shader_param("flash", false)
+	
+	yield(get_tree().create_timer(0.25), "timeout")
+	velocidade = 400
+	
 	DadosGlobais.vidas -= valor
 
 func aplicar_lentidao(duracao):
