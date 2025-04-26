@@ -49,8 +49,8 @@ active = true
 parameters/playback = SubResource( 5 )
 
 [node name="Light2D" type="Light2D" parent="."]
-light_mask = 512
+light_mask = 4
 texture = ExtResource( 2 )
-texture_scale = 22.64
-energy = 2.96
-mode = 2
+texture_scale = 20.0
+color = Color( 0.239216, 0.447059, 1, 1 )
+energy = 3.0
