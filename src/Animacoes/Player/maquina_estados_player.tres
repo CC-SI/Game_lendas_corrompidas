@@ -1,4 +1,7 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=21 format=2]
+[gd_resource type="AnimationNodeStateMachine" load_steps=25 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=34]
+animation = "dano"
 
 [sub_resource type="AnimationNodeAnimation" id=14]
 animation = "dash"
@@ -74,18 +77,29 @@ advance_condition = "esta_mordendo"
 [sub_resource type="AnimationNodeStateMachineTransition" id=33]
 advance_condition = "esta_uivando"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=35]
+advance_condition = "esta_morto"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=36]
+advance_condition = "levou_dano"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=37]
+advance_condition = "esta_movimentando"
+
 [resource]
+states/dano/node = SubResource( 34 )
+states/dano/position = Vector2( 288, 203 )
 states/dash/node = SubResource( 14 )
 states/dash/position = Vector2( 523, -44 )
 states/mordendo/node = SubResource( 15 )
-states/mordendo/position = Vector2( 407, 209 )
+states/mordendo/position = Vector2( 491, 203 )
 states/morrendo/node = SubResource( 16 )
 states/morrendo/position = Vector2( 807, 76 )
 states/movimentacao/node = SubResource( 22 )
 states/movimentacao/position = Vector2( 208, 76 )
 states/uivando/node = SubResource( 23 )
-states/uivando/position = Vector2( 630, 209 )
-transitions = [ "movimentacao", "morrendo", SubResource( 24 ), "dash", "morrendo", SubResource( 25 ), "uivando", "morrendo", SubResource( 26 ), "mordendo", "morrendo", SubResource( 27 ), "mordendo", "movimentacao", SubResource( 28 ), "uivando", "movimentacao", SubResource( 29 ), "dash", "movimentacao", SubResource( 30 ), "movimentacao", "dash", SubResource( 31 ), "movimentacao", "mordendo", SubResource( 32 ), "movimentacao", "uivando", SubResource( 33 ) ]
+states/uivando/position = Vector2( 702, 203 )
+transitions = [ "movimentacao", "morrendo", SubResource( 24 ), "dash", "morrendo", SubResource( 25 ), "uivando", "morrendo", SubResource( 26 ), "mordendo", "morrendo", SubResource( 27 ), "mordendo", "movimentacao", SubResource( 28 ), "uivando", "movimentacao", SubResource( 29 ), "dash", "movimentacao", SubResource( 30 ), "movimentacao", "dash", SubResource( 31 ), "movimentacao", "mordendo", SubResource( 32 ), "movimentacao", "uivando", SubResource( 33 ), "dano", "morrendo", SubResource( 35 ), "movimentacao", "dano", SubResource( 36 ), "dano", "movimentacao", SubResource( 37 ) ]
 start_node = "movimentacao"
 end_node = "morrendo"
-graph_offset = Vector2( -175, -15.336 )
+graph_offset = Vector2( -180, -113.4 )
