@@ -76,6 +76,9 @@ func mudarLadoSprite():
 	position2D.position.x = abs(position2D.position.x) * lado
 	tayrin.position.x = abs(tayrin.position.x) * -lado
 
+func resetar_estado():
+	estado_jogador = "padrao"
+
 # ATAQUES E HABILIDADES
 func atirar_bola():
 	if Input.is_action_just_pressed("atirar"):
@@ -110,6 +113,8 @@ func _on_bola_acertou(inimigo):
 		inimigo.levar_dano(3)
 
 func levar_dano(valor):
+	estado_jogador = "dano"
+	
 	var material = sprite.material
 	material.set_shader_param("flash", true)
 	
@@ -119,6 +124,7 @@ func levar_dano(valor):
 	material.set_shader_param("flash", false)
 	
 	yield(get_tree().create_timer(0.25), "timeout")
+	estado_jogador = "padrao"
 	velocidade = 400
 	
 	DadosGlobais.vidas -= valor
