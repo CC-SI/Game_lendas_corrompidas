@@ -95,9 +95,6 @@ func _on_Encostou_Player_body_entered(body):
 	if body.is_in_group("player"):
 		aplicar_dano(1)
 		
-		if (body.has_method("aplicar_lentidao")):
-			body.aplicar_lentidao(1.0)
-		
 		alvo = null
 		estado = "voltando"
 		print("Encostou no player! Voltando para a posição inicial.")
