@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/Texturas/Tayrin/light.png" type="Texture" id=1]
+[ext_resource path="res://src/scripts/saida_fase.gd" type="Script" id=2]
+[ext_resource path="res://src/Texturas/UI/SimpleFlatKeys/Dark/F-Key.png" type="Texture" id=3]
+
+[sub_resource type="Gradient" id=91]
+offsets = PoolRealArray( 0, 0.796703 )
+colors = PoolColorArray( 1, 0, 0, 1, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture2D" id=92]
+gradient = SubResource( 91 )
+width = 500
+height = 500
+fill = 1
+fill_from = Vector2( 1, 1 )
+fill_to = Vector2( 0.2, 0 )
+
+[sub_resource type="RectangleShape2D" id=93]
+extents = Vector2( 107.5, 160 )
+
+[node name="Saída" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+light_mask = 513
+texture = SubResource( 92 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 256, 160 )
+texture = ExtResource( 1 )
+energy = 2.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 140.5, 88 )
+shape = SubResource( 93 )
+
+[node name="TextoAjuda" type="Control" parent="."]
+margin_left = 8.0
+margin_top = 78.0
+margin_right = 112.0
+margin_bottom = 78.0
+
+[node name="Texto" type="Label" parent="TextoAjuda"]
+light_mask = 0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Pressione         para avançar"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Imagem" type="Sprite" parent="TextoAjuda"]
+light_mask = 0
+position = Vector2( 88, 6 )
+scale = Vector2( 0.04, 0.04 )
+z_index = 150
+texture = ExtResource( 3 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
