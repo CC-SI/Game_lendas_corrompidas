@@ -1,18 +1,18 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://src/Texturas/Player/animacao_correndo.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=2]
-[ext_resource path="res://src/Texturas/Player/animacao_dash.png" type="Texture" id=3]
+[ext_resource path="res://src/Animacoes/Player/Playerdano.tres" type="Animation" id=3]
 [ext_resource path="res://src/Texturas/Player/animacao_pulando.png" type="Texture" id=4]
 [ext_resource path="res://src/Texturas/Player/animacao_caindo.png" type="Texture" id=5]
 [ext_resource path="res://src/Texturas/Player/animacao_parado.png" type="Texture" id=6]
-[ext_resource path="res://src/Texturas/Player/animacao_mordendo.png" type="Texture" id=7]
-[ext_resource path="res://src/Texturas/Player/animacao_uivando.png" type="Texture" id=8]
+[ext_resource path="res://src/Animacoes/Player/Playerdash.tres" type="Animation" id=7]
+[ext_resource path="res://src/Animacoes/Player/Playermordendo.tres" type="Animation" id=8]
 [ext_resource path="res://src/Texturas/Player/animacao_morrendo.png" type="Texture" id=9]
 [ext_resource path="res://src/Cenas/Tayrin/Tayrin.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/scripts/Player/animacao_player.gd" type="Script" id=11]
 [ext_resource path="res://src/Animacoes/Player/maquina_estados_player.tres" type="AnimationNodeStateMachine" id=12]
-[ext_resource path="res://src/Texturas/Player/frame_dano.png" type="Texture" id=13]
+[ext_resource path="res://src/Animacoes/Player/Playeruivando.tres" type="Animation" id=13]
 [ext_resource path="res://src/Shaders/flash_branco.gdshader" type="Shader" id=14]
 
 [sub_resource type="ShaderMaterial" id=38]
@@ -129,205 +129,6 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 3, 7, 11, 15, 16 ]
-}
-
-[sub_resource type="Animation" id=37]
-resource_name = "dano"
-length = 0.5
-step = 0.0416667
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 13 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 9 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Sprite:frame_coords")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=7]
-resource_name = "dash"
-length = 0.458333
-step = 0.0416667
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 3 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 3 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 4 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.0416667, 0.0833333, 0.125, 0.166667, 0.208333, 0.25, 0.291667, 0.333333, 0.375, 0.416667 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 3, 4, 6, 7, 2, 5, 8, 9, 10 ]
-}
-tracks/4/type = "method"
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0.436576 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "resetar_estado"
-} ]
-}
-
-[sub_resource type="Animation" id=8]
-resource_name = "mordendo"
-length = 0.5
-step = 0.0416667
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 7 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 3 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 4 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.0416667, 0.0833333, 0.125, 0.166667, 0.208333, 0.25, 0.291667, 0.333333, 0.375, 0.416667, 0.458333 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 3, 4, 6, 7, 9, 10, 2, 5, 8, 11 ]
-}
-tracks/4/type = "method"
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0.478479 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "resetar_estado"
-} ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -491,73 +292,6 @@ tracks/3/keys = {
 "values": [ 0, 1, 3, 4, 6, 7, 2, 5, 8 ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "uivando"
-length = 0.875
-step = 0.0416667
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 8 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 4 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 6 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.0416667, 0.0833333, 0.125, 0.166667, 0.208333, 0.25, 0.291667, 0.333333, 0.375, 0.416667, 0.458333, 0.5, 0.541667, 0.583333, 0.625, 0.666667, 0.708333, 0.75, 0.791667, 0.833333 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 3, 7, 11, 15, 19, 20 ]
-}
-tracks/4/type = "method"
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0.854049 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "resetar_estado"
-} ]
-}
-
 [sub_resource type="AnimationNodeStateMachinePlayback" id=35]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -569,8 +303,8 @@ extents = Vector2( 2180, 1436 )
 [node name="Player" type="Node2D"]
 
 [node name="Player" type="KinematicBody2D" parent="." groups=["player"]]
-collision_layer = 35
-collision_mask = 35
+collision_layer = 49
+collision_mask = 49
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Player"]
@@ -579,7 +313,7 @@ position = Vector2( -85, 0 )
 texture = ExtResource( 6 )
 hframes = 4
 vframes = 6
-frame = 20
+frame = 17
 region_rect = Rect2( 92, 2, 21, 33 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -589,13 +323,13 @@ shape = SubResource( 36 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 anims/caindo = SubResource( 5 )
 anims/correndo = SubResource( 6 )
-anims/dano = SubResource( 37 )
-anims/dash = SubResource( 7 )
-anims/mordendo = SubResource( 8 )
+anims/dano = ExtResource( 3 )
+anims/dash = ExtResource( 7 )
+anims/mordendo = ExtResource( 8 )
 anims/morrendo = SubResource( 9 )
 anims/parado = SubResource( 10 )
 anims/pulando = SubResource( 11 )
-anims/uivando = SubResource( 12 )
+anims/uivando = ExtResource( 13 )
 
 [node name="AnimationTree" type="AnimationTree" parent="Player"]
 tree_root = ExtResource( 12 )
@@ -631,6 +365,9 @@ position = Vector2( 350, 16 )
 offset = Vector2( 0, -50 )
 current = true
 zoom = Vector2( 0.8, 0.8 )
+limit_left = 0
+limit_top = 0
+limit_right = 25216
 smoothing_enabled = true
 
 [node name="Tayrin" parent="Player" instance=ExtResource( 10 )]
