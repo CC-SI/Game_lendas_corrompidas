@@ -18,7 +18,6 @@ onready var camera = $Camera2D
 onready var sprite = $Sprite
 onready var area2d = $Mordida
 onready var position2D = $Position2D
-onready var collider = $CollisionShape2D
 onready var tayrin = $Tayrin
 
 # -- CONTROLE DE INIMIGOS --
@@ -72,10 +71,13 @@ func movePlayer():
 
 func mudarLadoSprite():
 	sprite.flip_h = lado != 1
+	sprite.position.x = abs(sprite.position.x) * lado
 	area2d.scale.x = lado
 	position2D.position.x = abs(position2D.position.x) * lado
-	collider.position.x = abs(collider.position.x) * lado
 	tayrin.position.x = abs(tayrin.position.x) * -lado
+
+func resetar_estado():
+	estado_jogador = "padrao"
 
 # ATAQUES E HABILIDADES
 func atirar_bola():
@@ -111,6 +113,20 @@ func _on_bola_acertou(inimigo):
 		inimigo.levar_dano(3)
 
 func levar_dano(valor):
+	estado_jogador = "dano"
+	
+	var material = sprite.material
+	material.set_shader_param("flash", true)
+	
+	velocidade = 0
+	
+	yield(get_tree().create_timer(0.25), "timeout")
+	material.set_shader_param("flash", false)
+	
+	yield(get_tree().create_timer(0.25), "timeout")
+	estado_jogador = "padrao"
+	velocidade = 400
+	
 	DadosGlobais.vidas -= valor
 
 func aplicar_lentidao(duracao):

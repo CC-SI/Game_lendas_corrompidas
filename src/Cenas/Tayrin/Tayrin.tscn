@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/Texturas/Tayrin/animacao_voando.png" type="Texture" id=1]
+[ext_resource path="res://src/Texturas/Tayrin/light.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=2]
 resource_name = "voando"
@@ -20,29 +21,19 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 3, 7, 11 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=3]
-animation = "voando"
-
-[sub_resource type="AnimationNodeStateMachine" id=4]
-states/voando/node = SubResource( 3 )
-states/voando/position = Vector2( 446, 73 )
-start_node = "voando"
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=5]
-
 [node name="Tayrin" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 4
 vframes = 6
-frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "voando"
 anims/voando = SubResource( 2 )
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 4 )
-anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/playback = SubResource( 5 )
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 2 )
+texture_scale = 20.0
+color = Color( 0.239216, 0.447059, 1, 1 )
+energy = 3.0

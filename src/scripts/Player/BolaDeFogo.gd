@@ -33,7 +33,7 @@ func atirarBola(lado):
 
 func mudarLadoSprite():
 	sprite.flip_v = ladoSprite != 1
-	area2d.scale.y = ladoSprite
+	sprite.position.x = abs(sprite.position.x) * ladoSprite
 
 func _on_AcertouInimigo_body_entered(body):
 	if body.name in inimigos:

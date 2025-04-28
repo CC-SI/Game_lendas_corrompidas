@@ -54,3 +54,29 @@ tracks/3/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 3, 7, 11, 15, 19, 20 ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.854049 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "resetar_estado"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Uivo/Sprite:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.333333, 0.416667, 0.833333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 1, 0.643137, 0.313726 ), Color( 0, 1, 0.643137, 0.313726 ), Color( 0, 0, 0, 0 ) ]
+}

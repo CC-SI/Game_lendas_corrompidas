@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://src/Texturas/Inimigos/Monstro das Cinzas/animacao_parado.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/Inimigos/MonstroDasCinzas.gd" type="Script" id=2]
@@ -9,10 +9,16 @@
 [ext_resource path="res://src/Texturas/Inimigos/Monstro das Cinzas/animacao_inicio_ataque.png" type="Texture" id=7]
 [ext_resource path="res://src/Texturas/Inimigos/Monstro das Cinzas/animacao_fim_ataque.png" type="Texture" id=8]
 [ext_resource path="res://src/Animacoes/Inimigos/Monstro de Cinzas/maquina_estados_monstro_cinzas.tres" type="AnimationNodeStateMachine" id=9]
+[ext_resource path="res://src/Shaders/flash_branco.gdshader" type="Shader" id=10]
+
+[sub_resource type="ShaderMaterial" id=23]
+shader = ExtResource( 10 )
+shader_param/flash = false
+shader_param/flash_strength = 1.0
 
 [sub_resource type="CapsuleShape2D" id=8]
-radius = 278.93
-height = 82.14
+radius = 246.25
+height = 140.0
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 1504, 528 )
@@ -361,14 +367,16 @@ script = ExtResource( 2 )
 nome_do_inimigo = "MonstroDasCinzas"
 
 [node name="Sprite" type="Sprite" parent="MonstroDaLavas"]
+material = SubResource( 23 )
+position = Vector2( 96, 0 )
 texture = ExtResource( 1 )
 hframes = 6
 vframes = 7
-frame = 25
+frame = 3
 region_rect = Rect2( 318, 117, 803, 799 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MonstroDaLavas"]
-position = Vector2( -30, 64 )
+position = Vector2( 0, 144 )
 shape = SubResource( 8 )
 
 [node name="Area2D" type="Area2D" parent="MonstroDaLavas"]
@@ -378,7 +386,7 @@ position = Vector2( 0, 48 )
 shape = SubResource( 2 )
 
 [node name="Position2D" type="Position2D" parent="MonstroDaLavas"]
-position = Vector2( -104, -80 )
+position = Vector2( -8, -80 )
 
 [node name="Timer" type="Timer" parent="MonstroDaLavas"]
 
