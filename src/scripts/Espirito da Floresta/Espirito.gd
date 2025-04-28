@@ -3,6 +3,8 @@ extends Node2D
 export(Array, String) var falas = ["Aqui já foi o meu lar.",
 	"Eles... eles acabaram com tudo..."]
 
+export var virado_para_direita = false
+
 var indice_fala = 0
 var jogador_perto = false
 var dialogo_ativo = false
@@ -14,6 +16,10 @@ onready var animacao = $Dialogo/AnimationPlayer
 func _ready():
 	texto_ajuda.visible = false
 	texto_fala.visible = false
+	
+	if virado_para_direita:
+		$Grafico/Sprite.flip_h = true
+		$Grafico/Sprite.position.x = abs($Grafico/Sprite.position.x) * -1
 
 func _process(_delta):
 	if jogador_perto:
