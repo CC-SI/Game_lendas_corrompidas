@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/Cenas/Ambiente/PlataformaMovel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Cenas/Fases/plataforma_desafio.gd" type="Script" id=2]
+[ext_resource path="res://src/Texturas/UI/SimpleFlatKeys/Dark/F-Key.png" type="Texture" id=3]
+
+[sub_resource type="Curve2D" id=112]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, -124.241, 2.56374, 124.241, -2.56374, 384, 0, -225.313, -2.66968, 225.313, 2.66968, 880, 344, -131.18, 0, 131.18, 0, 1544, 344, -172.025, -0.693906, 172.025, 0.693906, 2624, 32, 0, 0, 0, 0, 4552, 32, 0, 0, 0, 0, 4552, -800, 0, 0, 0, 0, 6536, -800, 0, -178.27, 0, 178.27, 6536, 16, -252.269, -3.36359, 252.269, 3.36359, 6984, 320, -285.905, 3.36359, 285.905, -3.36359, 8176, 320, -3.36359, 242.178, 3.36359, -242.178, 9392, -832, 0, 0, 0, 0, 9392, -2560 )
+}
+
+[sub_resource type="RectangleShape2D" id=115]
+extents = Vector2( 49.5, 10.125 )
+
+[sub_resource type="RectangleShape2D" id=116]
+extents = Vector2( 72, 118 )
+
+[sub_resource type="Animation" id=114]
+resource_name = "movendo"
+length = 50.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Path2D/PathFollow2D:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 50 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[node name="plataforma_desafio" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="plataforma móvel7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 19392.8, 242.188 )
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2( 10000, 2368 )
+curve = SubResource( 112 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 9392.81, -2125.81 )
+offset = 13141.9
+rotate = false
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D"]
+remote_path = NodePath("../../../plataforma móvel7")
+
+[node name="Contato_jogador" type="Area2D" parent="."]
+position = Vector2( 10000, 2272 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Contato_jogador"]
+position = Vector2( 14.5, 84.125 )
+shape = SubResource( 115 )
+
+[node name="AreaInteracao" type="Area2D" parent="."]
+position = Vector2( 9992, 2312 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaInteracao"]
+position = Vector2( -192, -18 )
+shape = SubResource( 116 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../plataforma móvel7")
+anims/movendo = SubResource( 114 )
+
+[node name="TextoAjuda" type="Control" parent="."]
+margin_left = 9848.0
+margin_top = 2192.0
+margin_right = 9952.0
+margin_bottom = 2192.0
+
+[node name="Texto" type="Label" parent="TextoAjuda"]
+light_mask = 0
+margin_right = 204.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/line_spacing = 8
+text = "Pressione         para chamar 
+a plataforma"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Imagem" type="Sprite" parent="TextoAjuda"]
+light_mask = 0
+position = Vector2( 88, 6 )
+scale = Vector2( 0.04, 0.04 )
+z_index = 150
+texture = ExtResource( 3 )
+
+[connection signal="body_entered" from="Contato_jogador" to="." method="_on_Contato_jogador_body_entered"]
+[connection signal="body_entered" from="AreaInteracao" to="." method="_on_AreaInteracao_body_entered"]
+[connection signal="body_exited" from="AreaInteracao" to="." method="_on_AreaInteracao_body_exited"]
