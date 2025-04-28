@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://src/Texturas/Cenario/Tiles/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Texturas/Cenario/BG/camada_5.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://src/Cenas/Ambiente/PlataformaMovel.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/Cenas/Ambiente/Saída.tscn" type="PackedScene" id=16]
 [ext_resource path="res://src/Texturas/Cenario/Efeitos/filtro_preto.png" type="Texture" id=17]
+[ext_resource path="res://src/Cenas/Ambiente/PlataformaDesafio.tscn" type="PackedScene" id=18]
 
 [sub_resource type="ShaderMaterial" id=115]
 shader = ExtResource( 14 )
@@ -169,42 +170,6 @@ tracks/0/keys = {
 "values": [ Vector2( 20824, 672 ), Vector2( 20824, 672 ), Vector2( 21600, 1136 ), Vector2( 21600, 1136 ) ]
 }
 
-[sub_resource type="Curve2D" id=112]
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, -124.241, 2.56374, 124.241, -2.56374, 384, 0, -225.313, -2.66968, 225.313, 2.66968, 880, 344, -131.18, 0, 131.18, 0, 1544, 344, -172.025, -0.693906, 172.025, 0.693906, 2624, 32, 0, 0, 0, 0, 4552, 32, 0, 0, 0, 0, 4552, -800, 0, 0, 0, 0, 6536, -800, 0, -178.27, 0, 178.27, 6536, 16, -252.269, -3.36359, 252.269, 3.36359, 6984, 320, -285.905, 3.36359, 285.905, -3.36359, 8176, 320, -3.36359, 242.178, 3.36359, -242.178, 9392, -832, 0, 0, 0, 0, 9392, -2560 )
-}
-
-[sub_resource type="Animation" id=113]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("../Path2D/PathFollow2D:unit_offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 1.0 ]
-}
-
-[sub_resource type="Animation" id=114]
-resource_name = "movendo"
-length = 50.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("../Path2D/PathFollow2D:unit_offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 50 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 1.0 ]
-}
-
 [sub_resource type="RectangleShape2D" id=109]
 extents = Vector2( 192, 1620 )
 
@@ -239,14 +204,14 @@ texture = ExtResource( 17 )
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Ambiente/Fundo"]
 
 [node name="ParallaxLayer8" type="ParallaxLayer" parent="Ambiente/Fundo/ParallaxBackground"]
-motion_mirroring = Vector2( 3712, 0 )
+motion_mirroring = Vector2( 3712, 3172 )
 
 [node name="Sprite" type="Sprite" parent="Ambiente/Fundo/ParallaxBackground/ParallaxLayer8"]
 texture = ExtResource( 9 )
 centered = false
 
 [node name="ParallaxLayer7" type="ParallaxLayer" parent="Ambiente/Fundo/ParallaxBackground"]
-motion_mirroring = Vector2( 3712, 0 )
+motion_mirroring = Vector2( 3712, 3172 )
 
 [node name="Sprite" type="Sprite" parent="Ambiente/Fundo/ParallaxBackground/ParallaxLayer7"]
 texture = ExtResource( 4 )
@@ -370,28 +335,7 @@ playback_process_mode = 0
 anims/RESET = SubResource( 110 )
 anims/movendo = SubResource( 111 )
 
-[node name="plataforma_desafio" type="Node2D" parent="Ambiente/Plataformas/Movel"]
-
-[node name="plataforma móvel7" parent="Ambiente/Plataformas/Movel/plataforma_desafio" instance=ExtResource( 15 )]
-position = Vector2( 19392, -192 )
-
-[node name="Path2D" type="Path2D" parent="Ambiente/Plataformas/Movel/plataforma_desafio"]
-position = Vector2( 10000, 2368 )
-curve = SubResource( 112 )
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Ambiente/Plataformas/Movel/plataforma_desafio/Path2D"]
-position = Vector2( 9392, -2560 )
-offset = 13576.4
-rotate = false
-loop = false
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Ambiente/Plataformas/Movel/plataforma_desafio/Path2D/PathFollow2D"]
-remote_path = NodePath("../../../plataforma móvel7")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Ambiente/Plataformas/Movel/plataforma_desafio"]
-root_node = NodePath("../plataforma móvel7")
-anims/RESET = SubResource( 113 )
-anims/movendo = SubResource( 114 )
+[node name="plataforma_desafio" parent="Ambiente/Plataformas/Movel" instance=ExtResource( 18 )]
 
 [node name="TileMap" type="TileMap" parent="Ambiente"]
 position = Vector2( 0, -50 )
@@ -428,7 +372,7 @@ position = Vector2( -172, 1632 )
 shape = SubResource( 94 )
 
 [node name="Player" parent="." instance=ExtResource( 12 )]
-position = Vector2( 24512, 2808 )
+position = Vector2( 9320, 1864 )
 scale = Vector2( 0.11, 0.11 )
 
 [node name="Inimigos" type="Node2D" parent="."]
