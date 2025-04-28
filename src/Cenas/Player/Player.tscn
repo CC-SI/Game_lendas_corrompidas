@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://src/Texturas/Player/animacao_correndo.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://src/Animacoes/Player/maquina_estados_player.tres" type="AnimationNodeStateMachine" id=12]
 [ext_resource path="res://src/Animacoes/Player/Playeruivando.tres" type="Animation" id=13]
 [ext_resource path="res://src/Shaders/flash_branco.gdshader" type="Shader" id=14]
+[ext_resource path="res://src/Texturas/Cenario/Efeitos/circulo.png" type="Texture" id=16]
 
 [sub_resource type="ShaderMaterial" id=38]
 shader = ExtResource( 14 )
@@ -22,6 +23,21 @@ shader_param/flash_strength = 1.0
 
 [sub_resource type="RectangleShape2D" id=36]
 extents = Vector2( 169, 368.5 )
+
+[sub_resource type="Animation" id=39]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Uivo/Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 0.505882, 0 ) ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "caindo"
@@ -295,10 +311,10 @@ tracks/3/keys = {
 [sub_resource type="AnimationNodeStateMachinePlayback" id=35]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 296, 288 )
+extents = Vector2( 331, 468 )
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 2180, 1436 )
+[sub_resource type="CircleShape2D" id=40]
+radius = 1024.0
 
 [node name="Player" type="Node2D"]
 
@@ -313,7 +329,7 @@ position = Vector2( -85, 0 )
 texture = ExtResource( 6 )
 hframes = 4
 vframes = 6
-frame = 17
+frame = 20
 region_rect = Rect2( 92, 2, 21, 33 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -321,6 +337,7 @@ position = Vector2( 0, 79.5 )
 shape = SubResource( 36 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+anims/RESET = SubResource( 39 )
 anims/caindo = SubResource( 5 )
 anims/correndo = SubResource( 6 )
 anims/dano = ExtResource( 3 )
@@ -350,13 +367,21 @@ script = ExtResource( 11 )
 [node name="Mordida" type="Area2D" parent="Player"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Mordida"]
-position = Vector2( 450, 16 )
+position = Vector2( 485, -20 )
 shape = SubResource( 2 )
 
 [node name="Uivo" type="Area2D" parent="Player"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Uivo"]
-shape = SubResource( 3 )
+scale = Vector2( 3.5, 3 )
+shape = SubResource( 40 )
+
+[node name="Sprite" type="Sprite" parent="Player/Uivo"]
+modulate = Color( 0, 1, 0.505882, 0 )
+light_mask = 0
+scale = Vector2( 7.2, 6.2 )
+z_index = 30
+texture = ExtResource( 16 )
 
 [node name="Position2D" type="Position2D" parent="Player"]
 position = Vector2( 350, 16 )
