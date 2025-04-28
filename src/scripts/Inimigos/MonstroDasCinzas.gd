@@ -27,14 +27,18 @@ func _ready():
 func _process(delta):
 	if perseguindo and alvo and alvo.is_inside_tree():
 		tempo_no_alvo += delta
-
+		
+		direcao.y += gravidade
+		
+		direcao = move_and_slide(direcao, Vector2.UP)
+		
 		# Ataca uma única vez após 3s
 		if tempo_no_alvo >= 3.0 and not atirando and not ataque_realizado:
 			iniciar_ataque()
 
 		if not atirando:
 			direcao = (alvo.global_position - global_position).normalized()
-			direcao.y = 0
+			
 			move_and_slide(direcao * velocidade)
 			$Sprite.flip_h = direcao.x > 0
 			$Area2D.scale.x = 1 if direcao.x < 0 else -1
