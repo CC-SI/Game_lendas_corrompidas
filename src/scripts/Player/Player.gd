@@ -79,6 +79,9 @@ func mudarLadoSprite():
 func resetar_estado():
 	estado_jogador = "padrao"
 
+func renascer(posicao):
+	global_position = posicao
+
 # ATAQUES E HABILIDADES
 func atirar_bola():
 	if Input.is_action_just_pressed("atirar"):
