@@ -32,13 +32,15 @@ func set_direcao(nova_direcao):
 
 func _process(delta):
 	if has_landed:
-		return
+		velocity.x = lerp(velocity.x, 0, 2 * delta) 
+		velocity.y = 0
+	else:
+		velocity.y += gravity * delta
 
-	velocity.y += gravity * delta
-	position += velocity * delta
+	velocity = move_and_slide(velocity, Vector2.UP)
 
-	if position.y >= ground_y:
-		position.y = ground_y
+	# Se tocou o chão
+	if not has_landed and is_on_floor():
 		has_landed = true
 
 func _destruir():
@@ -48,3 +50,6 @@ func _destruir():
 func _on_Area2D_body_entered(body):
 	if (body.is_in_group("player")):
 		body.levar_dano(2)
+	
+	yield(get_tree().create_timer(1), "timeout")
+	queue_free()
