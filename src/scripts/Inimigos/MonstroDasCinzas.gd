@@ -71,6 +71,8 @@ func parar_ataque():
 	atirando = false
 	timer_tiro.stop()
 	print("Monstro parou de atirar.")
+	yield(get_tree().create_timer(3), "timeout")
+	ataque_realizado = false
 
 func _fim_do_ataque():
 	parar_ataque()
@@ -80,8 +82,8 @@ func _atirar():
 		return
 
 	var quantidade = 5
-	var angulo_inicial = -0.4
-	var angulo_final = 0.4
+	var angulo_inicial = -1.2
+	var angulo_final = 1.2
 
 	var direcao_base = (alvo.global_position - global_position).normalized()
 
@@ -93,8 +95,9 @@ func _atirar():
 		var bola = blocoDeFogo.instance()
 		get_parent().add_child(bola)
 
-		var pos_offset = nova_direcao * 16
+		var pos_offset = nova_direcao * rand_range(80, 100)
 		bola.global_position = global_position + pos_offset
 
 		if bola.has_method("set_direcao"):
-			bola.set_direcao(nova_direcao)
+			var intensidade = rand_range(800, 900)
+			bola.set_direcao(nova_direcao * intensidade) 
