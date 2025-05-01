@@ -24,6 +24,8 @@ onready var tayrin = $Tayrin
 var inimigo_na_area = []
 var inimigos_no_uivo = []
 var inimigos = DadosGlobais.LISTA_INIMIGOS
+var input_ativo = true
+
 
 # -- READY --
 func _ready():
@@ -32,9 +34,13 @@ func _ready():
 	#camera.limit_bottom = get_viewport().size.y
 	camera.limit_left = 0
 	DadosGlobais.player = self
+	input_ativo = true
 
 # -- PROCESSO PRINCIPAL --
 func _process(delta):
+	if estado_jogador == "morto":
+		return
+		
 	movePlayer()
 	mudarLadoSprite()
 	direcao = move_and_slide(direcao, Vector2.UP)
@@ -43,6 +49,7 @@ func _process(delta):
 	usar_uivo()
 	atirar_bola()
 	morrer()
+	
 
 
 # MOVIMENTAÇÃO E CONTROLES 
@@ -161,6 +168,7 @@ func _on_Uivo_body_exited(body):
 #GAME OVER 
 func morrer():
 	if DadosGlobais.vidas <= 0:
+		input_ativo = false
 		estado_jogador = "morto"
 		for i in range(10, -1, -1):
 			sprite.modulate.a = i / 10.0
