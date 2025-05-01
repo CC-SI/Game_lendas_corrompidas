@@ -9,6 +9,8 @@ onready var posDir = $PositionDir
 
 onready var timer = $Timer
 
+onready var lifeBar = $ProgressBar
+
 onready var zona1 = $"Zona 1"
 onready var zona2 = $"Zona 2"
 onready var zona3 = $"Zona 3"
@@ -28,11 +30,14 @@ var isPostAssobio = false
 var is_parado: bool = false 
 
 func _ready():
+	vidas = 10
 	timer.start(2)
 	disable_area2D()
 	velocidade = 300
 
 func _process(delta):
+	print(vidas)
+	
 	follow_player()
 	mudarLadoSprite()
 
@@ -46,7 +51,7 @@ func _process(delta):
 		ativar_defesa(true)
 	else:
 		ativar_defesa(false)
-		
+
 	if current_attacks >= 5:
 		isAssobio = true
 		print("Assobio on")
