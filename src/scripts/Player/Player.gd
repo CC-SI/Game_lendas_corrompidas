@@ -115,7 +115,7 @@ func usar_uivo():
 	if Input.is_action_just_pressed("uivo"):
 		estado_jogador = "uivo"
 		for inimigo in inimigos_no_uivo:
-			inimigo.aplicar_lentidao(1)
+			inimigo.aplicar_lentidao(2)
 		
 #RECEBER E APLICAR DANO 
 func _on_bola_acertou(inimigo):
