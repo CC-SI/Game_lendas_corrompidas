@@ -31,6 +31,7 @@ var is_parado: bool = false
 
 func _ready():
 	vidas = 10
+	barra_de_vida.value = vidas
 	timer.start(2)
 	disable_area2D()
 	velocidade = 300
