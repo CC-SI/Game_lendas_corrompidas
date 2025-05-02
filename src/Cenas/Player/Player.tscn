@@ -14,7 +14,7 @@
 [ext_resource path="res://src/Animacoes/Player/maquina_estados_player.tres" type="AnimationNodeStateMachine" id=12]
 [ext_resource path="res://src/Animacoes/Player/Playeruivando.tres" type="Animation" id=13]
 [ext_resource path="res://src/Shaders/flash_branco.gdshader" type="Shader" id=14]
-[ext_resource path="res://src/Texturas/Cenario/Efeitos/circulo.png" type="Texture" id=16]
+[ext_resource path="res://src/Texturas/Cenario/Efeitos/circulo_gradiente.png" type="Texture" id=15]
 
 [sub_resource type="ShaderMaterial" id=38]
 shader = ExtResource( 14 )
@@ -330,6 +330,7 @@ position = Vector2( -85, 0 )
 texture = ExtResource( 6 )
 hframes = 4
 vframes = 6
+frame = 5
 region_rect = Rect2( 92, 2, 21, 33 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -381,7 +382,7 @@ modulate = Color( 0, 1, 0.505882, 0 )
 light_mask = 0
 scale = Vector2( 7.2, 6.2 )
 z_index = 30
-texture = ExtResource( 16 )
+texture = ExtResource( 15 )
 
 [node name="Position2D" type="Position2D" parent="Player"]
 position = Vector2( 350, 16 )
