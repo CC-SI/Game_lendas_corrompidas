@@ -89,6 +89,9 @@ func resetar_estado():
 func renascer(posicao):
 	global_position = posicao
 
+func aumentar_vida(valor):
+	DadosGlobais.vidas += valor
+
 # ATAQUES E HABILIDADES
 func atirar_bola():
 	if Input.is_action_just_pressed("atirar"):
