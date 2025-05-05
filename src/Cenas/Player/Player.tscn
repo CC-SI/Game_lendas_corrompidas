@@ -330,7 +330,7 @@ position = Vector2( -85, 0 )
 texture = ExtResource( 6 )
 hframes = 4
 vframes = 6
-frame = 5
+frame = 3
 region_rect = Rect2( 92, 2, 21, 33 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -385,7 +385,7 @@ z_index = 30
 texture = ExtResource( 15 )
 
 [node name="Position2D" type="Position2D" parent="Player"]
-position = Vector2( 350, 16 )
+position = Vector2( 256, 16 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 offset = Vector2( 0, -50 )

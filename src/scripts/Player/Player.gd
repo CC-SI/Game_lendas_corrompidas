@@ -78,7 +78,7 @@ func movePlayer():
 
 func mudarLadoSprite():
 	sprite.flip_h = lado != 1
-	sprite.position.x = abs(sprite.position.x) * lado
+	sprite.position.x = abs(sprite.position.x) * -lado
 	area2d.scale.x = lado
 	position2D.position.x = abs(position2D.position.x) * lado
 	tayrin.position.x = abs(tayrin.position.x) * -lado
