@@ -132,15 +132,13 @@ func levar_dano(valor):
 	material.set_shader_param("flash", true)
 	
 	velocidade = 0
-	
+	DadosGlobais.vidas -= valor
 	yield(get_tree().create_timer(0.25), "timeout")
 	material.set_shader_param("flash", false)
 	
 	yield(get_tree().create_timer(0.25), "timeout")
 	estado_jogador = "padrao"
 	velocidade = 400
-	
-	DadosGlobais.vidas -= valor
 
 func aplicar_lentidao(duracao):
 	velocidade = 0
