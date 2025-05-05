@@ -42,7 +42,7 @@ func _process(delta):
 			move_and_slide(direcao * velocidade)
 			$Sprite.flip_h = direcao.x > 0
 			$Sprite.position.x = abs($Sprite.position.x) * direcao.x
-			$Position2D.position.x = abs($Position2D.position.x) * direcao.x
+			$Position2D.position.x = abs($Position2D.position.x) * -direcao.x
 
 func _on_ZonaVisao_body_entered(body):
 	if body.is_in_group("player"):
