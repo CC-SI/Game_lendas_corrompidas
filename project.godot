@@ -32,7 +32,7 @@ config/icon="res://icon.png"
 
 [audio]
 
-default_bus_layout="res://src/Som/default_bus_layout.tres"
+default_bus_layout="res://src/Som/bus_layout.tres"
 
 [autoload]
 
