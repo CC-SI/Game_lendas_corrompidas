@@ -15,6 +15,8 @@ onready var zona1 = $"Zona 1"
 onready var zona2 = $"Zona 2"
 onready var zona3 = $"Zona 3"
 
+onready var bgm = $BGM
+
 var playerList = []
 
 var lado
@@ -35,6 +37,7 @@ func _ready():
 	timer.start(2)
 	disable_area2D()
 	velocidade = 300
+	bgm.play(0);
 
 func _process(delta):
 	print(vidas)
@@ -211,3 +214,7 @@ func enable_area2D():
 	zona3.visible = true
 	zona3.monitoring = true
 	zona3.set_process(true)
+
+func morrer():
+	.morrer();
+	bgm.stop();
