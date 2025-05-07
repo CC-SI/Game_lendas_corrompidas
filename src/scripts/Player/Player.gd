@@ -40,6 +40,9 @@ func _ready():
 func _process(delta):
 	if estado_jogador == "morto":
 		return
+	
+	if global_position.y > 4000 and estado_jogador != "morto":
+		levar_dano(DadosGlobais.vidas)
 		
 	movePlayer()
 	mudarLadoSprite()
