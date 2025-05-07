@@ -118,6 +118,11 @@ func usar_uivo():
 	if Input.is_action_just_pressed("uivo"):
 		estado_jogador = "uivo"
 		for inimigo in inimigos_no_uivo:
+			var mudar_velocidade = 0
+			
+			if inimigo.nome_do_inimigo == "Morcego":
+				aplicar_lentidao_morcego(inimigo, mudar_velocidade)
+				
 			inimigo.aplicar_lentidao(2)
 		
 #RECEBER E APLICAR DANO 
@@ -145,14 +150,26 @@ func aplicar_lentidao(duracao):
 	yield(get_tree().create_timer(duracao), "timeout")
 	velocidade = 400
 
+func aplicar_lentidao_morcego(inimigo, mudar_velocidade):
+	var velocidade_normal = inimigo.velocidade
+	var velocidade_descendo = inimigo.velocidade_descendo
+	var velocidade_subindo = inimigo.velocidade_subindo
+				
+	inimigo.velocidade = mudar_velocidade
+	inimigo.velocidade_descendo = mudar_velocidade
+	inimigo.velocidade_subindo = mudar_velocidade
+				
+	yield(get_tree().create_timer(2), "timeout")
+				
+	inimigo.velocidade = velocidade_normal
+	inimigo.velocidade_descendo = velocidade_descendo
+	inimigo.velocidade_subindo = velocidade_subindo
 
 #ÁREAS DE INTERAÇÃO
 func _on_ZonaDeAtaque_body_entered(body):
 	if body.name in inimigos:
 		inimigo_na_area.append(body)
 		
-	
-
 func _on_ZonaDeAtaque_body_exited(body):
 	if body.name in inimigos:
 		inimigo_na_area.erase(body)
