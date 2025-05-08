@@ -194,8 +194,5 @@ func morrer():
 	if DadosGlobais.vidas <= 0:
 		input_ativo = false
 		estado_jogador = "morto"
-		for i in range(10, -1, -1):
-			sprite.modulate.a = i / 10.0
-			yield(get_tree().create_timer(0.05), "timeout")
 		yield(get_tree().create_timer(0.5), "timeout")
 		get_tree().change_scene("res://src/Cenas/GameOver.tscn")
