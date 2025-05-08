@@ -11,6 +11,8 @@ var ataque_realizado = false
 
 onready var timer_tiro = Timer.new()
 onready var timer_ataque = Timer.new()
+onready var alvo_blocos_esq = $"Alvo dos blocos Esquerdo"
+onready var alvo_blocos_dor = $"Alvo dos blocos Direita"
 
 func _ready():
 	velocidade = 30
@@ -28,7 +30,7 @@ func _process(delta):
 	if perseguindo and alvo and alvo.is_inside_tree():
 		tempo_no_alvo += delta
 		
-		direcao.y += gravidade
+		direcao.y += gravidade 
 		
 		direcao = move_and_slide(direcao, Vector2.UP)
 		
@@ -49,7 +51,6 @@ func _on_ZonaVisao_body_entered(body):
 		perseguindo = true
 		alvo = body
 		tempo_no_alvo = 0
-		print("Player está na visão do monstro")
 
 func _on_ZonaVisao_body_exited(body):
 	if body.is_in_group("player"):
@@ -57,20 +58,17 @@ func _on_ZonaVisao_body_exited(body):
 		alvo = null
 		tempo_no_alvo = 0
 		parar_ataque()
-		print("Player saiu da visão do monstro")
 
 func iniciar_ataque():
 	atirando = true
 	ataque_realizado = true 
 	timer_tiro.start()
 	timer_ataque.start()
-	print("Monstro começou a atirar!")
 
 func parar_ataque():
 	atirando = false
 	timer_tiro.stop()
-	print("Monstro parou de atirar.")
-	yield(get_tree().create_timer(3), "timeout")
+	yield(get_tree().create_timer(5), "timeout")
 	ataque_realizado = false
 
 func _fim_do_ataque():
@@ -80,23 +78,23 @@ func _atirar():
 	if not alvo:
 		return
 
-	var quantidade = 5
-	var angulo_inicial = -1.2
+	var quantidade = 6
+	var angulo_inicial = -0.8  
 	var angulo_final = 1.2
-
-	var direcao_base = (alvo.global_position - global_position).normalized()
+	var direcao_base = Vector2.UP
 
 	for i in range(quantidade):
 		var t = float(i) / (quantidade - 1)
 		var angulo = lerp(angulo_inicial, angulo_final, t)
 		var nova_direcao = direcao_base.rotated(angulo)
-
+		
 		var bola = blocoDeFogo.instance()
 		get_parent().add_child(bola)
-
-		var pos_offset = nova_direcao * rand_range(80, 100)
-		bola.global_position = global_position + pos_offset
-
-		if bola.has_method("set_direcao"):
-			var intensidade = rand_range(800, 900)
-			bola.set_direcao(nova_direcao * intensidade) 
+		
+		if i < quantidade / 2:
+			bola.global_position = alvo_blocos_esq.global_position
+		else:
+			bola.global_position = alvo_blocos_dor.global_position
+			
+	yield(get_tree().create_timer(4), "timeout")
+		
