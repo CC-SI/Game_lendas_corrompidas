@@ -45,6 +45,10 @@ func _process(delta):
 
 	morreu()
 
+func mudar_lado_sprite(lado):
+	sprite.flip_h = lado < 0
+	sprite.position.x = abs(sprite.position.x) * lado
+
 func move_patrol(delta):
 	global_position.x += direcao_horizontal * velocidade * delta
 
@@ -54,14 +58,15 @@ func move_patrol(delta):
 		direcao_horizontal = -1
 	elif direcao_horizontal == -1 and distancia_do_inicio <= -distancia_maxima:
 		direcao_horizontal = 1
-
-	sprite.flip_h = direcao_horizontal < 0
+	
+	mudar_lado_sprite(direcao_horizontal)
 
 func seguir_alvo(delta):
 	velocidade = velocidade_descendo
 	var direcao = (alvo.global_position - global_position).normalized()
 	global_position += direcao * velocidade * delta
-	sprite.flip_h = direcao.x < 0
+	
+	mudar_lado_sprite(direcao.x)
 
 func subir_para_posicao(delta):
 	velocidade = 130
