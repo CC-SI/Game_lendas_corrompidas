@@ -330,7 +330,7 @@ position = Vector2( -85, 0 )
 texture = ExtResource( 6 )
 hframes = 4
 vframes = 6
-frame = 3
+frame = 4
 region_rect = Rect2( 92, 2, 21, 33 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -366,12 +366,16 @@ parameters/movimentacao/blend_position = Vector2( -0.000794291, 0 )
 script = ExtResource( 11 )
 
 [node name="Mordida" type="Area2D" parent="Player"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Mordida"]
 position = Vector2( 485, -20 )
 shape = SubResource( 2 )
 
 [node name="Uivo" type="Area2D" parent="Player"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Uivo"]
 scale = Vector2( 3.5, 3 )

@@ -203,6 +203,8 @@ tracks/3/keys = {
 [node name="Morcego" type="Node2D"]
 
 [node name="Morcego" type="KinematicBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 2 )
 nome_do_inimigo = "Morcego"
 
@@ -213,7 +215,7 @@ texture = ExtResource( 1 )
 flip_h = true
 hframes = 5
 vframes = 5
-frame = 3
+frame = 2
 region_rect = Rect2( 197, 14, 33, 42 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Morcego"]

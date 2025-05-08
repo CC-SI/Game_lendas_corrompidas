@@ -17,7 +17,6 @@ region_rect = Rect2( 170, 40, 23, 51 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlocoDeFogo"]
 shape = SubResource( 1 )
-disabled = true
 
 [node name="Area2D" type="Area2D" parent="BlocoDeFogo"]
 
