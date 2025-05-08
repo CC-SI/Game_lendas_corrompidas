@@ -25,12 +25,12 @@ func _ready():
 	timer_ataque.connect("timeout", self, "_fim_do_ataque")
 
 func _process(delta):
+	direcao.y += gravidade
+	
+	direcao = move_and_slide(direcao, Vector2.UP)
+	
 	if perseguindo and alvo and alvo.is_inside_tree():
 		tempo_no_alvo += delta
-		
-		direcao.y += gravidade
-		
-		direcao = move_and_slide(direcao, Vector2.UP)
 		
 		# Ataca uma única vez após 3s
 		if tempo_no_alvo >= 3.0 and not atirando and not ataque_realizado:
