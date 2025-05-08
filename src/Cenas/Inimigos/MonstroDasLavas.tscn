@@ -372,7 +372,7 @@ position = Vector2( 96, 0 )
 texture = ExtResource( 1 )
 hframes = 6
 vframes = 7
-frame = 3
+frame = 33
 region_rect = Rect2( 318, 117, 803, 799 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MonstroDaLavas"]
@@ -410,6 +410,12 @@ parameters/movimentacao/blend_position = 0.0
 
 [node name="ControladorAnimacao" type="Node2D" parent="MonstroDaLavas"]
 script = ExtResource( 6 )
+
+[node name="Alvo dos blocos Esquerdo" type="Position2D" parent="MonstroDaLavas"]
+position = Vector2( -472, -517 )
+
+[node name="Alvo dos blocos Direita" type="Position2D" parent="MonstroDaLavas"]
+position = Vector2( 551, -539 )
 
 [connection signal="body_entered" from="MonstroDaLavas/Area2D" to="MonstroDaLavas" method="_on_ZonaVisao_body_entered"]
 [connection signal="body_exited" from="MonstroDaLavas/Area2D" to="MonstroDaLavas" method="_on_ZonaVisao_body_exited"]
