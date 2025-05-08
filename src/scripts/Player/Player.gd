@@ -93,6 +93,9 @@ func renascer(posicao):
 	global_position = posicao
 
 func aumentar_vida(valor):
+	if DadosGlobais.vidas >= 10: 
+		return
+	
 	DadosGlobais.vidas += valor
 
 # ATAQUES E HABILIDADES

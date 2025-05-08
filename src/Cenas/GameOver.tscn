@@ -1,7 +1,54 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://src/Texturas/Gta Grand Theft Auto Mission Failed Green Screen Effect Motion Graphics 4K Copyright Free.jpg" type="Texture" id=1]
+[ext_resource path="res://src/Fonts/Cinzel/cinzel.regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/scripts/game_over.gd" type="Script" id=2]
+[ext_resource path="res://src/Fonts/Cinzel/cinzel.black.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://src/Shaders/nevoa.gdshader" type="Shader" id=4]
+[ext_resource path="res://src/Texturas/Cenario/Efeitos/filtro_preto.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+use_mipmaps = true
+use_filter = true
+extra_spacing_char = 5
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.384314, 0.427451, 0.690196, 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.188235, 0.211765, 0.34902, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.160784, 0.215686, 0.541176, 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.4, 0.447059, 0.72549, 1 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.188235, 0.211765, 0.34902, 1 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.160784, 0.215686, 0.541176, 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 60
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 4 )
+shader_param/fog_intensity = 0.2
+shader_param/fog_color = Plane( 0.6, 0.6, 0.6, 1 )
+shader_param/speed = 0.05
+shader_param/scale = 80.0
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -12,24 +59,50 @@ margin_right = -4.0
 margin_bottom = 10.0
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 520, 300 )
-scale = Vector2( 1.39674, 1.43478 )
-texture = ExtResource( 1 )
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Botao Renascer" type="Button" parent="."]
-margin_left = 216.0
-margin_top = 373.0
-margin_right = 409.0
-margin_bottom = 450.0
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Botao Renascer" type="Button" parent="CanvasLayer"]
+margin_left = 424.0
+margin_top = 344.0
+margin_right = 604.0
+margin_bottom = 394.0
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 2 )
 text = "RENASCER"
 
-[node name="Botao Sair" type="Button" parent="."]
-margin_left = 481.0
-margin_top = 374.0
-margin_right = 675.0
-margin_bottom = 451.0
+[node name="Botao Sair" type="Button" parent="CanvasLayer"]
+margin_left = 424.0
+margin_top = 440.0
+margin_right = 604.0
+margin_bottom = 490.0
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
 text = "Sair"
 
-[connection signal="pressed" from="Botao Renascer" to="." method="_on_Botao_Renascer_pressed"]
-[connection signal="pressed" from="Botao Sair" to="." method="_on_Botao_Sair_pressed"]
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_left = 264.0
+margin_top = 160.0
+margin_right = 763.0
+margin_bottom = 242.0
+custom_fonts/font = SubResource( 4 )
+text = "VOCÊ MORREU"
+
+[node name="nevoa" type="Sprite" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0.470588 )
+material = SubResource( 5 )
+position = Vector2( 12708, 1800 )
+scale = Vector2( 25.8203, 4.65625 )
+z_index = 99
+texture = ExtResource( 5 )
+
+[connection signal="pressed" from="CanvasLayer/Botao Renascer" to="." method="_on_Botao_Renascer_pressed"]
+[connection signal="pressed" from="CanvasLayer/Botao Sair" to="." method="_on_Botao_Sair_pressed"]
