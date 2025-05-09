@@ -26,30 +26,6 @@ extents = Vector2( 248, 200 )
 
 [sub_resource type="Animation" id=13]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("AudioStreamPlayer:pitch_scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 1.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AudioStreamPlayer:volume_db")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
 
 [sub_resource type="Animation" id=5]
 resource_name = "atacando"
@@ -230,10 +206,10 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.833334 ),
+"times": PoolRealArray( 0, 0.84 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 2.0, 0.0 ]
+"update": 1,
+"values": [ 2.0, -5.0 ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -315,6 +291,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [ 1.5 ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -5.0 ]
+}
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=9]
 
@@ -329,11 +317,11 @@ nome_do_inimigo = "Morcego"
 [node name="Sprite" type="Sprite" parent="Morcego"]
 material = SubResource( 12 )
 position = Vector2( 50, 0 )
-texture = ExtResource( 4 )
+texture = ExtResource( 1 )
 flip_h = true
 hframes = 5
 vframes = 5
-frame = 24
+frame = 23
 region_rect = Rect2( 197, 14, 33, 42 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Morcego"]
@@ -375,6 +363,8 @@ script = ExtResource( 5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Morcego"]
 stream = ExtResource( 8 )
+volume_db = -5.0
+pitch_scale = 1.5
 bus = "Efeitos"
 
 [connection signal="body_entered" from="Morcego/Zona de Ataque" to="Morcego" method="_on_Zona_de_Ataque_body_entered"]
