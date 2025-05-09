@@ -7,14 +7,12 @@ export var velocidade_descendo = 250
 export var velocidade_subindo = 250
 
 var alvo = null
-var esta_atacando
 var estado = "voando"
 var posicao_y_inicial = 0.0
 var posicao_x_inicial = 0.0
 var direcao_horizontal = 1
 var isPlayerEntryZone = false
 var podeAtacar = true
-var esta_descendo = false
 
 onready var sprite = $Sprite
 onready var atacou_player = $"Atacou Player"
