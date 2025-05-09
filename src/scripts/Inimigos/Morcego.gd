@@ -22,7 +22,7 @@ onready var collider = $CollisionShape2D
 onready var timer = Timer.new()
 
 func _ready():
-	vidas = 5
+	vidas = 1
 	velocidade = 130
 	posicao_x_inicial = global_position.x
 	posicao_y_inicial = global_position.y
