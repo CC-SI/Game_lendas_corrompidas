@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/Texturas/Inimigos/Morcego/animacao_voando.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/Inimigos/Morcego.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/scripts/Inimigos/Morcego/animacao_morcego.gd" type="Script" id=5]
 [ext_resource path="res://src/Animacoes/Inimigos/Morcego/maquina_estados_morcego.tres" type="AnimationNodeStateMachine" id=6]
 [ext_resource path="res://src/Shaders/flash_branco.gdshader" type="Shader" id=7]
+[ext_resource path="res://src/Som/SFX/Morcego/sfx_bater_asas.wav" type="AudioStream" id=8]
 
 [sub_resource type="ShaderMaterial" id=12]
 shader = ExtResource( 7 )
@@ -22,6 +23,33 @@ extents = Vector2( 3692, 2934 )
 
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 248, 200 )
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AudioStreamPlayer:pitch_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "atacando"
@@ -75,6 +103,32 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 3 ]
+}
+tracks/4/type = "audio"
+tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 8 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("AudioStreamPlayer:pitch_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -143,6 +197,44 @@ tracks/4/keys = {
 "method": "queue_free"
 } ]
 }
+tracks/5/type = "audio"
+tracks/5/path = NodePath("AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 8 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("AudioStreamPlayer:pitch_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2.5 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.833334 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 2.0, 0.0 ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "voando"
@@ -197,6 +289,32 @@ tracks/3/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 5, 6, 7, 8, 10, 11, 12, 13, 15, 16, 17, 18, 20, 21, 22, 23, 4 ]
 }
+tracks/4/type = "audio"
+tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 8 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("AudioStreamPlayer:pitch_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.5 ]
+}
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=9]
 
@@ -211,11 +329,11 @@ nome_do_inimigo = "Morcego"
 [node name="Sprite" type="Sprite" parent="Morcego"]
 material = SubResource( 12 )
 position = Vector2( 50, 0 )
-texture = ExtResource( 1 )
+texture = ExtResource( 4 )
 flip_h = true
 hframes = 5
 vframes = 5
-frame = 2
+frame = 24
 region_rect = Rect2( 197, 14, 33, 42 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Morcego"]
@@ -238,6 +356,7 @@ shape = SubResource( 10 )
 [node name="Timer" type="Timer" parent="Morcego"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Morcego"]
+anims/RESET = SubResource( 13 )
 anims/atacando = SubResource( 5 )
 anims/morrendo = SubResource( 6 )
 anims/voando = SubResource( 7 )
@@ -253,6 +372,10 @@ parameters/conditions/esta_voando = false
 
 [node name="AnimacaoMorcego" type="Node2D" parent="Morcego"]
 script = ExtResource( 5 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Morcego"]
+stream = ExtResource( 8 )
+bus = "Efeitos"
 
 [connection signal="body_entered" from="Morcego/Zona de Ataque" to="Morcego" method="_on_Zona_de_Ataque_body_entered"]
 [connection signal="body_exited" from="Morcego/Zona de Ataque" to="Morcego" method="_on_Zona_de_Ataque_body_exited"]
