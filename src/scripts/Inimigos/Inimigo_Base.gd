@@ -69,3 +69,4 @@ func aplicar_lentidao(duracao):
 
 func morrer():
 	esta_morto = true
+	return
