@@ -25,20 +25,22 @@ func _ready():
 	timer_ataque.connect("timeout", self, "_fim_do_ataque")
 
 func _process(delta):
-	direcao.y += gravidade
+	if esta_morto:
+		alvo = null
+		return
 	
+	direcao.y += gravidade
 	direcao = move_and_slide(direcao, Vector2.UP)
 	
 	if perseguindo and alvo and alvo.is_inside_tree():
 		tempo_no_alvo += delta
-		
+
 		# Ataca uma única vez após 3s
 		if tempo_no_alvo >= 3.0 and not atirando and not ataque_realizado:
 			iniciar_ataque()
 
 		if not atirando:
 			direcao = (alvo.global_position - global_position).normalized()
-			
 			move_and_slide(direcao * velocidade)
 			$Sprite.flip_h = direcao.x > 0
 			$Sprite.position.x = abs($Sprite.position.x) * direcao.x
@@ -60,6 +62,8 @@ func _on_ZonaVisao_body_exited(body):
 		print("Player saiu da visão do monstro")
 
 func iniciar_ataque():
+	if esta_morto:
+		return
 	atirando = true
 	ataque_realizado = true 
 	timer_tiro.start()
@@ -77,7 +81,7 @@ func _fim_do_ataque():
 	parar_ataque()
 
 func _atirar():
-	if not alvo:
+	if esta_morto or not alvo:
 		return
 
 	var quantidade = 5
@@ -99,4 +103,14 @@ func _atirar():
 
 		if bola.has_method("set_direcao"):
 			var intensidade = rand_range(800, 900)
-			bola.set_direcao(nova_direcao * intensidade) 
+			bola.set_direcao(nova_direcao * intensidade)
+
+func morrer():
+	if esta_morto:
+		return
+	esta_morto = true
+	parar_ataque()
+	timer_tiro.stop()
+	timer_ataque.stop()
+	alvo = null
+	perseguindo = false

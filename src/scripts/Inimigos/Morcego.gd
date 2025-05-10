@@ -24,12 +24,16 @@ func _ready():
 	velocidade = 130
 	posicao_x_inicial = global_position.x
 	posicao_y_inicial = global_position.y
+
 	add_child(timer)
 	timer.wait_time = tempo_re_ataque
 	timer.one_shot = true
 	timer.connect("timeout", self, "_on_Timer_timeout")
 
 func _process(delta):
+	if esta_morto:
+		return
+
 	match estado:
 		"voando":
 			move_patrol(delta)
@@ -40,8 +44,11 @@ func _process(delta):
 			subir_para_posicao(delta)
 		"esperando":
 			move_patrol(delta)
+		"morreu":
+			return
 
-	morreu()
+	if vidas <= 0:
+		morrer()
 
 func mudar_lado_sprite(lado):
 	sprite.flip_h = lado < 0
@@ -78,12 +85,24 @@ func subir_para_posicao(delta):
 		podeAtacar = false
 		timer.start()
 
-func morreu():
-	if vidas <= 0:
-		var direcao = Vector2(0, 200)
-		direcao = move_and_slide(direcao, Vector2.UP)
+func morrer():
+	if esta_morto:
+		return
+
+	esta_morto = true
+	estado = "morreu"
+	alvo = null
+	isPlayerEntryZone = false
+	podeAtacar = false
+	timer.stop()
+
+	collider.set_deferred("disabled", true)  # evita colisões futuras
+	print("Inimigo morreu")
 
 func _on_Zona_de_Ataque_body_entered(body):
+	if esta_morto:
+		return
+
 	if body.is_in_group("player"):
 		alvo = body
 		isPlayerEntryZone = true
@@ -92,14 +111,20 @@ func _on_Zona_de_Ataque_body_entered(body):
 		print("Player entrou na zona")
 
 func _on_Zona_de_Ataque_body_exited(body):
+	if esta_morto:
+		return
+
 	if body.is_in_group("player"):
 		isPlayerEntryZone = false
 		alvo = null
-		if estado != "subindo" and estado != "descendo":
+		if estado != "subindo":
 			estado = "voando"
 		print("Player saiu da zona")
 
 func _on_Encostou_Player_body_entered(body):
+	if esta_morto:
+		return
+
 	if body.is_in_group("player") and podeAtacar:
 		var player = DadosGlobais.player
 		print("aplicou dano")
@@ -108,9 +133,10 @@ func _on_Encostou_Player_body_entered(body):
 
 		estado = "subindo"
 
-		
-
 func _on_Timer_timeout():
+	if esta_morto:
+		return
+
 	podeAtacar = true
 	if isPlayerEntryZone and alvo:
 		estado = "perseguindo"
