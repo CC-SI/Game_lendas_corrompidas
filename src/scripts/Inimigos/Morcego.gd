@@ -20,6 +20,7 @@ onready var collider = $CollisionShape2D
 onready var timer = Timer.new()
 
 func _ready():
+	estado = "voando"
 	vidas = 1
 	velocidade = 130
 	posicao_x_inicial = global_position.x
@@ -40,6 +41,9 @@ func _process(delta):
 			subir_para_posicao(delta)
 		"esperando":
 			move_patrol(delta)
+		"morto":
+			alvo = null
+			return
 
 	morreu()
 
@@ -82,6 +86,7 @@ func morreu():
 	if vidas <= 0:
 		var direcao = Vector2(0, 200)
 		direcao = move_and_slide(direcao, Vector2.UP)
+		estado = "morto"
 
 func _on_Zona_de_Ataque_body_entered(body):
 	if body.is_in_group("player"):
