@@ -25,6 +25,10 @@ func _ready():
 	timer_ataque.connect("timeout", self, "_fim_do_ataque")
 
 func _process(delta):
+	if esta_morto:
+		alvo = null
+		
+	
 	direcao.y += gravidade
 	
 	direcao = move_and_slide(direcao, Vector2.UP)
