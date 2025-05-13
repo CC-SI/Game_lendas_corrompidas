@@ -1,0 +1,151 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=35 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "assobiando"
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "começando_assobiar"
+
+[sub_resource type="AnimationNodeAnimation" id=22]
+animation = "terminando_assobiar"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+advance_condition = "esta_parado"
+
+[sub_resource type="AnimationNodeStateMachine" id=1]
+states/assobiando/node = SubResource( 20 )
+states/assobiando/position = Vector2( 658, 201 )
+"states/começando_assobiar/node" = SubResource( 21 )
+"states/começando_assobiar/position" = Vector2( 421, 281 )
+states/terminando_assobiar/node = SubResource( 22 )
+states/terminando_assobiar/position = Vector2( 911, 281 )
+transitions = [ "começando_assobiar", "assobiando", SubResource( 23 ), "assobiando", "terminando_assobiar", SubResource( 24 ) ]
+start_node = "começando_assobiar"
+end_node = "terminando_assobiar"
+
+[sub_resource type="AnimationNodeAnimation" id=25]
+animation = "lançando_bola_fogo"
+
+[sub_resource type="AnimationNodeAnimation" id=26]
+animation = "preparando_bola_fogo"
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+animation = "terminando_lançar_bola_fogo"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+advance_condition = "esta_parado"
+
+[sub_resource type="AnimationNodeStateMachine" id=2]
+"states/lançando_bola_fogo/node" = SubResource( 25 )
+"states/lançando_bola_fogo/position" = Vector2( 550, 215 )
+states/preparando_bola_fogo/node = SubResource( 26 )
+states/preparando_bola_fogo/position = Vector2( 265, 302 )
+"states/terminando_lançar_bola_fogo/node" = SubResource( 27 )
+"states/terminando_lançar_bola_fogo/position" = Vector2( 871, 302 )
+transitions = [ "preparando_bola_fogo", "lançando_bola_fogo", SubResource( 28 ), "lançando_bola_fogo", "terminando_lançar_bola_fogo", SubResource( 29 ) ]
+start_node = "preparando_bola_fogo"
+end_node = "terminando_lançar_bola_fogo"
+
+[sub_resource type="AnimationNodeAnimation" id=30]
+animation = "começando_descansar"
+
+[sub_resource type="AnimationNodeAnimation" id=31]
+animation = "descansando"
+
+[sub_resource type="AnimationNodeAnimation" id=32]
+animation = "terminando_descansar"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+advance_condition = "esta_parado"
+
+[sub_resource type="AnimationNodeStateMachine" id=3]
+"states/começando_descansar/node" = SubResource( 30 )
+"states/começando_descansar/position" = Vector2( 312, 294 )
+states/descansando/node = SubResource( 31 )
+states/descansando/position = Vector2( 568, 207 )
+states/terminando_descansar/node = SubResource( 32 )
+states/terminando_descansar/position = Vector2( 847, 294 )
+transitions = [ "começando_descansar", "descansando", SubResource( 33 ), "descansando", "terminando_descansar", SubResource( 34 ) ]
+start_node = "começando_descansar"
+end_node = "terminando_descansar"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "derrotado"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "parado"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "soco"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=7]
+advance_condition = "bola_fogo"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+advance_condition = "esta_cansado"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+advance_condition = "assobio"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+advance_condition = "soco"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+advance_condition = "esta_morto"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+advance_condition = "esta_morto"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+advance_condition = "esta_morto"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+advance_condition = "esta_morto"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+advance_condition = "esta_morto"
+
+[resource]
+states/assobio/node = SubResource( 1 )
+states/assobio/position = Vector2( 562, 325 )
+states/bola_fogo/node = SubResource( 2 )
+states/bola_fogo/position = Vector2( 562, 154 )
+states/cansado/node = SubResource( 3 )
+states/cansado/position = Vector2( 562, 239 )
+states/derrotado/node = SubResource( 4 )
+states/derrotado/position = Vector2( 907, 281 )
+states/parado/node = SubResource( 5 )
+states/parado/position = Vector2( 305, 281 )
+states/soco/node = SubResource( 6 )
+states/soco/position = Vector2( 562, 405 )
+transitions = [ "parado", "bola_fogo", SubResource( 7 ), "bola_fogo", "parado", SubResource( 8 ), "parado", "cansado", SubResource( 9 ), "cansado", "parado", SubResource( 10 ), "parado", "assobio", SubResource( 11 ), "assobio", "parado", SubResource( 12 ), "parado", "soco", SubResource( 13 ), "soco", "parado", SubResource( 14 ), "soco", "derrotado", SubResource( 15 ), "assobio", "derrotado", SubResource( 16 ), "cansado", "derrotado", SubResource( 17 ), "bola_fogo", "derrotado", SubResource( 18 ), "parado", "derrotado", SubResource( 19 ) ]
+start_node = "parado"
+end_node = "derrotado"
