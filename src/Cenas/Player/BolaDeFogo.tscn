@@ -76,6 +76,8 @@ shape = SubResource( 1 )
 disabled = true
 
 [node name="Area2D" type="Area2D" parent="Bola de Fogo"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bola de Fogo/Area2D"]
 shape = SubResource( 2 )

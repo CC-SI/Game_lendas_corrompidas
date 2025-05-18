@@ -31,8 +31,9 @@ func _process(delta):
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("player"):
-		DadosGlobais.vidas -= dano
-		print(DadosGlobais.vidas)
+		var player = get_tree().get_nodes_in_group("player")
+		if player.size() > 0:	
+			player[0].levar_dano(1)
 
 	yield(get_tree().create_timer(1), "timeout")
 	queue_free()

@@ -24,6 +24,8 @@ onready var tayrin = $Tayrin
 var inimigo_na_area = []
 var inimigos_no_uivo = []
 var inimigos = DadosGlobais.LISTA_INIMIGOS
+var input_ativo = true
+
 
 # -- READY --
 func _ready():
@@ -32,9 +34,16 @@ func _ready():
 	#camera.limit_bottom = get_viewport().size.y
 	camera.limit_left = 0
 	DadosGlobais.player = self
+	input_ativo = true
 
 # -- PROCESSO PRINCIPAL --
 func _process(delta):
+	if estado_jogador == "morto":
+		return
+	
+	if global_position.y > 4000 and estado_jogador != "morto":
+		levar_dano(DadosGlobais.vidas)
+		
 	movePlayer()
 	mudarLadoSprite()
 	direcao = move_and_slide(direcao, Vector2.UP)
@@ -43,6 +52,7 @@ func _process(delta):
 	usar_uivo()
 	atirar_bola()
 	morrer()
+	
 
 
 # MOVIMENTAÇÃO E CONTROLES 
@@ -71,7 +81,7 @@ func movePlayer():
 
 func mudarLadoSprite():
 	sprite.flip_h = lado != 1
-	sprite.position.x = abs(sprite.position.x) * lado
+	sprite.position.x = abs(sprite.position.x) * -lado
 	area2d.scale.x = lado
 	position2D.position.x = abs(position2D.position.x) * lado
 	tayrin.position.x = abs(tayrin.position.x) * -lado
@@ -81,6 +91,12 @@ func resetar_estado():
 
 func renascer(posicao):
 	global_position = posicao
+
+func aumentar_vida(valor):
+	if DadosGlobais.vidas >= 10: 
+		return
+	
+	DadosGlobais.vidas += valor
 
 # ATAQUES E HABILIDADES
 func atirar_bola():
@@ -108,7 +124,12 @@ func usar_uivo():
 	if Input.is_action_just_pressed("uivo"):
 		estado_jogador = "uivo"
 		for inimigo in inimigos_no_uivo:
-			inimigo.aplicar_lentidao(1)
+			var mudar_velocidade = 0
+			
+			if inimigo.nome_do_inimigo == "Morcego":
+				aplicar_lentidao_morcego(inimigo, mudar_velocidade)
+				
+			inimigo.aplicar_lentidao(2)
 		
 #RECEBER E APLICAR DANO 
 func _on_bola_acertou(inimigo):
@@ -122,29 +143,39 @@ func levar_dano(valor):
 	material.set_shader_param("flash", true)
 	
 	velocidade = 0
-	
+	DadosGlobais.vidas -= valor
 	yield(get_tree().create_timer(0.25), "timeout")
 	material.set_shader_param("flash", false)
 	
 	yield(get_tree().create_timer(0.25), "timeout")
 	estado_jogador = "padrao"
 	velocidade = 400
-	
-	DadosGlobais.vidas -= valor
 
 func aplicar_lentidao(duracao):
 	velocidade = 0
 	yield(get_tree().create_timer(duracao), "timeout")
 	velocidade = 400
 
+func aplicar_lentidao_morcego(inimigo, mudar_velocidade):
+	var velocidade_normal = inimigo.velocidade
+	var velocidade_descendo = inimigo.velocidade_descendo
+	var velocidade_subindo = inimigo.velocidade_subindo
+				
+	inimigo.velocidade = mudar_velocidade
+	inimigo.velocidade_descendo = mudar_velocidade
+	inimigo.velocidade_subindo = mudar_velocidade
+				
+	yield(get_tree().create_timer(2), "timeout")
+				
+	inimigo.velocidade = velocidade_normal
+	inimigo.velocidade_descendo = velocidade_descendo
+	inimigo.velocidade_subindo = velocidade_subindo
 
 #ÁREAS DE INTERAÇÃO
 func _on_ZonaDeAtaque_body_entered(body):
 	if body.name in inimigos:
 		inimigo_na_area.append(body)
 		
-	
-
 func _on_ZonaDeAtaque_body_exited(body):
 	if body.name in inimigos:
 		inimigo_na_area.erase(body)
@@ -161,9 +192,7 @@ func _on_Uivo_body_exited(body):
 #GAME OVER 
 func morrer():
 	if DadosGlobais.vidas <= 0:
+		input_ativo = false
 		estado_jogador = "morto"
-		for i in range(10, -1, -1):
-			sprite.modulate.a = i / 10.0
-			yield(get_tree().create_timer(0.05), "timeout")
 		yield(get_tree().create_timer(0.5), "timeout")
 		get_tree().change_scene("res://src/Cenas/GameOver.tscn")

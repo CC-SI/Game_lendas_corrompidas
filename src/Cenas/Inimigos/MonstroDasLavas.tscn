@@ -363,6 +363,8 @@ tracks/3/keys = {
 [node name="MonstroDeCinzas" type="Node2D"]
 
 [node name="MonstroDaLavas" type="KinematicBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 2 )
 nome_do_inimigo = "MonstroDasCinzas"
 
@@ -372,7 +374,7 @@ position = Vector2( 96, 0 )
 texture = ExtResource( 1 )
 hframes = 6
 vframes = 7
-frame = 3
+frame = 18
 region_rect = Rect2( 318, 117, 803, 799 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MonstroDaLavas"]

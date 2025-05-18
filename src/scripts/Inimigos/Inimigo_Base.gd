@@ -1,6 +1,8 @@
 extends KinematicBody2D
 class_name InimigoBase
 
+onready var barra_de_vida = get_node_or_null("ProgressBar")
+
 export var vidas = 3
 export var gravidade = 800
 export var nome_do_inimigo = "Inimigo"
@@ -47,9 +49,14 @@ func levar_dano(valor):
 	material.set_shader_param("flash", false)
 	
 	vidas -= valor
+	
+	if barra_de_vida:
+		barra_de_vida.value = clamp(vidas, 0, barra_de_vida.max_value)
+	
 	if vidas <= 0:
 		morrer()
 		
+	
 func aplicar_dano(valor):
 	var player = get_tree().get_nodes_in_group("player")
 	if (player.size() > 0):

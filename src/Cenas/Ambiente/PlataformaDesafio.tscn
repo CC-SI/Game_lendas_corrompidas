@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/Cenas/Ambiente/PlataformaMovel.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/Cenas/Fases/plataforma_desafio.gd" type="Script" id=2]
+[ext_resource path="res://src/scripts/plataforma_desafio.gd" type="Script" id=2]
 [ext_resource path="res://src/Texturas/UI/SimpleFlatKeys/Dark/F-Key.png" type="Texture" id=3]
 
 [sub_resource type="Curve2D" id=112]
@@ -35,14 +35,14 @@ tracks/0/keys = {
 script = ExtResource( 2 )
 
 [node name="plataforma móvel7" parent="." instance=ExtResource( 1 )]
-position = Vector2( 19392.8, 242.188 )
+position = Vector2( 19392.8, 242.226 )
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2( 10000, 2368 )
 curve = SubResource( 112 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2( 9392.81, -2125.81 )
+position = Vector2( 9392.81, -2125.77 )
 offset = 13141.9
 rotate = false
 loop = false
