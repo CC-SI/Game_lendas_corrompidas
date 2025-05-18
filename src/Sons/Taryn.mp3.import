@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Taryn.mp3-3816ba89ce83f7f59cae0eb1075261e7.mp3str"
+
+[deps]
+
+source_file="res://src/Sons/Taryn.mp3"
+dest_files=[ "res://.import/Taryn.mp3-3816ba89ce83f7f59cae0eb1075261e7.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

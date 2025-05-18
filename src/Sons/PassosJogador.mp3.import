@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/PassosJogador.mp3-c7cad9936c65212102cd9d74bcccea5f.mp3str"
+
+[deps]
+
+source_file="res://src/Sons/PassosJogador.mp3"
+dest_files=[ "res://.import/PassosJogador.mp3-c7cad9936c65212102cd9d74bcccea5f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
