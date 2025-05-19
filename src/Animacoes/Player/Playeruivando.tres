@@ -80,3 +80,17 @@ tracks/5/keys = {
 "update": 0,
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 1, 0.643137, 0.313726 ), Color( 0, 1, 0.643137, 0.313726 ), Color( 0, 0, 0, 0 ) ]
 }
+tracks/6/type = "method"
+tracks/6/path = NodePath("Sons/Uivo")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
