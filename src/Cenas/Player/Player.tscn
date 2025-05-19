@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://src/Texturas/Player/animacao_correndo.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://src/Texturas/Cenario/Efeitos/circulo_gradiente.png" type="Texture" id=15]
 [ext_resource path="res://src/Som/SFX/Heroi/sfx_heroi_uivo.wav" type="AudioStream" id=16]
 [ext_resource path="res://src/Som/SFX/Heroi/sfx_heroi_acertado.wav" type="AudioStream" id=17]
+[ext_resource path="res://src/Som/SFX/Heroi/sfx_heroi_mordidawav.wav" type="AudioStream" id=18]
 
 [sub_resource type="ShaderMaterial" id=38]
 shader = ExtResource( 14 )
@@ -332,7 +333,7 @@ position = Vector2( -85, 0 )
 texture = ExtResource( 6 )
 hframes = 4
 vframes = 6
-frame = 8
+frame = 3
 region_rect = Rect2( 92, 2, 21, 33 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -414,6 +415,10 @@ bus = "Efeitos"
 
 [node name="Uivo" type="AudioStreamPlayer" parent="Player/Sons"]
 stream = ExtResource( 16 )
+bus = "Efeitos"
+
+[node name="Mordida" type="AudioStreamPlayer" parent="Player/Sons"]
+stream = ExtResource( 18 )
 bus = "Efeitos"
 
 [connection signal="body_entered" from="Player/Mordida" to="Player" method="_on_ZonaDeAtaque_body_entered"]
