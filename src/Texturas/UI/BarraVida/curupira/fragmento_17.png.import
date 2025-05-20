@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/animacao_parado.png-ebdfc8c7e586190536cd6d5a3109513f.stex"
+path="res://.import/fragmento_17.png-ad41c9deb05b5e431ffe2bc4ce0bb014.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/Texturas/Espirito da Floresta/animacao_parado.png"
-dest_files=[ "res://.import/animacao_parado.png-ebdfc8c7e586190536cd6d5a3109513f.stex" ]
+source_file="res://src/Texturas/UI/BarraVida/curupira/fragmento_17.png"
+dest_files=[ "res://.import/fragmento_17.png-ad41c9deb05b5e431ffe2bc4ce0bb014.stex" ]
 
 [params]
 
