@@ -10,6 +10,5 @@ var player = null
 
 var vidas = 0
 
-func iniciarlizar_vida():
-	vidas = 10
-
+func iniciarlizar_vida(valor):
+	vidas = valor
