@@ -1,0 +1,113 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://src/scripts/Player/BarraDeVida.gd" type="Script" id=1]
+[ext_resource path="res://src/Texturas/UI/BarraVida/curupira/fragmento_0.png" type="Texture" id=2]
+[ext_resource path="res://src/Texturas/UI/BarraVida/curupira/fragmento_8.png" type="Texture" id=3]
+[ext_resource path="res://src/Texturas/UI/BarraVida/curupira/fragmento_14.png" type="Texture" id=4]
+[ext_resource path="res://src/Texturas/UI/BarraVida/curupira/fragmento_11.png" type="Texture" id=5]
+[ext_resource path="res://src/Texturas/UI/BarraVida/curupira/fragmento_13.png" type="Texture" id=6]
+[ext_resource path="res://src/Texturas/UI/BarraVida/curupira/fragmento_9.png" type="Texture" id=7]
+[ext_resource path="res://src/Texturas/UI/BarraVida/curupira/fragmento_17.png" type="Texture" id=8]
+[ext_resource path="res://src/Texturas/UI/BarraVida/curupira/fragmento_6.png" type="Texture" id=9]
+[ext_resource path="res://src/Texturas/UI/BarraVida/curupira/fragmento_12.png" type="Texture" id=10]
+[ext_resource path="res://src/Texturas/UI/BarraVida/curupira/fragmento_4.png" type="Texture" id=11]
+[ext_resource path="res://src/Texturas/UI/BarraVida/curupira/fragmento_10.png" type="Texture" id=12]
+[ext_resource path="res://src/Texturas/UI/BarraVida/curupira/fragmento_18.png" type="Texture" id=13]
+[ext_resource path="res://src/Texturas/UI/BarraVida/curupira/barra.png" type="Texture" id=14]
+[ext_resource path="res://src/Texturas/UI/BarraVida/curupira/fragmento_7.png" type="Texture" id=15]
+[ext_resource path="res://src/Texturas/UI/BarraVida/curupira/fragmento_5.png" type="Texture" id=16]
+[ext_resource path="res://src/Texturas/UI/BarraVida/curupira/fragmento_15.png" type="Texture" id=17]
+[ext_resource path="res://src/Texturas/UI/BarraVida/curupira/fragmento_16.png" type="Texture" id=18]
+[ext_resource path="res://src/Texturas/UI/BarraVida/curupira/fragmento_19.png" type="Texture" id=19]
+[ext_resource path="res://src/Texturas/UI/BarraVida/curupira/fragmento_1.png" type="Texture" id=20]
+[ext_resource path="res://src/Texturas/UI/BarraVida/curupira/fragmento_2.png" type="Texture" id=21]
+[ext_resource path="res://src/Texturas/UI/BarraVida/curupira/fragmento_3.png" type="Texture" id=22]
+
+[node name="BarraVidaCurupira" type="Node2D"]
+script = ExtResource( 1 )
+total_vida = 20
+vida_jogador = false
+
+[node name="Fragmento0" type="Sprite" parent="."]
+position = Vector2( 96, -28 )
+texture = ExtResource( 2 )
+
+[node name="Fragmento1" type="Sprite" parent="."]
+position = Vector2( 96, -28 )
+texture = ExtResource( 20 )
+
+[node name="Fragmento2" type="Sprite" parent="."]
+position = Vector2( 96, -28 )
+texture = ExtResource( 21 )
+
+[node name="Fragmento3" type="Sprite" parent="."]
+position = Vector2( 96, -28 )
+texture = ExtResource( 22 )
+
+[node name="Fragmento4" type="Sprite" parent="."]
+position = Vector2( 96, -28 )
+texture = ExtResource( 11 )
+
+[node name="Fragmento5" type="Sprite" parent="."]
+position = Vector2( 96, -28 )
+texture = ExtResource( 16 )
+
+[node name="Fragmento6" type="Sprite" parent="."]
+position = Vector2( 96, -28 )
+texture = ExtResource( 9 )
+
+[node name="Fragmento7" type="Sprite" parent="."]
+position = Vector2( 96, -28 )
+texture = ExtResource( 15 )
+
+[node name="Fragmento8" type="Sprite" parent="."]
+position = Vector2( 96, -28 )
+texture = ExtResource( 3 )
+
+[node name="Fragmento9" type="Sprite" parent="."]
+position = Vector2( 96, -28 )
+texture = ExtResource( 7 )
+
+[node name="Fragmento10" type="Sprite" parent="."]
+position = Vector2( 96, -28 )
+texture = ExtResource( 12 )
+
+[node name="Fragmento11" type="Sprite" parent="."]
+position = Vector2( 96, -28 )
+texture = ExtResource( 5 )
+
+[node name="Fragmento12" type="Sprite" parent="."]
+position = Vector2( 96, -28 )
+texture = ExtResource( 10 )
+
+[node name="Fragmento13" type="Sprite" parent="."]
+position = Vector2( 96, -28 )
+texture = ExtResource( 6 )
+
+[node name="Fragmento14" type="Sprite" parent="."]
+position = Vector2( 96, -28 )
+texture = ExtResource( 4 )
+
+[node name="Fragmento15" type="Sprite" parent="."]
+position = Vector2( 96, -28 )
+texture = ExtResource( 17 )
+
+[node name="Fragmento16" type="Sprite" parent="."]
+position = Vector2( 96, -28 )
+texture = ExtResource( 18 )
+
+[node name="Fragmento17" type="Sprite" parent="."]
+position = Vector2( 96, -28 )
+texture = ExtResource( 8 )
+
+[node name="Fragmento18" type="Sprite" parent="."]
+position = Vector2( 96, -28 )
+texture = ExtResource( 13 )
+
+[node name="Fragmento19" type="Sprite" parent="."]
+position = Vector2( 96, -28 )
+texture = ExtResource( 19 )
+
+[node name="Barra" type="Sprite" parent="."]
+position = Vector2( 96, -28 )
+texture = ExtResource( 14 )
