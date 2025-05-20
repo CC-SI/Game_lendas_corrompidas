@@ -25,7 +25,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.4 ),
+"times": PoolRealArray( 0.47 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -37,7 +37,9 @@ tracks/1/keys = {
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 1, 0.827451, 0.662745, 0.352941 )
+modulate = Color( 1, 0.827451, 0.662745, 0.588235 )
+light_mask = 0
+z_index = 101
 texture = ExtResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
@@ -47,7 +49,7 @@ build_mode = 1
 polygon = PoolVector2Array( -476.768, 16.1616, -452.525, -153.535, -355.556, -323.232, -202.02, -444.444, 40.404, -476.768, 266.667, -404.04, 404.04, -266.667, 468.687, -105.05, 468.687, 88.8889, 420.202, 234.343, 290.909, 387.879, 80.8081, 476.768, -113.131, 468.687, -307.071, 379.798, -436.364, 210.101, -476.768, 24.2424, -452.525, 32.3232, -424, 168, -336, 304, -216, 400, -72.7273, 452.525, 80.8081, 444.444, 242.424, 387.879, 387.879, 242.424, 452.525, 72.7273, 444.444, -88.8889, 379.798, -258.586, 210.101, -404.04, 40, -448, -136, -432, -320, -328, -428.283, -153.535, -448, -16, -452.525, 24.2424 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 8.0
+wait_time = 2.5
 one_shot = true
 autostart = true
 
