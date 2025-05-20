@@ -61,13 +61,13 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.416667, 1.53024 ),
+"times": PoolRealArray( 0.416667, 1.52878 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "criar_bolas_fogo"
 }, {
 "args": [  ],
-"method": "atacar_bola_fogo"
+"method": "iniciar_lancamento_bola_fogo"
 } ]
 }

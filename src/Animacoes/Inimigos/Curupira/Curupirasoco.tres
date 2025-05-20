@@ -73,13 +73,13 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 2.51943, 2.52792 ),
+"times": PoolRealArray( 2.51461, 2.53274 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
-"method": "iniciar_timer_ataque"
+"method": "resetar_estado"
 }, {
 "args": [  ],
-"method": "resetar_estado"
+"method": "iniciar_timer_ataque"
 } ]
 }
