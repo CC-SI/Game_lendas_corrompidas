@@ -13,60 +13,71 @@
 [ext_resource path="res://src/Texturas/UI/BarraVida/player/fragmento_8.png" type="Texture" id=11]
 [ext_resource path="res://src/Texturas/UI/BarraVida/player/fragmento_4.png" type="Texture" id=12]
 
-[node name="BarraDeVida" type="Control"]
+[node name="BarraDeVida" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 240, 73 )
+position = Vector2( 58, 73 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 3 )
-
-[node name="Fragmento0" type="Sprite" parent="."]
-position = Vector2( 240, 73 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 10 )
-
-[node name="Fragmento1" type="Sprite" parent="."]
-position = Vector2( 240, 73 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 4 )
-
-[node name="Fragmento2" type="Sprite" parent="."]
-position = Vector2( 240, 73 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 8 )
-
-[node name="Fragmento3" type="Sprite" parent="."]
-position = Vector2( 240, 73 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 5 )
-
-[node name="Fragmento4" type="Sprite" parent="."]
-position = Vector2( 240, 73 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 12 )
-
-[node name="Fragmento5" type="Sprite" parent="."]
-position = Vector2( 240, 73 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 6 )
-
-[node name="Fragmento6" type="Sprite" parent="."]
-position = Vector2( 240, 73 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 2 )
-
-[node name="Fragmento7" type="Sprite" parent="."]
-position = Vector2( 240, 73 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 9 )
-
-[node name="Fragmento8" type="Sprite" parent="."]
-position = Vector2( 240, 73 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 11 )
+flip_h = true
 
 [node name="Fragmento9" type="Sprite" parent="."]
-position = Vector2( 240, 73 )
+position = Vector2( 58, 73 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 10 )
+flip_h = true
+
+[node name="Fragmento8" type="Sprite" parent="."]
+position = Vector2( 58, 73 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+flip_h = true
+
+[node name="Fragmento7" type="Sprite" parent="."]
+position = Vector2( 58, 73 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 8 )
+flip_h = true
+
+[node name="Fragmento6" type="Sprite" parent="."]
+position = Vector2( 58, 73 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+flip_h = true
+
+[node name="Fragmento5" type="Sprite" parent="."]
+position = Vector2( 58, 73 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 12 )
+flip_h = true
+
+[node name="Fragmento4" type="Sprite" parent="."]
+position = Vector2( 58, 73 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 6 )
+flip_h = true
+
+[node name="Fragmento3" type="Sprite" parent="."]
+position = Vector2( 58, 73 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 2 )
+flip_h = true
+
+[node name="Fragmento2" type="Sprite" parent="."]
+position = Vector2( 58, 73 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 9 )
+flip_h = true
+
+[node name="Fragmento1" type="Sprite" parent="."]
+position = Vector2( 58, 73 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 11 )
+flip_h = true
+
+[node name="Fragmento0" type="Sprite" parent="."]
+position = Vector2( 58, 73 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 7 )
+flip_h = true
