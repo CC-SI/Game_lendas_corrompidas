@@ -1,4 +1,48 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=35 format=2]
+[gd_resource type="AnimationNodeStateMachine" load_steps=46 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=40]
+animation = "começando_assobiar"
+
+[sub_resource type="AnimationNodeAnimation" id=41]
+animation = "terminando_lançar_bola_fogo"
+
+[sub_resource type="AnimationNodeAnimation" id=42]
+animation = "terminando_descansar"
+
+[sub_resource type="AnimationNodeAnimation" id=43]
+animation = "preparando_bola_fogo"
+
+[sub_resource type="AnimationNodeAnimation" id=44]
+animation = "terminando_assobiar"
+
+[sub_resource type="AnimationNodeAnimation" id=45]
+animation = "soco"
+
+[sub_resource type="AnimationNodeAnimation" id=46]
+animation = "começando_descansar"
+
+[sub_resource type="AnimationNodeTimeScale" id=47]
+
+[sub_resource type="AnimationNodeBlendTree" id=50]
+graph_offset = Vector2( -402.228, -50.5782 )
+nodes/Animation/node = SubResource( 46 )
+nodes/Animation/position = Vector2( 0, 160 )
+"nodes/Animation 2/node" = SubResource( 40 )
+"nodes/Animation 2/position" = Vector2( 40, 280 )
+"nodes/Animation 3/node" = SubResource( 41 )
+"nodes/Animation 3/position" = Vector2( 40, 420 )
+"nodes/Animation 4/node" = SubResource( 42 )
+"nodes/Animation 4/position" = Vector2( 0, 40 )
+"nodes/Animation 5/node" = SubResource( 43 )
+"nodes/Animation 5/position" = Vector2( 80, -80 )
+"nodes/Animation 6/node" = SubResource( 44 )
+"nodes/Animation 6/position" = Vector2( 80, 540 )
+"nodes/Animation 7/node" = SubResource( 45 )
+"nodes/Animation 7/position" = Vector2( -180, 340 )
+nodes/TimeScale/node = SubResource( 47 )
+nodes/TimeScale/position = Vector2( 360, 120 )
+nodes/output/position = Vector2( 620, 140 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=20]
 animation = "assobiando"
@@ -14,7 +58,7 @@ switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=24]
-advance_condition = "esta_parado"
+advance_condition = "esta_cansado"
 
 [sub_resource type="AnimationNodeStateMachine" id=1]
 states/assobiando/node = SubResource( 20 )
@@ -26,6 +70,7 @@ states/terminando_assobiar/position = Vector2( 911, 281 )
 transitions = [ "começando_assobiar", "assobiando", SubResource( 23 ), "assobiando", "terminando_assobiar", SubResource( 24 ) ]
 start_node = "começando_assobiar"
 end_node = "terminando_assobiar"
+graph_offset = Vector2( 0, 142.416 )
 
 [sub_resource type="AnimationNodeAnimation" id=25]
 animation = "lançando_bola_fogo"
@@ -53,6 +98,7 @@ states/preparando_bola_fogo/position = Vector2( 265, 302 )
 transitions = [ "preparando_bola_fogo", "lançando_bola_fogo", SubResource( 28 ), "lançando_bola_fogo", "terminando_lançar_bola_fogo", SubResource( 29 ) ]
 start_node = "preparando_bola_fogo"
 end_node = "terminando_lançar_bola_fogo"
+graph_offset = Vector2( 0, 203.76 )
 
 [sub_resource type="AnimationNodeAnimation" id=30]
 animation = "começando_descansar"
@@ -80,6 +126,7 @@ states/terminando_descansar/position = Vector2( 847, 294 )
 transitions = [ "começando_descansar", "descansando", SubResource( 33 ), "descansando", "terminando_descansar", SubResource( 34 ) ]
 start_node = "começando_descansar"
 end_node = "terminando_descansar"
+graph_offset = Vector2( 0, 131.196 )
 
 [sub_resource type="AnimationNodeAnimation" id=4]
 animation = "derrotado"
@@ -90,15 +137,12 @@ animation = "parado"
 [sub_resource type="AnimationNodeAnimation" id=6]
 animation = "soco"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=7]
-advance_condition = "bola_fogo"
+[sub_resource type="AnimationNodeAnimation" id=35]
+animation = "teletransportando"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=8]
 switch_mode = 2
 auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=9]
-advance_condition = "esta_cansado"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=10]
 switch_mode = 2
@@ -106,10 +150,6 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=11]
 advance_condition = "assobio"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=12]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=13]
 advance_condition = "soco"
@@ -133,7 +173,22 @@ advance_condition = "esta_morto"
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
 advance_condition = "esta_morto"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=36]
+advance_condition = "esta_teletransportando"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=37]
+advance_condition = "soco"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=38]
+advance_condition = "bola_fogo"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=39]
+switch_mode = 2
+auto_advance = true
+
 [resource]
+states/BlendTree/node = SubResource( 50 )
+states/BlendTree/position = Vector2( 32.571, 375.477 )
 states/assobio/node = SubResource( 1 )
 states/assobio/position = Vector2( 562, 325 )
 states/bola_fogo/node = SubResource( 2 )
@@ -143,9 +198,12 @@ states/cansado/position = Vector2( 562, 239 )
 states/derrotado/node = SubResource( 4 )
 states/derrotado/position = Vector2( 907, 281 )
 states/parado/node = SubResource( 5 )
-states/parado/position = Vector2( 305, 281 )
+states/parado/position = Vector2( 139, 281 )
 states/soco/node = SubResource( 6 )
 states/soco/position = Vector2( 562, 405 )
-transitions = [ "parado", "bola_fogo", SubResource( 7 ), "bola_fogo", "parado", SubResource( 8 ), "parado", "cansado", SubResource( 9 ), "cansado", "parado", SubResource( 10 ), "parado", "assobio", SubResource( 11 ), "assobio", "parado", SubResource( 12 ), "parado", "soco", SubResource( 13 ), "soco", "parado", SubResource( 14 ), "soco", "derrotado", SubResource( 15 ), "assobio", "derrotado", SubResource( 16 ), "cansado", "derrotado", SubResource( 17 ), "bola_fogo", "derrotado", SubResource( 18 ), "parado", "derrotado", SubResource( 19 ) ]
+states/teletransportando/node = SubResource( 35 )
+states/teletransportando/position = Vector2( 342, 452.626 )
+transitions = [ "bola_fogo", "parado", SubResource( 8 ), "cansado", "parado", SubResource( 10 ), "parado", "assobio", SubResource( 11 ), "parado", "soco", SubResource( 13 ), "soco", "parado", SubResource( 14 ), "soco", "derrotado", SubResource( 15 ), "assobio", "derrotado", SubResource( 16 ), "cansado", "derrotado", SubResource( 17 ), "bola_fogo", "derrotado", SubResource( 18 ), "parado", "derrotado", SubResource( 19 ), "parado", "teletransportando", SubResource( 36 ), "teletransportando", "soco", SubResource( 37 ), "teletransportando", "bola_fogo", SubResource( 38 ), "assobio", "cansado", SubResource( 39 ) ]
 start_node = "parado"
 end_node = "derrotado"
+graph_offset = Vector2( -133.429, 166.135 )
