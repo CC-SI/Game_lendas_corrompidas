@@ -40,6 +40,7 @@ export var vidas = 20
 var contagem_ondas_sonoras = 0
 
 func _ready():
+	randomize()
 	iniciar_timer_ataque()
 	bgm.play(0);
 
@@ -73,7 +74,7 @@ func decides_to_attack():
 	pode_atacar = false
 	ataques_realizados += 1
 	
-	attack_choice = "soco" if rand_range(0, 1) > 0.5 else "bola_fogo"
+	attack_choice = "soco" if randf() > 0.5 else "bola_fogo"
 	
 	if !isOutZone:
 		atacar()
