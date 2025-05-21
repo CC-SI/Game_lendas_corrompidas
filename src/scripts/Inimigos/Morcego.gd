@@ -30,7 +30,7 @@ func _ready():
 	timer.one_shot = true
 	timer.connect("timeout", self, "_on_Timer_timeout")
 
-func _process(delta):
+func _physics_process(delta):
 	match estado:
 		"voando":
 			move_patrol(delta)

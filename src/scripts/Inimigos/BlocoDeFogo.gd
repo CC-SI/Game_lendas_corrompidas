@@ -16,7 +16,7 @@ func _ready():
 func set_direcao(nova_direcao):
 	velocity = nova_direcao.normalized() * rand_range(400, 650)
 
-func _process(delta):
+func _physics_process(delta):
 	if has_landed:
 		velocity.x = lerp(velocity.x, 0, 2 * delta) 
 		velocity.y = 0

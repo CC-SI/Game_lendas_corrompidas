@@ -24,7 +24,7 @@ func _ready():
 	timer_ataque.one_shot = true
 	timer_ataque.connect("timeout", self, "_fim_do_ataque")
 
-func _process(delta):
+func _physics_process(delta):
 	if esta_morto:
 		alvo = null
 		

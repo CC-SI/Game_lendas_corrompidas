@@ -37,7 +37,7 @@ func _ready():
 	input_ativo = true
 
 # -- PROCESSO PRINCIPAL --
-func _process(delta):
+func _physics_process(delta):
 	if estado_jogador == "morto":
 		return
 	

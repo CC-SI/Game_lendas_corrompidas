@@ -15,7 +15,7 @@ func _ready():
 	texto_ajuda.visible = false
 	resetar_plataforma()
 
-func _process(delta):
+func _physics_process(delta):
 	if jogador_na_zona_inicial:
 		if plataforma_movendo:
 			texto_ajuda.visible = true
