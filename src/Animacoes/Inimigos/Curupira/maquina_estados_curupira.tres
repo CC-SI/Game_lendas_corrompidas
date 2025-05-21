@@ -1,73 +1,49 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=46 format=2]
+[gd_resource type="AnimationNodeStateMachine" load_steps=49 format=2]
 
 [sub_resource type="AnimationNodeAnimation" id=40]
-animation = "começando_assobiar"
+animation = "assobiando"
 
 [sub_resource type="AnimationNodeAnimation" id=41]
-animation = "terminando_lançar_bola_fogo"
+animation = "começando_assobiar"
 
-[sub_resource type="AnimationNodeAnimation" id=42]
-animation = "terminando_descansar"
+[sub_resource type="AnimationNodeTimeScale" id=42]
 
-[sub_resource type="AnimationNodeAnimation" id=43]
-animation = "preparando_bola_fogo"
+[sub_resource type="AnimationNodeBlendTree" id=43]
+graph_offset = Vector2( -487.136, -69.9854 )
+nodes/Animation/node = SubResource( 41 )
+nodes/Animation/position = Vector2( -240, 240 )
+nodes/TimeScale/node = SubResource( 42 )
+nodes/TimeScale/position = Vector2( 53.0835, 191.541 )
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
 
 [sub_resource type="AnimationNodeAnimation" id=44]
 animation = "terminando_assobiar"
 
-[sub_resource type="AnimationNodeAnimation" id=45]
-animation = "soco"
+[sub_resource type="AnimationNodeTimeScale" id=45]
 
-[sub_resource type="AnimationNodeAnimation" id=46]
-animation = "começando_descansar"
+[sub_resource type="AnimationNodeBlendTree" id=46]
+graph_offset = Vector2( -498, -22 )
+nodes/Animation/node = SubResource( 44 )
+nodes/Animation/position = Vector2( -220, 320 )
+nodes/TimeScale/node = SubResource( 45 )
+nodes/TimeScale/position = Vector2( 66.24, 234.72 )
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
 
-[sub_resource type="AnimationNodeTimeScale" id=47]
-
-[sub_resource type="AnimationNodeBlendTree" id=50]
-graph_offset = Vector2( -402.228, -50.5782 )
-nodes/Animation/node = SubResource( 46 )
-nodes/Animation/position = Vector2( 0, 160 )
-"nodes/Animation 2/node" = SubResource( 40 )
-"nodes/Animation 2/position" = Vector2( 40, 280 )
-"nodes/Animation 3/node" = SubResource( 41 )
-"nodes/Animation 3/position" = Vector2( 40, 420 )
-"nodes/Animation 4/node" = SubResource( 42 )
-"nodes/Animation 4/position" = Vector2( 0, 40 )
-"nodes/Animation 5/node" = SubResource( 43 )
-"nodes/Animation 5/position" = Vector2( 80, -80 )
-"nodes/Animation 6/node" = SubResource( 44 )
-"nodes/Animation 6/position" = Vector2( 80, 540 )
-"nodes/Animation 7/node" = SubResource( 45 )
-"nodes/Animation 7/position" = Vector2( -180, 340 )
-nodes/TimeScale/node = SubResource( 47 )
-nodes/TimeScale/position = Vector2( 360, 120 )
-nodes/output/position = Vector2( 620, 140 )
-node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
-
-[sub_resource type="AnimationNodeAnimation" id=20]
-animation = "assobiando"
-
-[sub_resource type="AnimationNodeAnimation" id=21]
-animation = "começando_assobiar"
-
-[sub_resource type="AnimationNodeAnimation" id=22]
-animation = "terminando_assobiar"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+[sub_resource type="AnimationNodeStateMachineTransition" id=47]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=24]
-advance_condition = "esta_cansado"
+[sub_resource type="AnimationNodeStateMachineTransition" id=48]
+advance_condition = "esta_parado"
 
 [sub_resource type="AnimationNodeStateMachine" id=1]
-states/assobiando/node = SubResource( 20 )
-states/assobiando/position = Vector2( 658, 201 )
-"states/começando_assobiar/node" = SubResource( 21 )
-"states/começando_assobiar/position" = Vector2( 421, 281 )
-states/terminando_assobiar/node = SubResource( 22 )
+states/assobiando/node = SubResource( 40 )
+states/assobiando/position = Vector2( 654, 204.416 )
+"states/começando_assobiar/node" = SubResource( 43 )
+"states/começando_assobiar/position" = Vector2( 404, 281 )
+states/terminando_assobiar/node = SubResource( 46 )
 states/terminando_assobiar/position = Vector2( 911, 281 )
-transitions = [ "começando_assobiar", "assobiando", SubResource( 23 ), "assobiando", "terminando_assobiar", SubResource( 24 ) ]
+transitions = [ "começando_assobiar", "assobiando", SubResource( 47 ), "assobiando", "terminando_assobiar", SubResource( 48 ) ]
 start_node = "começando_assobiar"
 end_node = "terminando_assobiar"
 graph_offset = Vector2( 0, 142.416 )
@@ -75,30 +51,50 @@ graph_offset = Vector2( 0, 142.416 )
 [sub_resource type="AnimationNodeAnimation" id=25]
 animation = "lançando_bola_fogo"
 
-[sub_resource type="AnimationNodeAnimation" id=26]
+[sub_resource type="AnimationNodeAnimation" id=49]
 animation = "preparando_bola_fogo"
 
-[sub_resource type="AnimationNodeAnimation" id=27]
+[sub_resource type="AnimationNodeTimeScale" id=50]
+
+[sub_resource type="AnimationNodeBlendTree" id=51]
+graph_offset = Vector2( -640.395, 53.3408 )
+nodes/Animation/node = SubResource( 49 )
+nodes/Animation/position = Vector2( -180, 280 )
+nodes/TimeScale/node = SubResource( 50 )
+nodes/TimeScale/position = Vector2( 118.605, 203.341 )
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+
+[sub_resource type="AnimationNodeAnimation" id=52]
 animation = "terminando_lançar_bola_fogo"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+[sub_resource type="AnimationNodeTimeScale" id=53]
+
+[sub_resource type="AnimationNodeBlendTree" id=54]
+graph_offset = Vector2( -696.251, -150.226 )
+nodes/Animation/node = SubResource( 52 )
+nodes/Animation/position = Vector2( -280, 300 )
+nodes/TimeScale/node = SubResource( 53 )
+nodes/TimeScale/position = Vector2( 85, 216 )
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=55]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+[sub_resource type="AnimationNodeStateMachineTransition" id=56]
 advance_condition = "esta_parado"
 
 [sub_resource type="AnimationNodeStateMachine" id=2]
 "states/lançando_bola_fogo/node" = SubResource( 25 )
 "states/lançando_bola_fogo/position" = Vector2( 550, 215 )
-states/preparando_bola_fogo/node = SubResource( 26 )
-states/preparando_bola_fogo/position = Vector2( 265, 302 )
-"states/terminando_lançar_bola_fogo/node" = SubResource( 27 )
-"states/terminando_lançar_bola_fogo/position" = Vector2( 871, 302 )
-transitions = [ "preparando_bola_fogo", "lançando_bola_fogo", SubResource( 28 ), "lançando_bola_fogo", "terminando_lançar_bola_fogo", SubResource( 29 ) ]
+states/preparando_bola_fogo/node = SubResource( 51 )
+states/preparando_bola_fogo/position = Vector2( 265, 311.76 )
+"states/terminando_lançar_bola_fogo/node" = SubResource( 54 )
+"states/terminando_lançar_bola_fogo/position" = Vector2( 871, 311.76 )
+transitions = [ "preparando_bola_fogo", "lançando_bola_fogo", SubResource( 55 ), "lançando_bola_fogo", "terminando_lançar_bola_fogo", SubResource( 56 ) ]
 start_node = "preparando_bola_fogo"
 end_node = "terminando_lançar_bola_fogo"
-graph_offset = Vector2( 0, 203.76 )
+graph_offset = Vector2( -104, 95.76 )
 
 [sub_resource type="AnimationNodeAnimation" id=30]
 animation = "começando_descansar"
@@ -134,11 +130,31 @@ animation = "derrotado"
 [sub_resource type="AnimationNodeAnimation" id=5]
 animation = "parado"
 
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=57]
 animation = "soco"
 
-[sub_resource type="AnimationNodeAnimation" id=35]
+[sub_resource type="AnimationNodeTimeScale" id=58]
+
+[sub_resource type="AnimationNodeBlendTree" id=59]
+graph_offset = Vector2( -450, -78 )
+nodes/Animation/node = SubResource( 57 )
+nodes/Animation/position = Vector2( -100, 180 )
+nodes/TimeScale/node = SubResource( 58 )
+nodes/TimeScale/position = Vector2( 100, 140 )
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+
+[sub_resource type="AnimationNodeAnimation" id=60]
 animation = "teletransportando"
+
+[sub_resource type="AnimationNodeTimeScale" id=61]
+
+[sub_resource type="AnimationNodeBlendTree" id=62]
+graph_offset = Vector2( -322, -52 )
+nodes/Animation/node = SubResource( 60 )
+nodes/Animation/position = Vector2( -160, 180 )
+nodes/TimeScale/node = SubResource( 61 )
+nodes/TimeScale/position = Vector2( 100, 140 )
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=8]
 switch_mode = 2
@@ -150,16 +166,6 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=11]
 advance_condition = "assobio"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=13]
-advance_condition = "soco"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=14]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=15]
-advance_condition = "esta_morto"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=16]
 advance_condition = "esta_morto"
@@ -173,22 +179,30 @@ advance_condition = "esta_morto"
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
 advance_condition = "esta_morto"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=36]
-advance_condition = "esta_teletransportando"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=37]
-advance_condition = "soco"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=38]
-advance_condition = "bola_fogo"
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=39]
 switch_mode = 2
 auto_advance = true
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=63]
+advance_condition = "esta_teletransportando"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=64]
+advance_condition = "bola_fogo"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=65]
+advance_condition = "esta_morto"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=66]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=67]
+advance_condition = "soco"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=68]
+advance_condition = "soco"
+
 [resource]
-states/BlendTree/node = SubResource( 50 )
-states/BlendTree/position = Vector2( 32.571, 375.477 )
 states/assobio/node = SubResource( 1 )
 states/assobio/position = Vector2( 562, 325 )
 states/bola_fogo/node = SubResource( 2 )
@@ -199,11 +213,11 @@ states/derrotado/node = SubResource( 4 )
 states/derrotado/position = Vector2( 907, 281 )
 states/parado/node = SubResource( 5 )
 states/parado/position = Vector2( 139, 281 )
-states/soco/node = SubResource( 6 )
+states/soco/node = SubResource( 59 )
 states/soco/position = Vector2( 562, 405 )
-states/teletransportando/node = SubResource( 35 )
-states/teletransportando/position = Vector2( 342, 452.626 )
-transitions = [ "bola_fogo", "parado", SubResource( 8 ), "cansado", "parado", SubResource( 10 ), "parado", "assobio", SubResource( 11 ), "parado", "soco", SubResource( 13 ), "soco", "parado", SubResource( 14 ), "soco", "derrotado", SubResource( 15 ), "assobio", "derrotado", SubResource( 16 ), "cansado", "derrotado", SubResource( 17 ), "bola_fogo", "derrotado", SubResource( 18 ), "parado", "derrotado", SubResource( 19 ), "parado", "teletransportando", SubResource( 36 ), "teletransportando", "soco", SubResource( 37 ), "teletransportando", "bola_fogo", SubResource( 38 ), "assobio", "cansado", SubResource( 39 ) ]
+states/teletransportando/node = SubResource( 62 )
+states/teletransportando/position = Vector2( 333.571, 405 )
+transitions = [ "bola_fogo", "parado", SubResource( 8 ), "cansado", "parado", SubResource( 10 ), "parado", "assobio", SubResource( 11 ), "assobio", "derrotado", SubResource( 16 ), "cansado", "derrotado", SubResource( 17 ), "bola_fogo", "derrotado", SubResource( 18 ), "parado", "derrotado", SubResource( 19 ), "assobio", "cansado", SubResource( 39 ), "parado", "teletransportando", SubResource( 63 ), "teletransportando", "bola_fogo", SubResource( 64 ), "soco", "derrotado", SubResource( 65 ), "soco", "parado", SubResource( 66 ), "parado", "soco", SubResource( 67 ), "teletransportando", "soco", SubResource( 68 ) ]
 start_node = "parado"
 end_node = "derrotado"
-graph_offset = Vector2( -133.429, 166.135 )
+graph_offset = Vector2( -116.429, 55.11 )
