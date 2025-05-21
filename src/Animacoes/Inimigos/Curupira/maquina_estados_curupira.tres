@@ -34,7 +34,7 @@ switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=48]
-advance_condition = "esta_parado"
+advance_condition = "esta_cansado"
 
 [sub_resource type="AnimationNodeStateMachine" id=1]
 states/assobiando/node = SubResource( 40 )
@@ -220,4 +220,4 @@ states/teletransportando/position = Vector2( 333.571, 405 )
 transitions = [ "bola_fogo", "parado", SubResource( 8 ), "cansado", "parado", SubResource( 10 ), "parado", "assobio", SubResource( 11 ), "assobio", "derrotado", SubResource( 16 ), "cansado", "derrotado", SubResource( 17 ), "bola_fogo", "derrotado", SubResource( 18 ), "parado", "derrotado", SubResource( 19 ), "assobio", "cansado", SubResource( 39 ), "parado", "teletransportando", SubResource( 63 ), "teletransportando", "bola_fogo", SubResource( 64 ), "soco", "derrotado", SubResource( 65 ), "soco", "parado", SubResource( 66 ), "parado", "soco", SubResource( 67 ), "teletransportando", "soco", SubResource( 68 ) ]
 start_node = "parado"
 end_node = "derrotado"
-graph_offset = Vector2( -116.429, 55.11 )
+graph_offset = Vector2( -96.429, 164.11 )
