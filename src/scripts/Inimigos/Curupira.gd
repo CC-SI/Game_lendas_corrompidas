@@ -31,9 +31,9 @@ var isOutZone: bool = true
 var attack_choice = ""
 
 #intervalos de tempo
-var intervalo_ataque
-var intervalo_bola_fogo
-var intervalo_assobio
+var intervalo_ataque = 1.75
+var intervalo_bola_fogo = 1.25
+var intervalo_assobio = 2
 
 export var vidas = 20
 
@@ -65,7 +65,7 @@ func _physics_process(delta):
 		decides_to_attack()
 
 func decides_to_attack():
-	if ataques_realizados >= 3:
+	if ataques_realizados >= (5 if bravo else 3):
 		estado = "assobiando"
 		ataques_realizados = 0
 		return
@@ -124,9 +124,15 @@ func aplicar_dano(valor):
 
 func resetar_estado():
 	estado = "parado"
-	intervalo_ataque = 1 if bravo else 2
-	intervalo_assobio = 1.5 if bravo else 2.5
-	intervalo_bola_fogo = 0.5 if bravo else 1.5
+	
+	if bravo:
+		modo_bravo()
+
+func modo_bravo():
+	$AnimacaoCurupira.aumentar_velocidade()
+	intervalo_ataque = 1
+	intervalo_assobio = 1.4
+	intervalo_bola_fogo = 0.5
 
 func descansar():
 	$DescansoTimer.start(6)
@@ -199,12 +205,12 @@ func _on_AssobioTimer_timeout():
 	criar_onda_sonora()
 
 func _on_DescansoTimer_timeout():
-	estado = "parado"
+	resetar_estado()
 
 func _on_BolaFogoTimer_timeout():
 	if bolas_fogo_restantes.empty():
 		$BolaFogoTimer.stop()
-		estado = "parado"
+		resetar_estado()
 		return
 	
 	lancar_bola_fogo()

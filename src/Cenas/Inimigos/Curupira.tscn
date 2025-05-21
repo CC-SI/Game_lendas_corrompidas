@@ -99,7 +99,7 @@ material = SubResource( 14 )
 texture = ExtResource( 6 )
 hframes = 6
 vframes = 6
-frame = 5
+frame = 11
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Curupira"]
 anims/RESET = SubResource( 10 )
@@ -127,13 +127,18 @@ parameters/conditions/bola_fogo = false
 parameters/conditions/esta_morto = false
 parameters/conditions/esta_teletransportando = false
 parameters/conditions/soco = false
-parameters/BlendTree/TimeScale/scale = 1.0
 parameters/assobio/playback = SubResource( 7 )
 parameters/assobio/conditions/esta_cansado = false
+"parameters/assobio/começando_assobiar/TimeScale/scale" = 1.0
+parameters/assobio/terminando_assobiar/TimeScale/scale = 1.0
 parameters/bola_fogo/playback = SubResource( 8 )
 parameters/bola_fogo/conditions/esta_parado = false
+parameters/bola_fogo/preparando_bola_fogo/TimeScale/scale = 1.0
+"parameters/bola_fogo/terminando_lançar_bola_fogo/TimeScale/scale" = 1.0
 parameters/cansado/playback = SubResource( 9 )
 parameters/cansado/conditions/esta_parado = false
+parameters/soco/TimeScale/scale = 1.2
+parameters/teletransportando/TimeScale/scale = 1.0
 
 [node name="AnimacaoCurupira" type="Node2D" parent="Curupira"]
 script = ExtResource( 3 )
@@ -209,9 +214,9 @@ z_index = 300
 [connection signal="body_entered" from="Curupira/ZonaDecisao" to="Curupira" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Curupira/ZonaDecisao" to="Curupira" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Curupira/Soco" to="Curupira" method="_on_Chute_body_entered"]
-[connection signal="timeout" from="Curupira/AtaqueTimer" to="Curupira" method="_on_Timer_timeout"]
-[connection signal="timeout" from="Curupira/AtaqueTimer" to="Curupira" method="_on_pos_assobio_timeout"]
 [connection signal="timeout" from="Curupira/AtaqueTimer" to="Curupira" method="_on_assobio_timeout"]
+[connection signal="timeout" from="Curupira/AtaqueTimer" to="Curupira" method="_on_pos_assobio_timeout"]
+[connection signal="timeout" from="Curupira/AtaqueTimer" to="Curupira" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Curupira/AssobioTimer" to="Curupira" method="_on_AssobioTimer_timeout"]
 [connection signal="timeout" from="Curupira/DescansoTimer" to="Curupira" method="_on_DescansoTimer_timeout"]
 [connection signal="timeout" from="Curupira/BolaFogoTimer" to="Curupira" method="_on_BolaFogoTimer_timeout"]
