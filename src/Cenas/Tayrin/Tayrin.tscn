@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Texturas/Tayrin/animacao_voando.png" type="Texture" id=1]
 [ext_resource path="res://src/Texturas/Tayrin/light.png" type="Texture" id=2]
+[ext_resource path="res://src/scripts/Tayrin/Tayrin.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=2]
 resource_name = "voando"
@@ -22,6 +23,8 @@ tracks/0/keys = {
 }
 
 [node name="Tayrin" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

@@ -19,7 +19,8 @@ onready var camera = $Camera2D
 onready var sprite = $Sprite
 onready var area2d = $Mordida
 onready var position2D = $Position2D
-onready var tayrin = $Tayrin
+var tayrin : Node2D
+onready var instancias = get_node("../Instancias")
 
 onready var uivo_cooldown = $UivoCooldown
 onready var bola_fogo_cooldown = $BolaFogoCooldown
@@ -40,6 +41,15 @@ func _ready():
 	camera.limit_left = 0
 	DadosGlobais.player = self
 	input_ativo = true
+	
+	if !tayrin:
+		tayrin = preload("res://src/Cenas/Tayrin/Tayrin.tscn").instance()
+		tayrin.name = "teste"
+		instancias.add_child(tayrin)
+		tayrin = instancias.get_node("teste")
+		
+		tayrin.global_position = $Tayrin.global_position
+		tayrin.seguir($Tayrin);
 
 # -- PROCESSO PRINCIPAL --
 func _physics_process(delta):
@@ -97,7 +107,7 @@ func mudarLadoSprite():
 	sprite.position.x = abs(sprite.position.x) * -lado
 	area2d.scale.x = lado
 	position2D.position.x = abs(position2D.position.x) * lado
-	tayrin.position.x = abs(tayrin.position.x) * -lado
+	$Tayrin.position.x = abs($Tayrin.position.x) * -lado
 
 func resetar_estado():
 	estado_jogador = "padrao"
