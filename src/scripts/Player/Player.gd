@@ -46,9 +46,6 @@ func _physics_process(delta):
 	if estado_jogador == "morto" or estado_jogador == "dano":
 		return
 	
-	if global_position.y > 4000 and estado_jogador != "morto":
-		levar_dano(DadosGlobais.vidas)
-		
 	morrer()
 	movePlayer()
 	mudarLadoSprite()
