@@ -12,6 +12,7 @@ var estado_jogador = "padrao"
 var lado = 1
 var pulos_restantes = 1
 var direcao = Vector2.ZERO
+var esta_vuneravel = true
 
 # -- REFERÊNCIAS --
 onready var camera = $Camera2D
@@ -85,6 +86,7 @@ func movePlayer():
 	if Input.is_action_just_pressed("dash"):
 		direcao.x = lado * force_dash
 		estado_jogador = "dash"
+		esta_vuneravel = false
 		dash_cooldown.start()
 		
 
@@ -97,6 +99,7 @@ func mudarLadoSprite():
 
 func resetar_estado():
 	estado_jogador = "padrao"
+	esta_vuneravel = true
 
 func renascer(posicao):
 	global_position = posicao
@@ -128,6 +131,7 @@ func atirar_bola():
 func verificar_mordida():
 	if Input.is_action_just_pressed("mordida"):
 		estado_jogador = "mordida"
+		esta_vuneravel = false
 		var isAcertou = false
 		for inimigo in inimigo_na_area:
 			inimigo.levar_dano(1)
@@ -140,6 +144,7 @@ func usar_uivo():
 	
 	if Input.is_action_just_pressed("uivo"):
 		estado_jogador = "uivo"
+		esta_vuneravel = false
 		uivo_cooldown.start()
 		
 		for inimigo in inimigos_no_uivo:
@@ -156,7 +161,11 @@ func _on_bola_acertou(inimigo):
 		inimigo.levar_dano(3)
 
 func levar_dano(valor):
+	if !esta_vuneravel:
+		return
+	
 	estado_jogador = "dano"
+	esta_vuneravel = false
 	
 	var material = sprite.material
 	material.set_shader_param("flash", true)
@@ -213,5 +222,6 @@ func morrer():
 	if DadosGlobais.vidas <= 0:
 		input_ativo = false
 		estado_jogador = "morto"
+		esta_vuneravel = false
 		yield(get_tree().create_timer(0.5), "timeout")
 		get_tree().change_scene("res://src/Cenas/GameOver.tscn")
