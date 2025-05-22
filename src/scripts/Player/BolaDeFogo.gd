@@ -10,6 +10,8 @@ var ladoSprite
 
 onready var sprite = $Sprite
 onready var area2d = $Area2D
+onready var acertarNodeSom = get_node("../Som/Acertar")
+onready var lancarNodeSom = get_node("../Som/Lancar")
 
 var inimigos = DadosGlobais.LISTA_INIMIGOS
 var posicao_inicial = Vector2.ZERO
@@ -30,6 +32,7 @@ func atirarBola(lado):
 	ladoSprite = lado
 	mudarLadoSprite()
 	posicao_inicial = global_position
+	lancarNodeSom.play(0)
 
 func mudarLadoSprite():
 	sprite.flip_v = ladoSprite != 1
@@ -38,5 +41,6 @@ func mudarLadoSprite():
 func _on_AcertouInimigo_body_entered(body):
 	if body.name in inimigos:
 		print("Acertou: ", body.name)
-		emit_signal("acertou_inimigo", body) 
+		emit_signal("acertou_inimigo", body)
+		acertarNodeSom.play(0)
 		queue_free()
