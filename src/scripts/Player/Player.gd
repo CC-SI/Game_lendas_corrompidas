@@ -51,6 +51,7 @@ func _physics_process(delta):
 		
 	movePlayer()
 	mudarLadoSprite()
+	dash()
 	direcao = move_and_slide(direcao, Vector2.UP)
 
 	verificar_mordida()
@@ -80,15 +81,16 @@ func movePlayer():
 			direcao.y = -forca_pulo
 			pulos_restantes -= 1
 
+func dash():
 	if !dash_cooldown.is_stopped():
 		return
 	
 	if Input.is_action_just_pressed("dash"):
-		direcao.x = lado * force_dash
 		estado_jogador = "dash"
 		esta_vuneravel = false
 		dash_cooldown.start()
 		
+		direcao.x = lado * force_dash
 
 func mudarLadoSprite():
 	sprite.flip_h = lado != 1
