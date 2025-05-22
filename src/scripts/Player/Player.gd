@@ -110,6 +110,7 @@ func aumentar_vida(valor):
 	if DadosGlobais.vidas >= 10: 
 		return
 	
+	$Sons/Vida.play(0)
 	DadosGlobais.vidas += valor
 
 # ATAQUES E HABILIDADES

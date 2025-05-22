@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://src/Texturas/Player/animacao_correndo.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://src/Som/SFX/Heroi/sfx_heroi_acertado.wav" type="AudioStream" id=17]
 [ext_resource path="res://src/Som/SFX/Heroi/sfx_heroi_mordidawav.wav" type="AudioStream" id=18]
 [ext_resource path="res://src/Som/SFX/Heroi/sfx_heroi_pulo.wav" type="AudioStream" id=19]
+[ext_resource path="res://src/Som/SFX/Outros/sfx_item_vida.wav" type="AudioStream" id=20]
 
 [sub_resource type="ShaderMaterial" id=38]
 shader = ExtResource( 14 )
@@ -360,7 +361,7 @@ position = Vector2( -85, 0 )
 texture = ExtResource( 6 )
 hframes = 4
 vframes = 6
-frame = 2
+frame = 20
 region_rect = Rect2( 92, 2, 21, 33 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -449,6 +450,14 @@ bus = "Efeitos"
 stream = ExtResource( 18 )
 bus = "Efeitos"
 
+[node name="Pulo" type="AudioStreamPlayer" parent="Player/Sons"]
+stream = ExtResource( 19 )
+bus = "Efeitos"
+
+[node name="Vida" type="AudioStreamPlayer" parent="Player/Sons"]
+stream = ExtResource( 20 )
+bus = "Efeitos"
+
 [node name="UivoCooldown" type="Timer" parent="Player"]
 wait_time = 3.0
 one_shot = true
@@ -459,10 +468,6 @@ one_shot = true
 
 [node name="DashCooldown" type="Timer" parent="Player"]
 one_shot = true
-
-[node name="Pulo" type="AudioStreamPlayer" parent="Player/Sons"]
-stream = ExtResource( 19 )
-bus = "Efeitos"
 
 [connection signal="body_entered" from="Player/Mordida" to="Player" method="_on_ZonaDeAtaque_body_entered"]
 [connection signal="body_exited" from="Player/Mordida" to="Player" method="_on_ZonaDeAtaque_body_exited"]
