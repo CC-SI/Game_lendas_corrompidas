@@ -333,7 +333,7 @@ position = Vector2( -85, 0 )
 texture = ExtResource( 6 )
 hframes = 4
 vframes = 6
-frame = 3
+frame = 2
 region_rect = Rect2( 92, 2, 21, 33 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -363,6 +363,7 @@ parameters/conditions/esta_morto = false
 parameters/conditions/esta_movimentando = false
 parameters/conditions/esta_uivando = false
 parameters/conditions/levou_dano = false
+parameters/dash/TimeScale/scale = 2.0
 parameters/movimentacao/blend_position = Vector2( -0.000794291, 0 )
 
 [node name="ControladorAnimacao" type="Node2D" parent="Player"]
@@ -420,6 +421,17 @@ bus = "Efeitos"
 [node name="Mordida" type="AudioStreamPlayer" parent="Player/Sons"]
 stream = ExtResource( 18 )
 bus = "Efeitos"
+
+[node name="UivoCooldown" type="Timer" parent="Player"]
+wait_time = 3.0
+one_shot = true
+
+[node name="BolaFogoCooldown" type="Timer" parent="Player"]
+wait_time = 2.0
+one_shot = true
+
+[node name="DashCooldown" type="Timer" parent="Player"]
+one_shot = true
 
 [connection signal="body_entered" from="Player/Mordida" to="Player" method="_on_ZonaDeAtaque_body_entered"]
 [connection signal="body_exited" from="Player/Mordida" to="Player" method="_on_ZonaDeAtaque_body_exited"]

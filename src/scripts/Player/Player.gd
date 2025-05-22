@@ -20,6 +20,10 @@ onready var area2d = $Mordida
 onready var position2D = $Position2D
 onready var tayrin = $Tayrin
 
+onready var uivo_cooldown = $UivoCooldown
+onready var bola_fogo_cooldown = $BolaFogoCooldown
+onready var dash_cooldown = $DashCooldown
+
 # -- CONTROLE DE INIMIGOS --
 var inimigo_na_area = []
 var inimigos_no_uivo = []
@@ -75,9 +79,14 @@ func movePlayer():
 			direcao.y = -forca_pulo
 			pulos_restantes -= 1
 
+	if !dash_cooldown.is_stopped():
+		return
+	
 	if Input.is_action_just_pressed("dash"):
 		direcao.x = lado * force_dash
 		estado_jogador = "dash"
+		dash_cooldown.start()
+		
 
 func mudarLadoSprite():
 	sprite.flip_h = lado != 1
@@ -100,7 +109,12 @@ func aumentar_vida(valor):
 
 # ATAQUES E HABILIDADES
 func atirar_bola():
+	if !bola_fogo_cooldown.is_stopped():
+		return
+	
 	if Input.is_action_just_pressed("atirar"):
+		bola_fogo_cooldown.start()
+		
 		var bola = bolaDeFogo.instance()
 		get_parent().add_child(bola)
 
@@ -121,8 +135,13 @@ func verificar_mordida():
 			break
 
 func usar_uivo():
+	if !uivo_cooldown.is_stopped():
+		return
+	
 	if Input.is_action_just_pressed("uivo"):
 		estado_jogador = "uivo"
+		uivo_cooldown.start()
+		
 		for inimigo in inimigos_no_uivo:
 			var mudar_velocidade = 0
 			
