@@ -43,22 +43,25 @@ func _ready():
 
 # -- PROCESSO PRINCIPAL --
 func _physics_process(delta):
-	if estado_jogador == "morto":
+	if estado_jogador == "morto" or estado_jogador == "dano":
 		return
 	
 	if global_position.y > 4000 and estado_jogador != "morto":
 		levar_dano(DadosGlobais.vidas)
 		
+	morrer()
 	movePlayer()
 	mudarLadoSprite()
+	
+	if estado_jogador != "padrao":
+		direcao = move_and_slide(direcao, Vector2.UP)
+		return
+	
 	dash()
 	direcao = move_and_slide(direcao, Vector2.UP)
-
 	verificar_mordida()
 	usar_uivo()
 	atirar_bola()
-	morrer()
-	
 
 
 # MOVIMENTAÇÃO E CONTROLES 
@@ -178,7 +181,7 @@ func levar_dano(valor):
 	material.set_shader_param("flash", false)
 	
 	yield(get_tree().create_timer(0.25), "timeout")
-	estado_jogador = "padrao"
+	resetar_estado()
 	velocidade = 400
 
 func aplicar_lentidao(duracao):
