@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://src/Texturas/Player/animacao_correndo.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://src/Som/SFX/Heroi/sfx_heroi_uivo.wav" type="AudioStream" id=16]
 [ext_resource path="res://src/Som/SFX/Heroi/sfx_heroi_acertado.wav" type="AudioStream" id=17]
 [ext_resource path="res://src/Som/SFX/Heroi/sfx_heroi_mordidawav.wav" type="AudioStream" id=18]
+[ext_resource path="res://src/Som/SFX/Heroi/sfx_heroi_pulo.wav" type="AudioStream" id=19]
 
 [sub_resource type="ShaderMaterial" id=38]
 shader = ExtResource( 14 )
@@ -310,6 +311,32 @@ tracks/3/keys = {
 "update": 1,
 "values": [ 0, 1, 3, 4, 6, 7, 2, 5, 8 ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath("Sons/Pulo")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sons/Pulo:pitch_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=35]
 
@@ -432,6 +459,10 @@ one_shot = true
 
 [node name="DashCooldown" type="Timer" parent="Player"]
 one_shot = true
+
+[node name="Pulo" type="AudioStreamPlayer" parent="Player/Sons"]
+stream = ExtResource( 19 )
+bus = "Efeitos"
 
 [connection signal="body_entered" from="Player/Mordida" to="Player" method="_on_ZonaDeAtaque_body_entered"]
 [connection signal="body_exited" from="Player/Mordida" to="Player" method="_on_ZonaDeAtaque_body_exited"]
