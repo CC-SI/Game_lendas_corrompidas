@@ -1,10 +1,20 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=25 format=2]
+[gd_resource type="AnimationNodeStateMachine" load_steps=27 format=2]
 
 [sub_resource type="AnimationNodeAnimation" id=34]
 animation = "dano"
 
-[sub_resource type="AnimationNodeAnimation" id=14]
+[sub_resource type="AnimationNodeAnimation" id=38]
 animation = "dash"
+
+[sub_resource type="AnimationNodeTimeScale" id=39]
+
+[sub_resource type="AnimationNodeBlendTree" id=40]
+graph_offset = Vector2( -596.426, 88.1911 )
+nodes/Animation/node = SubResource( 38 )
+nodes/Animation/position = Vector2( -129.315, 259.123 )
+nodes/TimeScale/node = SubResource( 39 )
+nodes/TimeScale/position = Vector2( 93.6848, 199.123 )
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
 
 [sub_resource type="AnimationNodeAnimation" id=15]
 animation = "mordendo"
@@ -46,9 +56,6 @@ animation = "uivando"
 [sub_resource type="AnimationNodeStateMachineTransition" id=24]
 advance_condition = "esta_morto"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=25]
-advance_condition = "esta_morto"
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=26]
 advance_condition = "esta_morto"
 
@@ -62,14 +69,6 @@ auto_advance = true
 [sub_resource type="AnimationNodeStateMachineTransition" id=29]
 switch_mode = 2
 auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=30]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=31]
-advance_condition = "dash"
-priority = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=32]
 advance_condition = "esta_mordendo"
@@ -86,11 +85,21 @@ advance_condition = "levou_dano"
 [sub_resource type="AnimationNodeStateMachineTransition" id=37]
 advance_condition = "esta_movimentando"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=41]
+advance_condition = "dash"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=42]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=43]
+advance_condition = "esta_morto"
+
 [resource]
 states/dano/node = SubResource( 34 )
 states/dano/position = Vector2( 288, 203 )
-states/dash/node = SubResource( 14 )
-states/dash/position = Vector2( 523, -44 )
+states/dash/node = SubResource( 40 )
+states/dash/position = Vector2( 510, -30.7508 )
 states/mordendo/node = SubResource( 15 )
 states/mordendo/position = Vector2( 491, 203 )
 states/morrendo/node = SubResource( 16 )
@@ -99,7 +108,7 @@ states/movimentacao/node = SubResource( 22 )
 states/movimentacao/position = Vector2( 208, 76 )
 states/uivando/node = SubResource( 23 )
 states/uivando/position = Vector2( 702, 203 )
-transitions = [ "movimentacao", "morrendo", SubResource( 24 ), "dash", "morrendo", SubResource( 25 ), "uivando", "morrendo", SubResource( 26 ), "mordendo", "morrendo", SubResource( 27 ), "mordendo", "movimentacao", SubResource( 28 ), "uivando", "movimentacao", SubResource( 29 ), "dash", "movimentacao", SubResource( 30 ), "movimentacao", "dash", SubResource( 31 ), "movimentacao", "mordendo", SubResource( 32 ), "movimentacao", "uivando", SubResource( 33 ), "dano", "morrendo", SubResource( 35 ), "movimentacao", "dano", SubResource( 36 ), "dano", "movimentacao", SubResource( 37 ) ]
+transitions = [ "movimentacao", "morrendo", SubResource( 24 ), "uivando", "morrendo", SubResource( 26 ), "mordendo", "morrendo", SubResource( 27 ), "mordendo", "movimentacao", SubResource( 28 ), "uivando", "movimentacao", SubResource( 29 ), "movimentacao", "mordendo", SubResource( 32 ), "movimentacao", "uivando", SubResource( 33 ), "dano", "morrendo", SubResource( 35 ), "movimentacao", "dano", SubResource( 36 ), "dano", "movimentacao", SubResource( 37 ), "movimentacao", "dash", SubResource( 41 ), "dash", "movimentacao", SubResource( 42 ), "dash", "morrendo", SubResource( 43 ) ]
 start_node = "movimentacao"
 end_node = "morrendo"
-graph_offset = Vector2( -180, -113.4 )
+graph_offset = Vector2( -180, -34.8388 )
