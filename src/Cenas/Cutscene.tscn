@@ -16,8 +16,8 @@
 [ext_resource path="res://src/Animacoes/Player/Playerparado.tres" type="Animation" id=14]
 [ext_resource path="res://src/Texturas/Cenario/Efeitos/filtro_preto.png" type="Texture" id=15]
 [ext_resource path="res://src/Fonts/EastmanRomanTrial-Bold.otf" type="DynamicFontData" id=16]
-[ext_resource path="res://src/Sons/545308__eldiariosonoro__appearancesapariciones-tension-g4 (1).wav" type="AudioStream" id=17]
-[ext_resource path="res://src/Sons/forest-walking.mp3" type="AudioStream" id=18]
+[ext_resource path="res://src/Sons/AmbienteInicial.wav" type="AudioStream" id=17]
+[ext_resource path="res://src/Sons/PassosJogador.mp3" type="AudioStream" id=18]
 [ext_resource path="res://src/Sons/Taryn.mp3" type="AudioStream" id=19]
 
 [sub_resource type="ConvexPolygonShape2D" id=91]
@@ -596,30 +596,6 @@ font_data = ExtResource( 16 )
 
 [sub_resource type="Animation" id=95]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("AudioStreamPlayer3:stream")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ ExtResource( 19 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Jogador:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
 
 [sub_resource type="Animation" id=96]
 resource_name = "introducao"
@@ -802,7 +778,7 @@ tracks/14/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/15/type = "audio"
-tracks/15/path = NodePath("AudioStreamPlayer1")
+tracks/15/path = NodePath("AudioInicial")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
@@ -820,7 +796,7 @@ tracks/15/keys = {
 "times": PoolRealArray( 0, 28 )
 }
 tracks/16/type = "audio"
-tracks/16/path = NodePath("AudioStreamPlayer2")
+tracks/16/path = NodePath("AudioPassosJogador")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -854,7 +830,7 @@ tracks/17/keys = {
 "values": [ Vector2( 2779.58, 1313.69 ) ]
 }
 tracks/18/type = "audio"
-tracks/18/path = NodePath("AudioStreamPlayer3")
+tracks/18/path = NodePath("AudioTaryn")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -1091,12 +1067,13 @@ reset_on_save = false
 anims/RESET = SubResource( 95 )
 anims/introducao = SubResource( 96 )
 
-[node name="AudioStreamPlayer1" type="AudioStreamPlayer" parent="."]
+[node name="AudioInicial" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 17 )
+autoplay = true
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+[node name="AudioPassosJogador" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
 
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+[node name="AudioTaryn" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
 volume_db = 6.0
