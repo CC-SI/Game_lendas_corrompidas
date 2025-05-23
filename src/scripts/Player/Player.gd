@@ -103,7 +103,7 @@ func dash():
 		estado_jogador = "dash"
 		esta_vuneravel = false
 		dash_cooldown.start()
-		
+		criar_fantasma()
 		direcao.x = lado * force_dash
 
 func mudarLadoSprite():
@@ -145,7 +145,31 @@ func atirar_bola():
 
 		body_bola.atirarBola(lado)
 		body_bola.connect("acertou_inimigo", self, "_on_bola_acertou")
-		
+
+func criar_fantasma():
+	var offset_x = 0
+	var intervalo = 0.5
+	
+	for i in range(3):
+		fantasma(offset_x, intervalo)
+		offset_x += 45
+		intervalo += 0.25
+
+func fantasma(var offset_x, var intervalo):
+	var fantasma = sprite.duplicate()
+	
+	get_parent().add_child(fantasma)
+	fantasma.global_position = global_position + Vector2(offset_x * lado, 0)
+	
+	fantasma.modulate = Color(0, 0, 0, 1)
+	
+	var tween_fade = get_tree().create_tween()
+	
+	tween_fade.tween_property(fantasma, "self_modulate", Color(0, 0, 0, 0), intervalo)
+	yield(tween_fade, "finished")
+	
+	fantasma.queue_free()
+
 func paralisar(var valor_dano):
 	estado_jogador = "paralisado"
 	DadosGlobais.vidas -= valor_dano
