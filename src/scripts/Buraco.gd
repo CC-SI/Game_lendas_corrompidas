@@ -11,7 +11,7 @@ func _on_Area2D_body_entered(body):
 func aplicar_dano(valor):
 	var player = get_tree().get_nodes_in_group("player")
 	if (player.size() > 0):
-		player[0].levar_dano(valor)
+		player[0].paralisar(valor)
 
 func renascer_player(posicao):
 	var player = get_tree().get_nodes_in_group("player")

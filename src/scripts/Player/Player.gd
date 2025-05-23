@@ -57,6 +57,10 @@ func _physics_process(delta):
 		return
 	
 	morrer()
+	
+	if estado_jogador == "paralisado":
+		return
+	
 	movePlayer()
 	mudarLadoSprite()
 	
@@ -115,6 +119,7 @@ func resetar_estado():
 
 func renascer(posicao):
 	global_position = posicao
+	resetar_estado()
 
 func aumentar_vida(valor):
 	if DadosGlobais.vidas >= 10: 
@@ -141,6 +146,10 @@ func atirar_bola():
 		body_bola.atirarBola(lado)
 		body_bola.connect("acertou_inimigo", self, "_on_bola_acertou")
 		
+func paralisar(var valor_dano):
+	estado_jogador = "paralisado"
+	DadosGlobais.vidas -= valor_dano
+
 func verificar_mordida():
 	if Input.is_action_just_pressed("mordida"):
 		estado_jogador = "mordida"
