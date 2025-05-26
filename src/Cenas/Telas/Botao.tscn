@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/Fonts/Cinzel/cinzel.regular.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+use_mipmaps = true
+use_filter = true
+extra_spacing_char = 5
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.384314, 0.427451, 0.690196, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.188235, 0.211765, 0.34902, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.160784, 0.215686, 0.541176, 1 )
+
+[node name="Botao Continuar" type="Button"]
+margin_left = 400.0
+margin_top = 344.0
+margin_right = 630.0
+margin_bottom = 394.0
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+text = "CONTINUAR"
