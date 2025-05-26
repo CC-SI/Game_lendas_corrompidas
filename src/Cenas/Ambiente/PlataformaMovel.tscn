@@ -822,7 +822,7 @@ motion/sync_to_physics = true
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2( 41, -32 )
 scale = Vector2( 0.15, 0.15 )
-z_index = 51
+z_index = 49
 tile_set = SubResource( 96 )
 cell_size = Vector2( 512, 512 )
 cell_custom_transform = Transform2D( 0, 0, 0, 0, 0, 0 )
