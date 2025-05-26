@@ -20,6 +20,6 @@ func _process(_delta):
 	#global_position = alvo.global_position
 
 func seguir(node):
-	scale = node.scale
+	scale = node.scale - (node.scale/4)
 	global_position = node.global_position
 	alvo = node
