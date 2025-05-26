@@ -172,4 +172,5 @@ position = Vector2( 1024, 2336 )
 current = true
 zoom = Vector2( 2, 2 )
 
+[connection signal="pressed" from="CanvasLayer/Menu/Botao Jogar" to="." method="_on_Botao_Jogar_pressed"]
 [connection signal="pressed" from="CanvasLayer/Menu/Botao Sair" to="." method="_on_Botao_Sair_pressed"]
