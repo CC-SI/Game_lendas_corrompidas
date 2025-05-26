@@ -135,7 +135,6 @@ align = 1
 valign = 1
 
 [node name="Transição Preta" type="ColorRect" parent="CanvasLayer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0 )
