@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/Texturas/Cenario/BG/camada_7.png" type="Texture" id=1]
 [ext_resource path="res://src/Texturas/Cenario/BG/camada_5.png" type="Texture" id=2]
@@ -10,10 +10,13 @@
 [ext_resource path="res://src/Texturas/Cenario/BG/camada_2.png" type="Texture" id=8]
 [ext_resource path="res://src/Texturas/Cenario/Efeitos/filtro_preto.png" type="Texture" id=9]
 [ext_resource path="res://src/Shaders/nevoa.gdshader" type="Shader" id=10]
+[ext_resource path="res://src/Som/SFX/UI/sfx_inicial_start.wav" type="AudioStream" id=11]
 [ext_resource path="res://src/Fonts/Cinzel/cinzel.black.ttf" type="DynamicFontData" id=12]
 [ext_resource path="res://src/scripts/Menus/menu_principal.gd" type="Script" id=13]
 [ext_resource path="res://src/Animacoes/Transicoes/transicao_preta.tres" type="Animation" id=14]
 [ext_resource path="res://src/Cenas/Telas/Botao.tscn" type="PackedScene" id=15]
+[ext_resource path="res://src/Som/bgm-fase.ogg" type="AudioStream" id=16]
+[ext_resource path="res://src/Som/SFX/UI/sfx_button_back.wav" type="AudioStream" id=17]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 10 )
@@ -135,6 +138,7 @@ align = 1
 valign = 1
 
 [node name="Transição Preta" type="ColorRect" parent="CanvasLayer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0 )
@@ -148,6 +152,22 @@ anims/transicao_preta = ExtResource( 14 )
 position = Vector2( 1024, 2336 )
 current = true
 zoom = Vector2( 2, 2 )
+
+[node name="Som" type="Node" parent="."]
+
+[node name="BGM" type="AudioStreamPlayer" parent="Som"]
+stream = ExtResource( 16 )
+volume_db = -10.0
+autoplay = true
+bus = "Musica"
+
+[node name="Iniciar" type="AudioStreamPlayer" parent="Som"]
+stream = ExtResource( 11 )
+bus = "Efeitos"
+
+[node name="Sair" type="AudioStreamPlayer" parent="Som"]
+stream = ExtResource( 17 )
+bus = "Efeitos"
 
 [connection signal="pressed" from="CanvasLayer/Menu/Botao Jogar" to="." method="_on_Botao_Jogar_pressed"]
 [connection signal="pressed" from="CanvasLayer/Menu/Botao Sair" to="." method="_on_Botao_Sair_pressed"]
