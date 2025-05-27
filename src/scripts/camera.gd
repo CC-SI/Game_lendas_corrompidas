@@ -5,7 +5,7 @@ export var limite_direito = 10000000
 var alvo: Node2D = null
 
 func _ready():
-	pass # Replace with function body.
+	limit_right = limite_direito
 
 func _process(delta):
 	if alvo:
