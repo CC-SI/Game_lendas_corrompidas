@@ -14,10 +14,10 @@ func associar_fase(node):
 	fase = node
 
 func _input(event):
-	if event.is_action_pressed("pausar") and fase != null and fase.estado != "gameplay":
-		if fase.esta_pausado:
+	if event.is_action_pressed("pausar") and fase != null:
+		if fase.estado == "pausado":
 			fechar_menu_pausa()
-		else:
+		elif fase.estado == "gameplay":
 			abrir_menu_pausa()
 
 func abrir_menu_pausa():
