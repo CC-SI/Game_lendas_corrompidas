@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://src/Texturas/Player/animacao_correndo.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://src/Som/SFX/Heroi/sfx_heroi_mordidawav.wav" type="AudioStream" id=18]
 [ext_resource path="res://src/Som/SFX/Heroi/sfx_heroi_pulo.wav" type="AudioStream" id=19]
 [ext_resource path="res://src/Som/SFX/Outros/sfx_item_vida.wav" type="AudioStream" id=20]
+[ext_resource path="res://src/Som/SFX/Heroi/sfx_heroi_queda.wav" type="AudioStream" id=21]
 
 [sub_resource type="ShaderMaterial" id=38]
 shader = ExtResource( 14 )
@@ -375,7 +376,7 @@ position = Vector2( -85, 0 )
 texture = ExtResource( 6 )
 hframes = 4
 vframes = 6
-frame = 20
+frame = 17
 region_rect = Rect2( 92, 2, 21, 33 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -471,6 +472,11 @@ bus = "Efeitos"
 [node name="Derrota" type="AudioStreamPlayer" parent="Player/Sons"]
 stream = ExtResource( 10 )
 pitch_scale = 0.95
+bus = "Efeitos"
+
+[node name="Queda" type="AudioStreamPlayer" parent="Player/Sons"]
+stream = ExtResource( 21 )
+pitch_scale = 0.8
 bus = "Efeitos"
 
 [node name="UivoCooldown" type="Timer" parent="Player"]

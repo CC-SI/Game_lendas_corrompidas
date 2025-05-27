@@ -24,6 +24,7 @@ onready var area2d = $Mordida
 onready var position2D = $Position2D
 var tayrin : Node2D
 onready var instancias = get_node("../Instancias")
+onready var quedaASP = $Sons/Queda
 
 onready var uivo_cooldown = $UivoCooldown
 onready var bola_fogo_cooldown = $BolaFogoCooldown
@@ -273,3 +274,6 @@ func morrer():
 		esta_vuneravel = false
 		yield(get_tree().create_timer(1), "timeout")
 		emit_signal("jogador_morto")
+
+func somQueda():
+	quedaASP.play(0)

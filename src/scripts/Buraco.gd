@@ -12,6 +12,7 @@ func aplicar_dano(valor):
 	var player = get_tree().get_nodes_in_group("player")
 	if (player.size() > 0):
 		player[0].paralisar(valor)
+		player[0].somQueda()
 
 func renascer_player(posicao):
 	var player = get_tree().get_nodes_in_group("player")
