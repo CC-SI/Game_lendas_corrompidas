@@ -23,7 +23,6 @@ tracks/0/keys = {
 }
 
 [node name="Tayrin" type="Node2D"]
-pause_mode = 2
 z_index = 60
 script = ExtResource( 3 )
 
