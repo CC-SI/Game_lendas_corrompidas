@@ -322,7 +322,7 @@ texture = ExtResource( 1 )
 flip_h = true
 hframes = 5
 vframes = 5
-frame = 16
+frame = 2
 region_rect = Rect2( 197, 14, 33, 42 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Morcego"]
@@ -362,11 +362,12 @@ parameters/conditions/esta_voando = false
 [node name="AnimacaoMorcego" type="Node2D" parent="Morcego"]
 script = ExtResource( 5 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Morcego"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="Morcego"]
 stream = ExtResource( 8 )
 volume_db = -5.0
 pitch_scale = 1.5
 stream_paused = true
+max_distance = 700.0
 bus = "Efeitos"
 script = ExtResource( 9 )
 

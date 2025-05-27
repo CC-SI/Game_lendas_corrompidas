@@ -477,7 +477,7 @@ position = Vector2( 96, 0 )
 texture = ExtResource( 1 )
 hframes = 6
 vframes = 7
-frame = 7
+frame = 40
 region_rect = Rect2( 318, 117, 803, 799 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MonstroDaLavas"]
@@ -518,7 +518,7 @@ script = ExtResource( 6 )
 
 [node name="Som" type="Node" parent="MonstroDaLavas"]
 
-[node name="Base" type="AudioStreamPlayer" parent="MonstroDaLavas/Som"]
+[node name="Base" type="AudioStreamPlayer2D" parent="MonstroDaLavas/Som"]
 stream = ExtResource( 11 )
 autoplay = true
 stream_paused = true
