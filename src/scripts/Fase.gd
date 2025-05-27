@@ -5,8 +5,7 @@ onready var animacao = $Animacao/AnimationPlayer
 var inimigos = []
 var total_inimigos
 
-var tocando_cutscene = false
-var esta_pausado = false
+var estado = "gameplay"
 
 func _ready():
 	var total_inimigos = len(inimigos)

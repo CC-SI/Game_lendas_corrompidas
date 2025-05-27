@@ -14,14 +14,14 @@ func associar_fase(node):
 	fase = node
 
 func _input(event):
-	if event.is_action_pressed("pausar") and fase != null and !fase.tocando_cutscene:
+	if event.is_action_pressed("pausar") and fase != null and fase.estado != "gameplay":
 		if fase.esta_pausado:
 			fechar_menu_pausa()
 		else:
 			abrir_menu_pausa()
 
 func abrir_menu_pausa():
-	fase.esta_pausado = true
+	fase.estado = "pausado"
 	get_tree().paused = true
 	animacao.play("transicao_nevoa")
 	yield(animacao, "animation_finished")
@@ -32,11 +32,13 @@ func fechar_menu_pausa():
 	animacao.play("transicao_nevoa")
 	yield(animacao, "animation_finished")
 	menu_pausa.hide()
-	fase.esta_pausado = false
+	fase.estado = "gameplay"
 	get_tree().paused = false
 	animacao.play_backwards("transicao_nevoa")
 
 func abrir_menu_game_over():
+	fase.estado = "game_over"
+	get_tree().paused = true
 	animacao.play("transicao_preta")
 	yield(animacao, "animation_finished")
 	game_over.show()
@@ -57,6 +59,7 @@ func _on_Pausa_menu_pressed():
 func _on_Game_Over_renascer_pressed():
 	animacao.play("transicao_preta")
 	yield(animacao, "animation_finished")
+	get_tree().paused = false
 	get_tree().change_scene(get_tree().current_scene.filename)
 
 func _on_Game_Over_menu_pressed():
