@@ -20,7 +20,7 @@
 [ext_resource path="res://src/Cenas/Player/BarraDeVida.tscn" type="PackedScene" id=18]
 [ext_resource path="res://src/Cenas/GameOver.tscn" type="PackedScene" id=19]
 [ext_resource path="res://src/scripts/fase_guardião.gd" type="Script" id=20]
-[ext_resource path="res://src/scripts/camera.gd" type="Script" id=21]
+[ext_resource path="res://src/Cenas/Camera2D.tscn" type="PackedScene" id=21]
 [ext_resource path="res://src/Texturas/Player/animacao_parado.png" type="Texture" id=22]
 [ext_resource path="res://src/Texturas/Player/animacao_correndo.png" type="Texture" id=23]
 [ext_resource path="res://src/Texturas/Inimigos/Curupira/animacao_parado.png" type="Texture" id=24]
@@ -655,17 +655,8 @@ anims/comeco_luta = SubResource( 105 )
 anims/transicao_nevoa = SubResource( 102 )
 anims/transicao_preta = SubResource( 103 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" parent="." instance=ExtResource( 21 )]
 position = Vector2( 504, 2720 )
-offset = Vector2( 0, -50 )
-current = true
-zoom = Vector2( 0.9, 0.9 )
-limit_left = 0
-limit_top = 0
-limit_bottom = 3500
-smoothing_enabled = true
-smoothing_speed = 8.0
-script = ExtResource( 21 )
 limite_direito = 2112
 
 [node name="Cutscene" type="Node2D" parent="."]

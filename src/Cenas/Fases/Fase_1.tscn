@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://src/Texturas/Cenario/Tiles/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Texturas/Cenario/BG/camada_5.png" type="Texture" id=2]
@@ -29,6 +29,9 @@
 [ext_resource path="res://src/Animacoes/Transicoes/transicao_preta.tres" type="Animation" id=27]
 [ext_resource path="res://src/Animacoes/Transicoes/transicao_nevoa.tres" type="Animation" id=28]
 [ext_resource path="res://src/scripts/Menus/ui.gd" type="Script" id=29]
+[ext_resource path="res://src/Texturas/Player/animacao_parado.png" type="Texture" id=30]
+[ext_resource path="res://src/Texturas/Player/animacao_correndo.png" type="Texture" id=31]
+[ext_resource path="res://src/Cenas/Camera2D.tscn" type="PackedScene" id=32]
 
 [sub_resource type="ShaderMaterial" id=115]
 shader = ExtResource( 14 )
@@ -37,12 +40,12 @@ shader_param/fog_color = Plane( 0.6, 0.6, 0.6, 1 )
 shader_param/speed = 0.05
 shader_param/scale = 80.0
 
-[sub_resource type="Gradient" id=98]
+[sub_resource type="Gradient" id=118]
 offsets = PoolRealArray( 0, 0.796703 )
 colors = PoolColorArray( 1, 1, 1, 1, 0, 0, 0, 0 )
 
 [sub_resource type="GradientTexture2D" id=92]
-gradient = SubResource( 98 )
+gradient = SubResource( 118 )
 width = 500
 height = 500
 fill = 1
@@ -197,8 +200,252 @@ shader_param/fog_color = Plane( 0.6, 0.6, 0.6, 1 )
 shader_param/speed = 0.05
 shader_param/scale = 80.0
 
+[sub_resource type="Animation" id=122]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Cutscene/Jogador:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -96, 2832 ) ]
+}
+
 [sub_resource type="Animation" id=117]
 resource_name = "jogador_chegando"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Cutscene/Jogador:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -96, 2832 ), Vector2( 248, 2832 ) ]
+}
+tracks/1/type = "animation"
+tracks/1/path = NodePath("../Cutscene/Jogador/Animacaojogador")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": PoolStringArray( "Playercorrendo", "Playerparado" ),
+"times": PoolRealArray( 0, 1.5 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../CanvasLayer/Transição Preta:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../CanvasLayer/Transição Preta:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Cutscene/Jogador:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Player:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../Camera2D:zoom")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1.3, 2, 3, 3.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.4, 0.4 ), Vector2( 0.4, 0.4 ), Vector2( 0.5, 0.5 ), Vector2( 0.5, 0.5 ), Vector2( 0.9, 0.9 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../Camera2D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1.3, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 208, 2840 ), Vector2( 208, 2840 ), Vector2( 248, 2840 ) ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath("..")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "terminar_cutscene"
+} ]
+}
+
+[sub_resource type="Animation" id=120]
+resource_name = "correndo"
+length = 0.708333
+loop = true
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 31 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.0416667, 0.0833333, 0.125, 0.166667, 0.208333, 0.25, 0.291667, 0.333333, 0.375, 0.416667, 0.458333, 0.5, 0.541667, 0.583333, 0.625, 0.666667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 3, 7, 11, 15, 16 ]
+}
+
+[sub_resource type="Animation" id=121]
+resource_name = "parado"
+length = 0.875
+loop = true
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 30 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.0416667, 0.0833333, 0.125, 0.166667, 0.208333, 0.25, 0.291667, 0.333333, 0.375, 0.416667, 0.458333, 0.5, 0.541667, 0.583333, 0.625, 0.666667, 0.708333, 0.75, 0.791667, 0.833333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 3, 7, 11, 15, 19, 20 ]
+}
 
 [node name="Fase" type="Node2D"]
 script = ExtResource( 26 )
@@ -440,7 +687,8 @@ position = Vector2( -172, 1632 )
 shape = SubResource( 94 )
 
 [node name="Player" parent="." instance=ExtResource( 12 )]
-position = Vector2( 9248, 1824 )
+visible = false
+position = Vector2( 256, 2832 )
 scale = Vector2( 0.11, 0.11 )
 
 [node name="Inimigos" type="Node2D" parent="."]
@@ -469,10 +717,9 @@ visible = false
 visible = false
 
 [node name="Transição Preta" type="ColorRect" parent="CanvasLayer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0 )
+color = Color( 0, 0, 0, 0.7 )
 
 [node name="Transicao Nevoa" type="Sprite" parent="CanvasLayer"]
 visible = false
@@ -531,6 +778,7 @@ scale = Vector2( 0.05, 0.05 )
 pause_mode = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Animacao"]
+anims/RESET = SubResource( 122 )
 anims/jogador_chegando = SubResource( 117 )
 anims/transicao_nevoa = ExtResource( 28 )
 anims/transicao_preta = ExtResource( 27 )
@@ -539,6 +787,27 @@ anims/transicao_preta = ExtResource( 27 )
 stream = ExtResource( 23 )
 autoplay = true
 bus = "Musica"
+
+[node name="Cutscene" type="Node2D" parent="."]
+
+[node name="Jogador" type="Node2D" parent="Cutscene"]
+position = Vector2( -96, 2832 )
+scale = Vector2( 0.11, 0.11 )
+
+[node name="Sprite" type="Sprite" parent="Cutscene/Jogador"]
+texture = ExtResource( 31 )
+hframes = 4
+vframes = 5
+frame = 9
+
+[node name="Animacaojogador" type="AnimationPlayer" parent="Cutscene/Jogador"]
+anims/Playercorrendo = SubResource( 120 )
+anims/Playerparado = SubResource( 121 )
+
+[node name="Camera2D" parent="." instance=ExtResource( 32 )]
+position = Vector2( 208, 2840 )
+zoom = Vector2( 0.5, 0.5 )
+limite_direito = 25216
 
 [connection signal="continuar_pressed" from="CanvasLayer/Pausa" to="CanvasLayer" method="_on_Pausa_continuar_pressed"]
 [connection signal="menu_pressed" from="CanvasLayer/Pausa" to="CanvasLayer" method="_on_Pausa_menu_pressed"]
