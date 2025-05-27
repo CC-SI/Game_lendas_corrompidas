@@ -378,7 +378,7 @@ position = Vector2( -85, 0 )
 texture = ExtResource( 6 )
 hframes = 4
 vframes = 6
-frame = 8
+frame = 20
 region_rect = Rect2( 92, 2, 21, 33 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -461,6 +461,7 @@ bus = "Efeitos"
 
 [node name="Mordida" type="AudioStreamPlayer" parent="Player/Sons"]
 stream = ExtResource( 18 )
+volume_db = -2.0
 bus = "Efeitos"
 
 [node name="Pulo" type="AudioStreamPlayer" parent="Player/Sons"]

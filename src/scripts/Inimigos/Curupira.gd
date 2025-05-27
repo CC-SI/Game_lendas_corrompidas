@@ -14,6 +14,8 @@ var bolas_fogo = []
 var bolas_fogo_restantes = []
 
 onready var bgm = $Som/BGM
+onready var assobioASP = $Som/Assobio
+onready var acertadoASP = $Som/Acertado
 
 var gravidade = 800
 
@@ -112,6 +114,9 @@ func levar_dano(valor):
 	
 	if vidas <= 10:
 		bravo = true
+		acertadoASP.pitch_scale += .01
+	
+	acertadoASP.play(0)
 	
 	if vidas <= 0:
 		morrer()
@@ -151,6 +156,7 @@ func criar_onda_sonora():
 	var onda_sonora = preload("res://src/Cenas/Inimigos/Curupira/OndaSonora.tscn").instance()
 	get_parent().add_child(onda_sonora)
 	onda_sonora.global_position = $PosicaoAssobio.global_position
+	assobioASP.play(0)
 
 func tp():
 	estado = "teletransportando"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://src/Texturas/Cenario/Efeitos/filtro_preto.png" type="Texture" id=1]
 [ext_resource path="res://src/Cenas/Ambiente/Saída.tscn" type="PackedScene" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://src/Texturas/Player/animacao_correndo.png" type="Texture" id=23]
 [ext_resource path="res://src/Texturas/Inimigos/Curupira/animacao_parado.png" type="Texture" id=24]
 [ext_resource path="res://src/Animacoes/Inimigos/Curupira/Curupiraparado.tres" type="Animation" id=25]
+[ext_resource path="res://src/Som/bgm-fase.ogg" type="AudioStream" id=26]
 
 [sub_resource type="ShaderMaterial" id=99]
 shader = ExtResource( 13 )
@@ -699,6 +700,14 @@ frame = 14
 anims/Curupiraaparecendo = SubResource( 108 )
 anims/Curupiraparado = ExtResource( 25 )
 anims/RESET = SubResource( 109 )
+
+[node name="Som" type="Node" parent="."]
+
+[node name="BGM" type="AudioStreamPlayer" parent="Som"]
+stream = ExtResource( 26 )
+volume_db = -5.0
+autoplay = true
+bus = "Musica"
 
 [connection signal="continuar_pressed" from="CanvasLayer/Pausa" to="CanvasLayer" method="_on_Pausa_continuar_pressed"]
 [connection signal="menu_pressed" from="CanvasLayer/Pausa" to="CanvasLayer" method="_on_Pausa_menu_pressed"]

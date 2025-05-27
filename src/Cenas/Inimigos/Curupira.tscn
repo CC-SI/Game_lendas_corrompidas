@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://src/Animacoes/Inimigos/Curupira/maquina_estados_curupira.tres" type="AnimationNodeStateMachine" id=1]
 [ext_resource path="res://src/scripts/Inimigos/Curupira.gd" type="Script" id=2]
@@ -25,6 +25,8 @@
 [ext_resource path="res://src/Som/SFX/Curupira/sfx_curupira_assobio.wav" type="AudioStream" id=23]
 [ext_resource path="res://src/Texturas/Inimigos/Curupira/animacao_parado.png" type="Texture" id=24]
 [ext_resource path="res://src/Som/SFX/Curupira/sfx_curupira_escudo.wav" type="AudioStream" id=25]
+[ext_resource path="res://src/Som/SFX/Curupira/sfx_curupira_teleporte.wav" type="AudioStream" id=26]
+[ext_resource path="res://src/Som/SFX/Curupira/sfx_curupira_acertado.wav" type="AudioStream" id=27]
 
 [sub_resource type="ShaderMaterial" id=14]
 shader = ExtResource( 18 )
@@ -102,7 +104,7 @@ material = SubResource( 14 )
 texture = ExtResource( 24 )
 hframes = 6
 vframes = 6
-frame = 29
+frame = 26
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Curupira"]
 anims/RESET = SubResource( 10 )
@@ -218,7 +220,7 @@ __meta__ = {
 
 [node name="Assobio" type="AudioStreamPlayer2D" parent="Curupira/Som"]
 stream = ExtResource( 23 )
-max_distance = 3000.0
+max_distance = 4000.0
 bus = "Efeitos"
 
 [node name="Soco" type="AudioStreamPlayer" parent="Curupira/Som"]
@@ -226,24 +228,38 @@ stream = ExtResource( 6 )
 pitch_scale = 0.8
 bus = "Efeitos"
 __meta__ = {
-"_editor_description_": "Para ser tocado junto com a BGM quando estiver rolando a luta com o guardião."
+"_editor_description_": ""
 }
 
 [node name="Escudo" type="AudioStreamPlayer" parent="Curupira/Som"]
 stream = ExtResource( 25 )
-volume_db = -5.0
+volume_db = -1.5
 pitch_scale = 0.7
 bus = "Efeitos"
 __meta__ = {
-"_editor_description_": "Para ser tocado junto com a BGM quando estiver rolando a luta com o guardião."
+"_editor_description_": ""
+}
+
+[node name="Teleporte" type="AudioStreamPlayer" parent="Curupira/Som"]
+stream = ExtResource( 26 )
+bus = "Efeitos"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Acertado" type="AudioStreamPlayer" parent="Curupira/Som"]
+stream = ExtResource( 27 )
+bus = "Efeitos"
+__meta__ = {
+"_editor_description_": ""
 }
 
 [connection signal="body_entered" from="Curupira/ZonaDecisao" to="Curupira" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Curupira/ZonaDecisao" to="Curupira" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Curupira/Soco" to="Curupira" method="_on_Chute_body_entered"]
 [connection signal="timeout" from="Curupira/AtaqueTimer" to="Curupira" method="_on_Timer_timeout"]
-[connection signal="timeout" from="Curupira/AtaqueTimer" to="Curupira" method="_on_pos_assobio_timeout"]
 [connection signal="timeout" from="Curupira/AtaqueTimer" to="Curupira" method="_on_assobio_timeout"]
+[connection signal="timeout" from="Curupira/AtaqueTimer" to="Curupira" method="_on_pos_assobio_timeout"]
 [connection signal="timeout" from="Curupira/AssobioTimer" to="Curupira" method="_on_AssobioTimer_timeout"]
 [connection signal="timeout" from="Curupira/DescansoTimer" to="Curupira" method="_on_DescansoTimer_timeout"]
 [connection signal="timeout" from="Curupira/BolaFogoTimer" to="Curupira" method="_on_BolaFogoTimer_timeout"]
