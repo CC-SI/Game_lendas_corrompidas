@@ -1,0 +1,266 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://src/Texturas/Cenario/Efeitos/filtro_preto.png" type="Texture" id=1]
+[ext_resource path="res://src/Cenas/Ambiente/Saída.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Cenas/Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Cenas/Inimigos/Curupira.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Texturas/Cenario/BG/camada_6.png" type="Texture" id=5]
+[ext_resource path="res://src/Texturas/Cenario/BG/camada_4.png" type="Texture" id=6]
+[ext_resource path="res://src/Texturas/Cenario/BG/camada_0.png" type="Texture" id=7]
+[ext_resource path="res://src/Texturas/Cenario/BG/camada_5.png" type="Texture" id=8]
+[ext_resource path="res://src/Texturas/Cenario/BG/camada_1.png" type="Texture" id=9]
+[ext_resource path="res://src/Texturas/Cenario/BG/camada_3.png" type="Texture" id=10]
+[ext_resource path="res://src/Texturas/Cenario/BG/camada_2.png" type="Texture" id=11]
+[ext_resource path="res://src/Texturas/Cenario/BG/camada_7.png" type="Texture" id=12]
+[ext_resource path="res://src/Shaders/nevoa.gdshader" type="Shader" id=13]
+[ext_resource path="res://src/Texturas/Tayrin/light.png" type="Texture" id=14]
+[ext_resource path="res://src/Texturas/Cenario/Tiles/tileset.tres" type="TileSet" id=15]
+[ext_resource path="res://src/scripts/Menus/ui.gd" type="Script" id=16]
+[ext_resource path="res://src/Cenas/Telas/Tela Pausa.tscn" type="PackedScene" id=17]
+[ext_resource path="res://src/Cenas/Player/BarraDeVida.tscn" type="PackedScene" id=18]
+[ext_resource path="res://src/Cenas/GameOver.tscn" type="PackedScene" id=19]
+[ext_resource path="res://src/scripts/fase_guardião.gd" type="Script" id=20]
+
+[sub_resource type="ShaderMaterial" id=99]
+shader = ExtResource( 13 )
+shader_param/fog_intensity = 0.2
+shader_param/fog_color = Plane( 0.6, 0.6, 0.6, 1 )
+shader_param/speed = 0.05
+shader_param/scale = 80.0
+
+[sub_resource type="Gradient" id=98]
+offsets = PoolRealArray( 0, 0.796703 )
+colors = PoolColorArray( 1, 1, 1, 1, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture2D" id=100]
+gradient = SubResource( 98 )
+width = 500
+height = 500
+fill = 1
+fill_from = Vector2( 0, 1 )
+fill_to = Vector2( 0.8, 0 )
+
+[sub_resource type="ShaderMaterial" id=101]
+shader = ExtResource( 13 )
+shader_param/fog_intensity = 0.0
+shader_param/fog_color = Plane( 0.6, 0.6, 0.6, 1 )
+shader_param/speed = 0.05
+shader_param/scale = 80.0
+
+[sub_resource type="Animation" id=102]
+resource_name = "transicao_nevoa"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("../CanvasLayer/Transicao Nevoa:material:shader_param/fog_intensity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../CanvasLayer/Transicao Nevoa:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true ]
+}
+
+[sub_resource type="Animation" id=103]
+resource_name = "transicao_preta"
+tracks/0/type = "value"
+tracks/0/path = NodePath("../CanvasLayer/Transição Preta:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../CanvasLayer/Transição Preta:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true ]
+}
+
+[node name="FaseCurupira" type="Node2D"]
+script = ExtResource( 20 )
+
+[node name="Ambiente" type="Node2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="Ambiente"]
+position = Vector2( 0, -50 )
+scale = Vector2( 0.15, 0.15 )
+z_index = 50
+tile_set = ExtResource( 15 )
+cell_size = Vector2( 512, 512 )
+cell_custom_transform = Transform2D( 0, 0, 0, 0, 0, 0 )
+cell_tile_origin = 1
+collision_layer = 15
+collision_mask = 15
+format = 1
+tile_data = PoolIntArray( 1638399, 0, 8, 1572864, 0, 10, 1572865, 0, 10, 1572866, 0, 10, 1572867, 0, 10, 1572868, 0, 10, 1572869, 0, 10, 1572870, 0, 10, 1572871, 0, 10, 1572872, 0, 10, 1572873, 0, 10, 1572874, 0, 10, 1572875, 0, 10, 1572876, 0, 10, 1572877, 0, 10, 1572878, 0, 10, 1572879, 0, 10, 1572880, 0, 10, 1572881, 0, 10, 1572882, 0, 10, 1572883, 0, 10, 1572884, 0, 10, 1572885, 0, 10, 1572886, 0, 10, 1572887, 0, 10, 1572888, 0, 10, 1572889, 0, 10, 1572890, 0, 10, 1572891, 0, 11, 1703935, 0, 65544, 1638400, 0, 131081, 1638401, 0, 131081, 1638402, 0, 131081, 1638403, 0, 131081, 1638404, 0, 131081, 1638405, 0, 131081, 1638406, 0, 131081, 1638407, 0, 131081, 1638408, 0, 131081, 1638409, 0, 131081, 1638410, 0, 131081, 1638411, 0, 131081, 1638412, 0, 131081, 1638413, 0, 131081, 1638414, 0, 131081, 1638415, 0, 131081, 1638416, 0, 131081, 1638417, 0, 131081, 1638418, 0, 131081, 1638419, 0, 131081, 1638420, 0, 131081, 1638421, 0, 131081, 1638422, 0, 131081, 1638423, 0, 131081, 1638424, 0, 131081, 1638425, 0, 131081, 1638426, 0, 131081, 1638427, 0, 131083, 1769471, 0, 65544, 1703936, 0, 131081, 1703937, 0, 131081, 1703938, 0, 131081, 1703939, 0, 131081, 1703940, 0, 131081, 1703941, 0, 131081, 1703942, 0, 131081, 1703943, 0, 131081, 1703944, 0, 131081, 1703945, 0, 131081, 1703946, 0, 131081, 1703947, 0, 131081, 1703948, 0, 131081, 1703949, 0, 131081, 1703950, 0, 131081, 1703951, 0, 131081, 1703952, 0, 131081, 1703953, 0, 131081, 1703954, 0, 131081, 1703955, 0, 131081, 1703956, 0, 131081, 1703957, 0, 131081, 1703958, 0, 131081, 1703959, 0, 131081, 1703960, 0, 131081, 1703961, 0, 131081, 1703962, 0, 131081, 1703963, 0, 131083, 1835007, 0, 65544, 1769472, 0, 131081, 1769473, 0, 131081, 1769474, 0, 131081, 1769475, 0, 131081, 1769476, 0, 131081, 1769477, 0, 131081, 1769478, 0, 131081, 1769479, 0, 131081, 1769480, 0, 131081, 1769481, 0, 131081, 1769482, 0, 131081, 1769483, 0, 131081, 1769484, 0, 131081, 1769485, 0, 131081, 1769486, 0, 131081, 1769487, 0, 131081, 1769488, 0, 131081, 1769489, 0, 131081, 1769490, 0, 131081, 1769491, 0, 131081, 1769492, 0, 131081, 1769493, 0, 131081, 1769494, 0, 131081, 1769495, 0, 131081, 1769496, 0, 131081, 1769497, 0, 131081, 1769498, 0, 131081, 1769499, 0, 131083, 1900543, 0, 65544, 1835008, 0, 131081, 1835009, 0, 131081, 1835010, 0, 131081, 1835011, 0, 131081, 1835012, 0, 131081, 1835013, 0, 131081, 1835014, 0, 131081, 1835015, 0, 131081, 1835016, 0, 131081, 1835017, 0, 131081, 1835018, 0, 131081, 1835019, 0, 131081, 1835020, 0, 131081, 1835021, 0, 131081, 1835022, 0, 131081, 1835023, 0, 131081, 1835024, 0, 131081, 1835025, 0, 131081, 1835026, 0, 131081, 1835027, 0, 131081, 1835028, 0, 131081, 1835029, 0, 131081, 1835030, 0, 131081, 1835031, 0, 131081, 1835032, 0, 131081, 1835033, 0, 131081, 1835034, 0, 131081, 1835035, 0, 131083, 1966079, 0, 65544, 1900544, 0, 131081, 1900545, 0, 131081, 1900546, 0, 131081, 1900547, 0, 131081, 1900548, 0, 131081, 1900549, 0, 131081, 1900550, 0, 131081, 1900551, 0, 131081, 1900552, 0, 131081, 1900553, 0, 131081, 1900554, 0, 131081, 1900555, 0, 131081, 1900556, 0, 131081, 1900557, 0, 131081, 1900558, 0, 131081, 1900559, 0, 131081, 1900560, 0, 131081, 1900561, 0, 131081, 1900562, 0, 131081, 1900563, 0, 131081, 1900564, 0, 131081, 1900565, 0, 131081, 1900566, 0, 131081, 1900567, 0, 131081, 1900568, 0, 131081, 1900569, 0, 131081, 1900570, 0, 131081, 1900571, 0, 131083, 2031615, 0, 65544, 1966080, 0, 131081, 1966081, 0, 131081, 1966082, 0, 131081, 1966083, 0, 131081, 1966084, 0, 131081, 1966085, 0, 131081, 1966086, 0, 131081, 1966087, 0, 131081, 1966088, 0, 131081, 1966089, 0, 131081, 1966090, 0, 131081, 1966091, 0, 131081, 1966092, 0, 131081, 1966093, 0, 131081, 1966094, 0, 131081, 1966095, 0, 131081, 1966096, 0, 131081, 1966097, 0, 131081, 1966098, 0, 131081, 1966099, 0, 131081, 1966100, 0, 131081, 1966101, 0, 131081, 1966102, 0, 131081, 1966103, 0, 131081, 1966104, 0, 131081, 1966105, 0, 131081, 1966106, 0, 131081, 1966107, 0, 131083, 2097151, 0, 65544, 2031616, 0, 131081, 2031617, 0, 131081, 2031618, 0, 131081, 2031619, 0, 131081, 2031620, 0, 131081, 2031621, 0, 131081, 2031622, 0, 131081, 2031623, 0, 131081, 2031624, 0, 131081, 2031625, 0, 131081, 2031626, 0, 131081, 2031627, 0, 131081, 2031628, 0, 131081, 2031629, 0, 131081, 2031630, 0, 131081, 2031631, 0, 131081, 2031632, 0, 131081, 2031633, 0, 131081, 2031634, 0, 131081, 2031635, 0, 131081, 2031636, 0, 131081, 2031637, 0, 131081, 2031638, 0, 131081, 2031639, 0, 131081, 2031640, 0, 131081, 2031641, 0, 131081, 2031642, 0, 131081, 2031643, 0, 131083, 2162687, 0, 65544, 2097152, 0, 131078, 2097153, 0, 196617, 2097154, 0, 196617, 2097155, 0, 196617, 2097156, 0, 196617, 2097157, 0, 196617, 2097158, 0, 196617, 2097159, 0, 196617, 2097160, 0, 196617, 2097161, 0, 196617, 2097162, 0, 196617, 2097163, 0, 196617, 2097164, 0, 131077, 2097165, 0, 131081, 2097166, 0, 131081, 2097167, 0, 131081, 2097168, 0, 131081, 2097169, 0, 131081, 2097170, 0, 131081, 2097171, 0, 131081, 2097172, 0, 131081, 2097173, 0, 131081, 2097174, 0, 131081, 2097175, 0, 131081, 2097176, 0, 131081, 2097177, 0, 131081, 2097178, 0, 131081, 2097179, 0, 131083, 2228223, 0, 65544, 2162688, 0, 131083, 2162700, 0, 65544, 2162701, 0, 131081, 2162702, 0, 131081, 2162703, 0, 131081, 2162704, 0, 131081, 2162705, 0, 131081, 2162706, 0, 131081, 2162707, 0, 131081, 2162708, 0, 131081, 2162709, 0, 131081, 2162710, 0, 131081, 2162711, 0, 131081, 2162712, 0, 131081, 2162713, 0, 131081, 2162714, 0, 131081, 2162715, 0, 131083, 2293759, 0, 65544, 2228224, 0, 131083, 2228236, 0, 65544, 2228237, 0, 131081, 2228238, 0, 131081, 2228239, 0, 131081, 2228240, 0, 131081, 2228241, 0, 131081, 2228242, 0, 131081, 2228243, 0, 131081, 2228244, 0, 131081, 2228245, 0, 131081, 2228246, 0, 131081, 2228247, 0, 131081, 2228248, 0, 131081, 2228249, 0, 131081, 2228250, 0, 131081, 2228251, 0, 131083, 2359295, 0, 131076, 2293760, 0, 196619, 2293772, 0, 65544, 2293773, 0, 131081, 2293774, 0, 131081, 2293775, 0, 131081, 2293776, 0, 131081, 2293777, 0, 131081, 2293778, 0, 131081, 2293779, 0, 131081, 2293780, 0, 131081, 2293781, 0, 131081, 2293782, 0, 131081, 2293783, 0, 131081, 2293784, 0, 131081, 2293785, 0, 131081, 2293786, 0, 131081, 2293787, 0, 131083, 2424831, 0, 65536, 2359308, 0, 65544, 2359309, 0, 131081, 2359310, 0, 131081, 2359311, 0, 131081, 2359312, 0, 131081, 2359313, 0, 131081, 2359314, 0, 131081, 2359315, 0, 131081, 2359316, 0, 131081, 2359317, 0, 131081, 2359318, 0, 131081, 2359319, 0, 131081, 2359320, 0, 131081, 2359321, 0, 131081, 2359322, 0, 131081, 2359323, 0, 131083, 2490367, 0, 65536, 2424844, 0, 65544, 2424845, 0, 131081, 2424846, 0, 131081, 2424847, 0, 131081, 2424848, 0, 131081, 2424849, 0, 131081, 2424850, 0, 131081, 2424851, 0, 131081, 2424852, 0, 131081, 2424853, 0, 131081, 2424854, 0, 131081, 2424855, 0, 131081, 2424856, 0, 131081, 2424857, 0, 131081, 2424858, 0, 131081, 2424859, 0, 131083, 2555903, 0, 65540, 2490368, 0, 10, 2490369, 0, 10, 2490370, 0, 10, 2490371, 0, 10, 2490372, 0, 10, 2490373, 0, 10, 2490374, 0, 10, 2490375, 0, 10, 2490376, 0, 10, 2490377, 0, 10, 2490378, 0, 10, 2490379, 0, 10, 2490380, 0, 65541, 2490381, 0, 131081, 2490382, 0, 131081, 2490383, 0, 131081, 2490384, 0, 131081, 2490385, 0, 131081, 2490386, 0, 131081, 2490387, 0, 131081, 2490388, 0, 131081, 2490389, 0, 131081, 2490390, 0, 131081, 2490391, 0, 131081, 2490392, 0, 131081, 2490393, 0, 131081, 2490394, 0, 131081, 2490395, 0, 131083, 2621439, 0, 65544, 2555904, 0, 131081, 2555905, 0, 131081, 2555906, 0, 131081, 2555907, 0, 131081, 2555908, 0, 131081, 2555909, 0, 131081, 2555910, 0, 131081, 2555911, 0, 131081, 2555912, 0, 131081, 2555913, 0, 131081, 2555914, 0, 131081, 2555915, 0, 131081, 2555916, 0, 131081, 2555917, 0, 131081, 2555918, 0, 131081, 2555919, 0, 131081, 2555920, 0, 131081, 2555921, 0, 131081, 2555922, 0, 131081, 2555923, 0, 131081, 2555924, 0, 131081, 2555925, 0, 131081, 2555926, 0, 131081, 2555927, 0, 131081, 2555928, 0, 131081, 2555929, 0, 131081, 2555930, 0, 131081, 2555931, 0, 131083, 2686975, 0, 65544, 2621440, 0, 131081, 2621441, 0, 131081, 2621442, 0, 131081, 2621443, 0, 131081, 2621444, 0, 131081, 2621445, 0, 131081, 2621446, 0, 131081, 2621447, 0, 131081, 2621448, 0, 131081, 2621449, 0, 131081, 2621450, 0, 131081, 2621451, 0, 131081, 2621452, 0, 131081, 2621453, 0, 131081, 2621454, 0, 131081, 2621455, 0, 131081, 2621456, 0, 131081, 2621457, 0, 131081, 2621458, 0, 131081, 2621459, 0, 131081, 2621460, 0, 131081, 2621461, 0, 131081, 2621462, 0, 131081, 2621463, 0, 131081, 2621464, 0, 131081, 2621465, 0, 131081, 2621466, 0, 131081, 2621467, 0, 131083, 2752511, 0, 65544, 2686976, 0, 131081, 2686977, 0, 131081, 2686978, 0, 131081, 2686979, 0, 131081, 2686980, 0, 131081, 2686981, 0, 131081, 2686982, 0, 131081, 2686983, 0, 131081, 2686984, 0, 131081, 2686985, 0, 131081, 2686986, 0, 131081, 2686987, 0, 131081, 2686988, 0, 131081, 2686989, 0, 131081, 2686990, 0, 131081, 2686991, 0, 131081, 2686992, 0, 131081, 2686993, 0, 131081, 2686994, 0, 131081, 2686995, 0, 131081, 2686996, 0, 131081, 2686997, 0, 131081, 2686998, 0, 131081, 2686999, 0, 131081, 2687000, 0, 131081, 2687001, 0, 131081, 2687002, 0, 131081, 2687003, 0, 131083, 2818047, 0, 196616, 2752512, 0, 196617, 2752513, 0, 196617, 2752514, 0, 196617, 2752515, 0, 196617, 2752516, 0, 196617, 2752517, 0, 196617, 2752518, 0, 196617, 2752519, 0, 196617, 2752520, 0, 196617, 2752521, 0, 196617, 2752522, 0, 196617, 2752523, 0, 196617, 2752524, 0, 196617, 2752525, 0, 196617, 2752526, 0, 196617, 2752527, 0, 196617, 2752528, 0, 196617, 2752529, 0, 196617, 2752530, 0, 196617, 2752531, 0, 196617, 2752532, 0, 196617, 2752533, 0, 196617, 2752534, 0, 196617, 2752535, 0, 196617, 2752536, 0, 196617, 2752537, 0, 196617, 2752538, 0, 196617, 2752539, 0, 196619 )
+
+[node name="efeitos" type="Node2D" parent="Ambiente"]
+
+[node name="filtro_escuro" type="Sprite" parent="Ambiente/efeitos"]
+modulate = Color( 1, 1, 1, 0.396078 )
+position = Vector2( 12668, 1668 )
+scale = Vector2( 25.7422, 4.25781 )
+z_index = 100
+texture = ExtResource( 1 )
+
+[node name="nevoa" type="Sprite" parent="Ambiente/efeitos"]
+material = SubResource( 99 )
+position = Vector2( 12708, 1800 )
+scale = Vector2( 25.8203, 4.65625 )
+z_index = 99
+texture = ExtResource( 1 )
+
+[node name="Fundo" type="Node2D" parent="Ambiente"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Ambiente/Fundo"]
+
+[node name="ParallaxLayer8" type="ParallaxLayer" parent="Ambiente/Fundo/ParallaxBackground"]
+motion_mirroring = Vector2( 3712, 3172 )
+
+[node name="Sprite" type="Sprite" parent="Ambiente/Fundo/ParallaxBackground/ParallaxLayer8"]
+texture = ExtResource( 12 )
+centered = false
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="Ambiente/Fundo/ParallaxBackground"]
+motion_mirroring = Vector2( 3712, 3172 )
+
+[node name="Sprite" type="Sprite" parent="Ambiente/Fundo/ParallaxBackground/ParallaxLayer7"]
+texture = ExtResource( 5 )
+centered = false
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="Ambiente/Fundo/ParallaxBackground"]
+motion_scale = Vector2( 0.2, 1 )
+motion_mirroring = Vector2( 3712, 0 )
+
+[node name="Sprite" type="Sprite" parent="Ambiente/Fundo/ParallaxBackground/ParallaxLayer6"]
+texture = ExtResource( 8 )
+centered = false
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="Ambiente/Fundo/ParallaxBackground"]
+motion_scale = Vector2( 0.4, 0.85 )
+motion_offset = Vector2( 0, -350 )
+motion_mirroring = Vector2( 3712, 0 )
+
+[node name="Sprite" type="Sprite" parent="Ambiente/Fundo/ParallaxBackground/ParallaxLayer5"]
+texture = ExtResource( 6 )
+centered = false
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="Ambiente/Fundo/ParallaxBackground"]
+motion_scale = Vector2( 0.6, 0.9 )
+motion_offset = Vector2( 0, -200 )
+motion_mirroring = Vector2( 3712, 0 )
+
+[node name="Sprite" type="Sprite" parent="Ambiente/Fundo/ParallaxBackground/ParallaxLayer4"]
+texture = ExtResource( 10 )
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Ambiente/Fundo/ParallaxBackground"]
+motion_scale = Vector2( 0.8, 0.95 )
+motion_offset = Vector2( 0, -100 )
+motion_mirroring = Vector2( 3712, 0 )
+
+[node name="Sprite" type="Sprite" parent="Ambiente/Fundo/ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource( 11 )
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Ambiente/Fundo/ParallaxBackground"]
+motion_scale = Vector2( 0.9, 1 )
+motion_mirroring = Vector2( 3712, 0 )
+
+[node name="Sprite" type="Sprite" parent="Ambiente/Fundo/ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource( 9 )
+centered = false
+
+[node name="Sprite2" type="Sprite" parent="Ambiente/Fundo/ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource( 7 )
+centered = false
+
+[node name="Entrada e Saída" type="Node2D" parent="Ambiente"]
+
+[node name="Entrada" type="Sprite" parent="Ambiente/Entrada e Saída"]
+light_mask = 513
+position = Vector2( 249, 2643 )
+texture = SubResource( 100 )
+
+[node name="Light2D" type="Light2D" parent="Ambiente/Entrada e Saída/Entrada"]
+position = Vector2( -263, 154 )
+texture = ExtResource( 14 )
+energy = 2.0
+
+[node name="Saída" parent="Ambiente/Entrada e Saída" instance=ExtResource( 2 )]
+position = Vector2( 24968, 2648 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 200, 2824 )
+scale = Vector2( 0.11, 0.11 )
+
+[node name="Curupira" parent="." instance=ExtResource( 4 )]
+position = Vector2( 552, 2800 )
+scale = Vector2( 0.23, 0.23 )
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="BarraDeVida" parent="HUD" instance=ExtResource( 18 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+pause_mode = 2
+layer = 2
+script = ExtResource( 16 )
+
+[node name="Pausa" parent="CanvasLayer" instance=ExtResource( 17 )]
+visible = false
+
+[node name="GameOver" parent="CanvasLayer" instance=ExtResource( 19 )]
+visible = false
+
+[node name="Transição Preta" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+
+[node name="Transicao Nevoa" type="Sprite" parent="CanvasLayer"]
+visible = false
+material = SubResource( 101 )
+position = Vector2( 12708, 1800 )
+scale = Vector2( 25.8203, 4.65625 )
+z_index = 101
+texture = ExtResource( 1 )
+
+[node name="Animacao" type="Node2D" parent="."]
+pause_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animacao"]
+anims/transicao_nevoa = SubResource( 102 )
+anims/transicao_preta = SubResource( 103 )
+
+[connection signal="continuar_pressed" from="CanvasLayer/Pausa" to="CanvasLayer" method="_on_Pausa_continuar_pressed"]
+[connection signal="menu_pressed" from="CanvasLayer/Pausa" to="CanvasLayer" method="_on_Pausa_menu_pressed"]
+[connection signal="menu_pressed" from="CanvasLayer/GameOver" to="CanvasLayer" method="_on_Game_Over_menu_pressed"]
+[connection signal="renascer_pressed" from="CanvasLayer/GameOver" to="CanvasLayer" method="_on_Game_Over_renascer_pressed"]
