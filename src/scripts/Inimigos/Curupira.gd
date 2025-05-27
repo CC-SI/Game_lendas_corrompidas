@@ -29,6 +29,7 @@ var bravo = false
 var ataques_realizados: int
 var isOutZone: bool = true
 var attack_choice = ""
+var cutscene = false
 
 #intervalos de tempo
 var intervalo_ataque = 1.75
@@ -50,7 +51,7 @@ func _physics_process(delta):
 	
 	direcao = move_and_slide(direcao, Vector2.UP)
 	
-	if estado == "morto":
+	if estado == "morto" or cutscene:
 		return
 	
 	var position_target = DadosGlobais.player.global_position
@@ -92,6 +93,9 @@ func ativar_defesa(isActive):
 	escudo_ativo = isActive
 
 func levar_dano(valor):
+	if estado == "morto":
+		return
+	
 	if escudo_ativo:
 		if $Escudo/AnimationPlayer.is_playing():
 			$Escudo/AnimationPlayer.stop()

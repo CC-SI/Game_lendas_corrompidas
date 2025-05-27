@@ -13,6 +13,7 @@ var lado = 1
 var pulos_restantes = 1
 var direcao = Vector2.ZERO
 var esta_vuneravel = true
+var cutscene = false
 
 # -- SINAIS --
 signal jogador_morto
@@ -56,7 +57,11 @@ func _ready():
 
 # -- PROCESSO PRINCIPAL --
 func _physics_process(delta):
-	if estado_jogador == "morto" or estado_jogador == "dano":
+	direcao.x = 0
+	direcao.y += gravidade
+	
+	if estado_jogador == "morto" or estado_jogador == "dano" or cutscene:
+		direcao = move_and_slide(direcao, Vector2.UP)
 		return
 	
 	morrer()
@@ -80,9 +85,6 @@ func _physics_process(delta):
 
 # MOVIMENTAÇÃO E CONTROLES 
 func movePlayer():
-	direcao.x = 0
-	direcao.y += gravidade
-
 	if Input.is_action_pressed("ui_left"):
 		direcao.x = -velocidade
 		lado = -1
