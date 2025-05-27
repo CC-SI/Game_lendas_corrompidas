@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/Texturas/Cenario/Efeitos/filtro_preto.png" type="Texture" id=1]
-[ext_resource path="res://src/Texturas/UI/SimpleFlatKeys/Dark/0-Key.png" type="Texture" id=2]
+[ext_resource path="res://src/Texturas/logo.png" type="Texture" id=2]
 [ext_resource path="res://src/Shaders/nevoa.gdshader" type="Shader" id=3]
 [ext_resource path="res://src/scripts/tela_plash.gd" type="Script" id=4]
 
@@ -80,10 +80,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -77.456
-margin_top = -70.0
-margin_right = 434.544
-margin_bottom = 442.0
+margin_left = -150.0
+margin_top = -150.0
 rect_scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 2 )
 
