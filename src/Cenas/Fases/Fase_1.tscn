@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://src/Texturas/Cenario/Tiles/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Texturas/Cenario/BG/camada_5.png" type="Texture" id=2]
@@ -23,6 +23,12 @@
 [ext_resource path="res://src/Cenas/Vida.tscn" type="PackedScene" id=21]
 [ext_resource path="res://src/Cenas/Player/BarraDeVida.tscn" type="PackedScene" id=22]
 [ext_resource path="res://src/Som/bgm-fase.ogg" type="AudioStream" id=23]
+[ext_resource path="res://src/Cenas/Telas/Tela Pausa.tscn" type="PackedScene" id=24]
+[ext_resource path="res://src/Cenas/GameOver.tscn" type="PackedScene" id=25]
+[ext_resource path="res://src/scripts/Fase.gd" type="Script" id=26]
+[ext_resource path="res://src/Animacoes/Transicoes/transicao_preta.tres" type="Animation" id=27]
+[ext_resource path="res://src/Animacoes/Transicoes/transicao_nevoa.tres" type="Animation" id=28]
+[ext_resource path="res://src/scripts/Menus/ui.gd" type="Script" id=29]
 
 [sub_resource type="ShaderMaterial" id=115]
 shader = ExtResource( 14 )
@@ -184,7 +190,18 @@ extents = Vector2( 12968, 160 )
 [sub_resource type="RectangleShape2D" id=94]
 extents = Vector2( 172, 1632 )
 
-[node name="Fase 1" type="Node2D"]
+[sub_resource type="ShaderMaterial" id=116]
+shader = ExtResource( 14 )
+shader_param/fog_intensity = 0.0
+shader_param/fog_color = Plane( 0.6, 0.6, 0.6, 1 )
+shader_param/speed = 0.05
+shader_param/scale = 80.0
+
+[sub_resource type="Animation" id=117]
+resource_name = "jogador_chegando"
+
+[node name="Fase" type="Node2D"]
+script = ExtResource( 26 )
 
 [node name="Ambiente" type="Node2D" parent="."]
 
@@ -321,7 +338,6 @@ anims/movendo = SubResource( 102 )
 position = Vector2( 4184, 2144 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Ambiente/Plataformas/Movel/plataforma móvel4"]
-root_node = NodePath("../../plataforma móvel4")
 autoplay = "movendo"
 playback_process_mode = 0
 anims/movendo = SubResource( 104 )
@@ -330,7 +346,6 @@ anims/movendo = SubResource( 104 )
 position = Vector2( 1608, 1368 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Ambiente/Plataformas/Movel/plataforma móvel5"]
-root_node = NodePath("../../plataforma móvel5")
 autoplay = "movendo"
 playback_process_mode = 0
 anims/movendo = SubResource( 106 )
@@ -425,7 +440,7 @@ position = Vector2( -172, 1632 )
 shape = SubResource( 94 )
 
 [node name="Player" parent="." instance=ExtResource( 12 )]
-position = Vector2( 760, 2696 )
+position = Vector2( 9248, 1824 )
 scale = Vector2( 0.11, 0.11 )
 
 [node name="Inimigos" type="Node2D" parent="."]
@@ -438,9 +453,34 @@ scale = Vector2( 0.08, 0.08 )
 position = Vector2( 2238, 2488 )
 scale = Vector2( 0.17, 0.17 )
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="BarraDeVida" parent="UI" instance=ExtResource( 22 )]
+[node name="BarraDeVida" parent="HUD" instance=ExtResource( 22 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+pause_mode = 2
+layer = 2
+script = ExtResource( 29 )
+
+[node name="Pausa" parent="CanvasLayer" instance=ExtResource( 24 )]
+visible = false
+
+[node name="GameOver" parent="CanvasLayer" instance=ExtResource( 25 )]
+visible = false
+
+[node name="Transição Preta" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+
+[node name="Transicao Nevoa" type="Sprite" parent="CanvasLayer"]
+visible = false
+material = SubResource( 116 )
+position = Vector2( 12708, 1800 )
+scale = Vector2( 25.8203, 4.65625 )
+z_index = 101
+texture = ExtResource( 17 )
 
 [node name="Espiritos" type="Node2D" parent="."]
 scale = Vector2( 0.12, 0.12 )
@@ -487,7 +527,20 @@ scale = Vector2( 0.05, 0.05 )
 position = Vector2( 9424, 1912 )
 scale = Vector2( 0.05, 0.05 )
 
+[node name="Animacao" type="Node2D" parent="."]
+pause_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animacao"]
+anims/jogador_chegando = SubResource( 117 )
+anims/transicao_nevoa = ExtResource( 28 )
+anims/transicao_preta = ExtResource( 27 )
+
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 23 )
 autoplay = true
 bus = "Musica"
+
+[connection signal="continuar_pressed" from="CanvasLayer/Pausa" to="CanvasLayer" method="_on_Pausa_continuar_pressed"]
+[connection signal="menu_pressed" from="CanvasLayer/Pausa" to="CanvasLayer" method="_on_Pausa_menu_pressed"]
+[connection signal="menu_pressed" from="CanvasLayer/GameOver" to="CanvasLayer" method="_on_Game_Over_menu_pressed"]
+[connection signal="renascer_pressed" from="CanvasLayer/GameOver" to="CanvasLayer" method="_on_Game_Over_renascer_pressed"]
