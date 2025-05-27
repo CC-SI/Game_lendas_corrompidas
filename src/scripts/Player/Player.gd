@@ -14,6 +14,9 @@ var pulos_restantes = 1
 var direcao = Vector2.ZERO
 var esta_vuneravel = true
 
+# -- SINAIS --
+signal jogador_morto
+
 # -- REFERÊNCIAS --
 onready var camera = $Camera2D
 onready var sprite = $Sprite
@@ -31,7 +34,6 @@ var inimigo_na_area = []
 var inimigos_no_uivo = []
 var inimigos = DadosGlobais.LISTA_INIMIGOS
 var input_ativo = true
-
 
 # -- READY --
 func _ready():
@@ -269,5 +271,5 @@ func morrer():
 		input_ativo = false
 		estado_jogador = "morto"
 		esta_vuneravel = false
-		yield(get_tree().create_timer(0.5), "timeout")
-		get_tree().change_scene("res://src/Cenas/GameOver.tscn")
+		yield(get_tree().create_timer(1), "timeout")
+		emit_signal("jogador_morto")
