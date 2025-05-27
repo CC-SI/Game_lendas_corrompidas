@@ -449,6 +449,7 @@ tracks/3/keys = {
 
 [node name="Fase" type="Node2D"]
 script = ExtResource( 26 )
+proxima_cena = "res://src/Cenas/Fases/FaseCurupira.tscn"
 
 [node name="Ambiente" type="Node2D" parent="."]
 
