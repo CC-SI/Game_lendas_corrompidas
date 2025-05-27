@@ -16,4 +16,6 @@ func aplicar_dano(valor):
 func renascer_player(posicao):
 	var player = get_tree().get_nodes_in_group("player")
 	if (player.size() > 0):
+		if player[0].estado_jogador == "morto":
+			return
 		player[0].renascer(posicao)
