@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
+[ext_resource path="res://src/Som/SFX/UI/sfx_button_back.wav" type="AudioStream" id=1]
 [ext_resource path="res://src/Fonts/Cinzel/cinzel.black.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://src/scripts/Menus/menu_pausa.gd" type="Script" id=3]
 [ext_resource path="res://src/Cenas/Telas/Botao.tscn" type="PackedScene" id=4]
@@ -36,6 +37,11 @@ custom_fonts/font = SubResource( 9 )
 text = "Pausado"
 align = 1
 valign = 1
+
+[node name="Som" type="Node" parent="."]
+
+[node name="Clicar" type="AudioStreamPlayer" parent="Som"]
+stream = ExtResource( 1 )
 
 [connection signal="pressed" from="Botao Continuar" to="." method="_on_Botao_Continuar_pressed"]
 [connection signal="pressed" from="Botao Menu" to="." method="_on_Botao_Menu_pressed"]

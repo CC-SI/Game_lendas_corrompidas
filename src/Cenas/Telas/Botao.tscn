@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/Fonts/Cinzel/cinzel.regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/Som/SFX/UI/sfx_button_hover.wav" type="AudioStream" id=2]
+[ext_resource path="res://src/scripts/Botao.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -28,3 +30,11 @@ custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 text = "CONTINUAR"
+script = ExtResource( 3 )
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -20.0
+bus = "Efeitos"
+
+[connection signal="mouse_entered" from="." to="." method="_on_Botao_Continuar_mouse_entered"]
