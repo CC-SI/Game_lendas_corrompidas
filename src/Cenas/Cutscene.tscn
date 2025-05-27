@@ -11,14 +11,16 @@
 [ext_resource path="res://src/Texturas/Cenario/BG/camada_2.png" type="Texture" id=9]
 [ext_resource path="res://src/Shaders/nevoa.gdshader" type="Shader" id=10]
 [ext_resource path="res://src/Texturas/Cenario/BG/camada_7.png" type="Texture" id=11]
-[ext_resource path="res://src/Texturas/Player/animacao_parado.png" type="Texture" id=12]
+[ext_resource path="res://src/Texturas/Player/animacao_correndo.png" type="Texture" id=12]
 [ext_resource path="res://src/Animacoes/Player/Playercorrendo.tres" type="Animation" id=13]
 [ext_resource path="res://src/Animacoes/Player/Playerparado.tres" type="Animation" id=14]
 [ext_resource path="res://src/Texturas/Cenario/Efeitos/filtro_preto.png" type="Texture" id=15]
-[ext_resource path="res://src/Fonts/EastmanRomanTrial-Bold.otf" type="DynamicFontData" id=16]
 [ext_resource path="res://src/Sons/AmbienteInicial.wav" type="AudioStream" id=17]
 [ext_resource path="res://src/Sons/PassosJogador.mp3" type="AudioStream" id=18]
 [ext_resource path="res://src/Sons/Taryn.mp3" type="AudioStream" id=19]
+[ext_resource path="res://src/scripts/cutscene.gd" type="Script" id=20]
+[ext_resource path="res://src/Fonts/Cinzel/cinzel.regular.ttf" type="DynamicFontData" id=21]
+[ext_resource path="res://src/Animacoes/Cenasintroducao.tres" type="Animation" id=22]
 
 [sub_resource type="ConvexPolygonShape2D" id=91]
 points = PoolVector2Array( 384, 512, 128, 512, 128, 128, 384, 128 )
@@ -578,281 +580,58 @@ shader_param/fog_color = Plane( 0.6, 0.6, 0.6, 1 )
 shader_param/speed = 0.05
 shader_param/scale = 80.0
 
-[sub_resource type="DynamicFont" id=94]
-size = 26
-font_data = ExtResource( 16 )
-
 [sub_resource type="DynamicFont" id=97]
-size = 65
-outline_color = Color( 0.0655403, 0.268719, 0.808594, 1 )
-extra_spacing_top = -7
-extra_spacing_bottom = 15
-extra_spacing_char = -3
-font_data = ExtResource( 16 )
+size = 120
+use_mipmaps = true
+font_data = ExtResource( 21 )
 
-[sub_resource type="DynamicFont" id=98]
-size = 85
-font_data = ExtResource( 16 )
-
-[sub_resource type="Animation" id=95]
+[sub_resource type="Animation" id=99]
 length = 0.001
-
-[sub_resource type="Animation" id=96]
-resource_name = "introducao"
-length = 65.0
-step = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Camera2D:position")
+tracks/0/path = NodePath("Jogador/Sprite:flip_h")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 15, 20, 40 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -497, 229 ), Vector2( 5352, 1711 ), Vector2( 5352, 1711 ), Vector2( 1028, 1711 ) ]
+"values": [ false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Camera2D/TextTela1:rect_position")
+tracks/1/path = NodePath("Jogador:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 5 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 46, 188 ) ]
+"values": [ Vector2( 2122, 2835 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Camera2D/TextTela1:modulate")
+tracks/2/path = NodePath("Tayrin:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 15, 20 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Camera2D/TextTela2:rect_position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 27.5 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 46, 188 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Camera2D/TextTela2:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 25, 35, 40 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("Jogador:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 27.5, 40 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 4256, 2811 ), Vector2( 2122, 2829 ) ]
-}
-tracks/6/type = "animation"
-tracks/6/path = NodePath("Jogador/Animacaojogador")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"clips": PoolStringArray( "Playercorrendo", "Playerparado" ),
-"times": PoolRealArray( 27.5, 40 )
-}
-tracks/7/type = "animation"
-tracks/7/path = NodePath("Jogador/Animacaojogador")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"clips": PoolStringArray( "Playerparado" ),
-"times": PoolRealArray( 40 )
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("Jogador:modulate")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 27.5, 35, 63, 65 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("Tayrin:position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 40, 47.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1406, 2266 ), Vector2( 1796, 2730 ) ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("Tayrin:modulate")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"times": PoolRealArray( 0, 37.5, 40, 47.5, 61 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/11/type = "value"
-tracks/11/path = NodePath("Tayrin/TextTaryn1:modulate")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/keys = {
-"times": PoolRealArray( 0, 40, 47, 49, 51 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/12/type = "value"
-tracks/12/path = NodePath("Camera2D/TextTela3:modulate")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/keys = {
-"times": PoolRealArray( 0, 54, 56, 59, 61 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/13/type = "value"
-tracks/13/path = NodePath("Camera2D/TextTela4:modulate")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/keys = {
-"times": PoolRealArray( 0, 60.5, 61.5, 63.5, 65 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/14/type = "value"
-tracks/14/path = NodePath("Tayrin/TextTaryn2:modulate")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/keys = {
-"times": PoolRealArray( 0, 50, 52, 55 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/15/type = "audio"
-tracks/15/path = NodePath("AudioInicial")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 17 )
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": null
-} ],
-"times": PoolRealArray( 0, 28 )
-}
-tracks/16/type = "audio"
-tracks/16/path = NodePath("AudioPassosJogador")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 18 )
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 18 )
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": null
-} ],
-"times": PoolRealArray( 24, 27.5, 39.5 )
-}
-tracks/17/type = "value"
-tracks/17/path = NodePath("Tayrin/TextTaryn1:rect_position")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/keys = {
-"times": PoolRealArray( 48 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 2779.58, 1313.69 ) ]
-}
-tracks/18/type = "audio"
-tracks/18/path = NodePath("AudioTaryn")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": null
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 19 )
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": null
-} ],
-"times": PoolRealArray( 37.5, 38.5, 65 )
+"values": [ Vector2( 1796, 2730 ) ]
 }
 
+[sub_resource type="DynamicFont" id=98]
+size = 26
+use_mipmaps = true
+font_data = ExtResource( 21 )
+
 [node name="Cutscene" type="Node2D"]
+script = ExtResource( 20 )
+proxima_cena = "res://src/Cenas/Fases/Fase_1.tscn"
 
 [node name="Ambiente" type="Node2D" parent="."]
 
@@ -949,123 +728,46 @@ z_index = 99
 texture = ExtResource( 15 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 1028, 1711 )
+position = Vector2( 1426, 2320 )
 anchor_mode = 0
 current = true
-zoom = Vector2( 2, 2 )
-
-[node name="TextTela1" type="Label" parent="Camera2D"]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 46.0
-margin_top = 188.0
-margin_right = 1009.0
-margin_bottom = 385.0
-rect_scale = Vector2( 2, 2 )
-size_flags_vertical = 1
-custom_fonts/font = SubResource( 94 )
-text = "\"Uma Floresta de lendas, agora corrompida pela escuridão
- causada pela ação Humana.\""
-align = 1
-valign = 1
-
-[node name="TextTela2" type="Label" parent="Camera2D"]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 46.0
-margin_top = 188.0
-margin_right = 1012.0
-margin_bottom = 417.0
-rect_scale = Vector2( 2, 2 )
-size_flags_vertical = 1
-custom_fonts/font = SubResource( 94 )
-text = "\"O Guardião que irá restaurar o equilíbrio.\""
-align = 1
-valign = 1
-
-[node name="TextTela3" type="Label" parent="Camera2D"]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 46.0
-margin_top = 188.0
-margin_right = 740.0
-margin_bottom = 417.0
-rect_scale = Vector2( 2.8, 2.8 )
-size_flags_vertical = 1
-custom_fonts/font = SubResource( 94 )
-text = "\"A missão começa agora.\""
-align = 1
-valign = 1
-
-[node name="TextTela4" type="Label" parent="Camera2D"]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 46.0
-margin_top = 188.0
-margin_right = 750.0
-margin_bottom = 417.0
-rect_scale = Vector2( 2.74482, 2.74482 )
-size_flags_vertical = 1
-custom_fonts/font = SubResource( 94 )
-text = "\"A Floresta precisa de você.\""
-align = 1
-valign = 1
 
 [node name="Jogador" type="Node2D" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 2122, 2829 )
+position = Vector2( 3300, 2835 )
 scale = Vector2( 0.11, 0.11 )
 
 [node name="Sprite" type="Sprite" parent="Jogador"]
 texture = ExtResource( 12 )
-flip_h = true
 hframes = 4
-vframes = 6
-frame = 16
+vframes = 5
 
 [node name="Animacaojogador" type="AnimationPlayer" parent="Jogador"]
 anims/Playercorrendo = ExtResource( 13 )
 anims/Playerparado = ExtResource( 14 )
 
 [node name="Tayrin" parent="." instance=ExtResource( 8 )]
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 1796, 2730 )
-scale = Vector2( -0.124839, -0.124839 )
+position = Vector2( 3100, 2827 )
+scale = Vector2( -0.1, -0.1 )
 
-[node name="TextTaryn1" type="Label" parent="Tayrin"]
+[node name="FalaTaryn" type="Label" parent="Tayrin"]
 modulate = Color( 1, 1, 1, 0 )
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = 2779.58
-margin_top = 1313.69
-margin_right = 4405.58
-margin_bottom = 1623.69
+light_mask = 0
+margin_left = 1690.0
+margin_top = 960.0
+margin_right = 5190.0
+margin_bottom = 1660.0
 rect_rotation = 180.0
-rect_scale = Vector2( 3.72725, 3.72725 )
-size_flags_vertical = 1
-custom_colors/font_color = Color( 0.180392, 0.941176, 0.960784, 1 )
 custom_fonts/font = SubResource( 97 )
-text = "Taryn: \"A Floresta está em perigo. 
-Você deve purificar suas fontes de corrupção.\""
+text = "Siga seu instinto e restaure o que foi perdido."
 align = 1
 valign = 1
-
-[node name="TextTaryn2" type="Label" parent="Tayrin"]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 2283.0
-margin_top = 1300.0
-margin_right = 3848.0
-margin_bottom = 1658.0
-rect_rotation = 179.885
-rect_scale = Vector2( 3.10343, 3.10343 )
-custom_colors/font_color = Color( 0.180392, 0.941176, 0.960784, 1 )
-custom_fonts/font = SubResource( 98 )
-text = "Taryn: \"Siga seu instinto e 
-restaure o que foi perdido.\""
-align = 1
-valign = 1
+autowrap = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "introducao"
+autoplay = "Cenasintroducao"
 reset_on_save = false
-anims/RESET = SubResource( 95 )
-anims/introducao = SubResource( 96 )
+anims/Cenasintroducao = ExtResource( 22 )
+anims/RESET = SubResource( 99 )
 
 [node name="AudioInicial" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 17 )
@@ -1082,3 +784,24 @@ bus = "Musica"
 [node name="AudioTaryn" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
 volume_db = 6.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextoTela" type="Label" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+light_mask = 0
+anchor_left = 0.1
+anchor_top = 0.3
+anchor_right = 0.9
+anchor_bottom = 0.6
+custom_fonts/font = SubResource( 98 )
+text = "\"A Floresta precisa de você.\""
+align = 1
+autowrap = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
