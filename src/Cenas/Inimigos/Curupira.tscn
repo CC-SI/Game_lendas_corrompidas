@@ -23,7 +23,7 @@
 [ext_resource path="res://src/Animacoes/Inimigos/Curupira/Curupirateletransportando.tres" type="Animation" id=21]
 [ext_resource path="res://src/Cenas/Inimigos/Curupira/BarraVidaCurupira.tscn" type="PackedScene" id=22]
 [ext_resource path="res://src/Som/SFX/Curupira/sfx_curupira_assobio.wav" type="AudioStream" id=23]
-[ext_resource path="res://src/Texturas/Inimigos/Curupira/animacao_soco.png" type="Texture" id=24]
+[ext_resource path="res://src/Texturas/Inimigos/Curupira/animacao_parado.png" type="Texture" id=24]
 [ext_resource path="res://src/Som/SFX/Curupira/sfx_curupira_escudo.wav" type="AudioStream" id=25]
 
 [sub_resource type="ShaderMaterial" id=14]
@@ -99,10 +99,10 @@ script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Curupira"]
 material = SubResource( 14 )
-texture = ExtResource( 6 )
+texture = ExtResource( 24 )
 hframes = 6
 vframes = 6
-frame = 11
+frame = 29
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Curupira"]
 anims/RESET = SubResource( 10 )

@@ -6,6 +6,9 @@ var direcao = Vector2.ZERO
 var direcao_alvo = Vector2.ZERO
 var velocidade_final = Vector2.ZERO
 
+onready var lancarASP = $Som/Lancar
+onready var acertarASP = $Som/Acertar
+
 func _physics_process(delta):
 	if !foi_lancada:
 		direcao_alvo = DadosGlobais.player.global_position
@@ -19,6 +22,7 @@ func lancar():
 	foi_lancada = true
 	direcao = (direcao_alvo - global_position).normalized()
 	$DuracaoTimer.start(5)
+	lancarASP.play(0)
 
 func aplicar_dano(valor):
 	var player = get_tree().get_nodes_in_group("player")
@@ -30,8 +34,11 @@ func _on_Area2D_body_entered(body):
 		return
 	
 	if body.is_in_group("player"): 
-		aplicar_dano(1)  
-		queue_free()  
+		aplicar_dano(1)
+		acertarASP.play(0)
+		$Sprite.hide()
+		yield(acertarASP, "finished")
+		queue_free()
 
 func _on_DuracaoTimer_timeout():
 	queue_free()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/scripts/Inimigos/Curupira/bola_fogo_curupira.gd" type="Script" id=1]
 [ext_resource path="res://src/Texturas/Player/animacao_bola_fogo.png" type="Texture" id=2]
+[ext_resource path="res://src/Som/SFX/Heroi/sfx_heroi_bola_de_fogo.wav" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 31.0
@@ -73,5 +74,18 @@ one_shot = true
 autoplay = "bola_fogo"
 anims/RESET = SubResource( 3 )
 anims/bola_fogo = SubResource( 4 )
+
+[node name="Som" type="Node" parent="."]
+
+[node name="Lancar" type="AudioStreamPlayer" parent="Som"]
+stream = ExtResource( 3 )
+pitch_scale = 0.8
+bus = "Efeitos"
+
+[node name="Acertar" type="AudioStreamPlayer" parent="Som"]
+stream = ExtResource( 3 )
+volume_db = 3.0
+pitch_scale = 2.1
+bus = "Efeitos"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
