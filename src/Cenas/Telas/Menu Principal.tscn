@@ -163,6 +163,8 @@ bus = "Musica"
 
 [node name="Iniciar" type="AudioStreamPlayer" parent="Som"]
 stream = ExtResource( 11 )
+volume_db = -16.0
+pitch_scale = 0.8
 bus = "Efeitos"
 
 [node name="Sair" type="AudioStreamPlayer" parent="Som"]
