@@ -83,3 +83,17 @@ tracks/5/keys = {
 "method": "iniciar_timer_ataque"
 } ]
 }
+tracks/6/type = "method"
+tracks/6/path = NodePath("Som/Soco")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1.008 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}

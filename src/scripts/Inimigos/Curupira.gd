@@ -13,7 +13,7 @@ onready var posicoes_bola_fogo = [
 var bolas_fogo = []
 var bolas_fogo_restantes = []
 
-onready var bgm = $BGM
+onready var bgm = $Som/BGM
 
 var gravidade = 800
 

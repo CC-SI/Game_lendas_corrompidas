@@ -1,11 +1,11 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://src/Animacoes/Inimigos/Curupira/maquina_estados_curupira.tres" type="AnimationNodeStateMachine" id=1]
 [ext_resource path="res://src/scripts/Inimigos/Curupira.gd" type="Script" id=2]
 [ext_resource path="res://src/scripts/Inimigos/Curupira/animacao_curupira.gd" type="Script" id=3]
 [ext_resource path="res://src/Som/bgm-guardiao.ogg" type="AudioStream" id=4]
 [ext_resource path="res://src/Animacoes/Inimigos/Curupira/Curupiradescansando.tres" type="Animation" id=5]
-[ext_resource path="res://src/Texturas/Inimigos/Curupira/animacao_parado.png" type="Texture" id=6]
+[ext_resource path="res://src/Som/SFX/Curupira/sfx_curupira_soco.wav" type="AudioStream" id=6]
 [ext_resource path="res://src/Animacoes/Inimigos/Curupira/Curupiralançando_bola_fogo.tres" type="Animation" id=7]
 [ext_resource path="res://src/Animacoes/Inimigos/Curupira/Curupiraparado.tres" type="Animation" id=8]
 [ext_resource path="res://src/Animacoes/Inimigos/Curupira/Curupirasoco.tres" type="Animation" id=9]
@@ -22,6 +22,9 @@
 [ext_resource path="res://src/Animacoes/Inimigos/Curupira/Curupiraescudo_ativando.tres" type="Animation" id=20]
 [ext_resource path="res://src/Animacoes/Inimigos/Curupira/Curupirateletransportando.tres" type="Animation" id=21]
 [ext_resource path="res://src/Cenas/Inimigos/Curupira/BarraVidaCurupira.tscn" type="PackedScene" id=22]
+[ext_resource path="res://src/Som/SFX/Curupira/sfx_curupira_assobio.wav" type="AudioStream" id=23]
+[ext_resource path="res://src/Texturas/Inimigos/Curupira/animacao_soco.png" type="Texture" id=24]
+[ext_resource path="res://src/Som/SFX/Curupira/sfx_curupira_escudo.wav" type="AudioStream" id=25]
 
 [sub_resource type="ShaderMaterial" id=14]
 shader = ExtResource( 18 )
@@ -183,14 +186,6 @@ position = Vector2( 384, 0 )
 [node name="PosicaoAssobio" type="Position2D" parent="Curupira"]
 position = Vector2( 176, 40 )
 
-[node name="BGM" type="AudioStreamPlayer" parent="Curupira"]
-stream = ExtResource( 4 )
-pitch_scale = 0.9
-bus = "Musica"
-__meta__ = {
-"_editor_description_": "Para ser tocado junto com a BGM quando estiver rolando a luta com o guardião."
-}
-
 [node name="Escudo" type="Node2D" parent="Curupira"]
 
 [node name="Sprite" type="Sprite" parent="Curupira/Escudo"]
@@ -211,12 +206,44 @@ position = Vector2( 0, -370 )
 scale = Vector2( 0.5, 0.5 )
 z_index = 300
 
+[node name="Som" type="Node" parent="Curupira"]
+
+[node name="BGM" type="AudioStreamPlayer" parent="Curupira/Som"]
+stream = ExtResource( 4 )
+pitch_scale = 0.9
+bus = "Musica"
+__meta__ = {
+"_editor_description_": "Para ser tocado junto com a BGM quando estiver rolando a luta com o guardião."
+}
+
+[node name="Assobio" type="AudioStreamPlayer2D" parent="Curupira/Som"]
+stream = ExtResource( 23 )
+max_distance = 3000.0
+bus = "Efeitos"
+
+[node name="Soco" type="AudioStreamPlayer" parent="Curupira/Som"]
+stream = ExtResource( 6 )
+pitch_scale = 0.8
+bus = "Efeitos"
+__meta__ = {
+"_editor_description_": "Para ser tocado junto com a BGM quando estiver rolando a luta com o guardião."
+}
+
+[node name="Escudo" type="AudioStreamPlayer" parent="Curupira/Som"]
+stream = ExtResource( 25 )
+volume_db = -5.0
+pitch_scale = 0.7
+bus = "Efeitos"
+__meta__ = {
+"_editor_description_": "Para ser tocado junto com a BGM quando estiver rolando a luta com o guardião."
+}
+
 [connection signal="body_entered" from="Curupira/ZonaDecisao" to="Curupira" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Curupira/ZonaDecisao" to="Curupira" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Curupira/Soco" to="Curupira" method="_on_Chute_body_entered"]
-[connection signal="timeout" from="Curupira/AtaqueTimer" to="Curupira" method="_on_assobio_timeout"]
-[connection signal="timeout" from="Curupira/AtaqueTimer" to="Curupira" method="_on_pos_assobio_timeout"]
 [connection signal="timeout" from="Curupira/AtaqueTimer" to="Curupira" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Curupira/AtaqueTimer" to="Curupira" method="_on_pos_assobio_timeout"]
+[connection signal="timeout" from="Curupira/AtaqueTimer" to="Curupira" method="_on_assobio_timeout"]
 [connection signal="timeout" from="Curupira/AssobioTimer" to="Curupira" method="_on_AssobioTimer_timeout"]
 [connection signal="timeout" from="Curupira/DescansoTimer" to="Curupira" method="_on_DescansoTimer_timeout"]
 [connection signal="timeout" from="Curupira/BolaFogoTimer" to="Curupira" method="_on_BolaFogoTimer_timeout"]
