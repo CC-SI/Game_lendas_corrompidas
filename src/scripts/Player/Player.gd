@@ -19,7 +19,6 @@ var cutscene = false
 signal jogador_morto
 
 # -- REFERÊNCIAS --
-onready var camera = $Camera2D
 onready var sprite = $Sprite
 onready var area2d = $Mordida
 onready var position2D = $Position2D
@@ -40,9 +39,6 @@ var input_ativo = true
 # -- READY --
 func _ready():
 	DadosGlobais.vidas = 3
-	camera.limit_top = 0
-	#camera.limit_bottom = get_viewport().size.y
-	camera.limit_left = 0
 	DadosGlobais.player = self
 	input_ativo = true
 	
