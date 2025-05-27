@@ -1,41 +1,10 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://src/Fonts/Cinzel/cinzel.regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/Cenas/Telas/Botao.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/scripts/game_over.gd" type="Script" id=2]
 [ext_resource path="res://src/Fonts/Cinzel/cinzel.black.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://src/Shaders/nevoa.gdshader" type="Shader" id=4]
 [ext_resource path="res://src/Texturas/Cenario/Efeitos/filtro_preto.png" type="Texture" id=5]
-
-[sub_resource type="DynamicFont" id=1]
-size = 20
-use_mipmaps = true
-use_filter = true
-extra_spacing_char = 5
-font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.384314, 0.427451, 0.690196, 1 )
-
-[sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 0.188235, 0.211765, 0.34902, 1 )
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.160784, 0.215686, 0.541176, 1 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 20
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxFlat" id=8]
-bg_color = Color( 0.4, 0.447059, 0.72549, 1 )
-
-[sub_resource type="StyleBoxFlat" id=9]
-bg_color = Color( 0.188235, 0.211765, 0.34902, 1 )
-
-[sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0.160784, 0.215686, 0.541176, 1 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 60
@@ -51,58 +20,40 @@ shader_param/speed = 0.05
 shader_param/scale = 80.0
 
 [node name="Control" type="Control"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -4.0
-margin_top = 10.0
-margin_right = -4.0
-margin_bottom = 10.0
 script = ExtResource( 2 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
 
-[node name="Botao Renascer" type="Button" parent="CanvasLayer"]
-margin_left = 424.0
-margin_top = 344.0
-margin_right = 604.0
-margin_bottom = 394.0
-custom_fonts/font = SubResource( 1 )
-custom_styles/hover = SubResource( 6 )
-custom_styles/pressed = SubResource( 7 )
-custom_styles/normal = SubResource( 2 )
+[node name="Botao Renascer" parent="." instance=ExtResource( 1 )]
 text = "RENASCER"
 
-[node name="Botao Sair" type="Button" parent="CanvasLayer"]
-margin_left = 424.0
+[node name="Botao Menu" parent="." instance=ExtResource( 1 )]
 margin_top = 440.0
-margin_right = 604.0
 margin_bottom = 490.0
-custom_fonts/font = SubResource( 3 )
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/normal = SubResource( 10 )
-text = "Sair"
+text = "IR PRO MENU"
 
-[node name="Label" type="Label" parent="CanvasLayer"]
-margin_left = 264.0
-margin_top = 160.0
-margin_right = 763.0
-margin_bottom = 242.0
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+margin_top = 152.0
+margin_bottom = 234.0
 custom_fonts/font = SubResource( 4 )
 text = "VOCÊ MORREU"
+align = 1
+valign = 1
 
-[node name="nevoa" type="Sprite" parent="CanvasLayer"]
+[node name="nevoa" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.470588 )
 material = SubResource( 5 )
-position = Vector2( 12708, 1800 )
+position = Vector2( 12712, 1790 )
 scale = Vector2( 25.8203, 4.65625 )
 z_index = 99
 texture = ExtResource( 5 )
 
-[connection signal="pressed" from="CanvasLayer/Botao Renascer" to="." method="_on_Botao_Renascer_pressed"]
-[connection signal="pressed" from="CanvasLayer/Botao Sair" to="." method="_on_Botao_Sair_pressed"]
+[connection signal="pressed" from="Botao Renascer" to="." method="_on_Botao_Renascer_pressed"]
+[connection signal="pressed" from="Botao Menu" to="." method="_on_Botao_Menu_pressed"]

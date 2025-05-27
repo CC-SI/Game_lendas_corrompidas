@@ -1,7 +1,10 @@
-extends Node
+extends Control
+
+signal renascer_pressed
+signal menu_pressed
 
 func _on_Botao_Renascer_pressed():
-	get_tree().change_scene("res://src/Cenas/Cenario Testes/Cenario Testes.tscn")
+	emit_signal("renascer_pressed")
 	
-func _on_Botao_Sair_pressed():
-	get_tree().quit()
+func _on_Botao_Menu_pressed():
+	emit_signal("menu_pressed")
