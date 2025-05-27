@@ -368,6 +368,8 @@ radius = 1024.0
 collision_layer = 49
 collision_mask = 49
 script = ExtResource( 2 )
+gravidade = 45
+forca_pulo = 850
 force_dash = 10000
 
 [node name="Sprite" type="Sprite" parent="Player"]
@@ -376,7 +378,7 @@ position = Vector2( -85, 0 )
 texture = ExtResource( 6 )
 hframes = 4
 vframes = 6
-frame = 17
+frame = 8
 region_rect = Rect2( 92, 2, 21, 33 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
