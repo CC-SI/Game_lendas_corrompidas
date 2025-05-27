@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/scripts/camera.gd" type="Script" id=1]
+
+[node name="Camera2D" type="Camera2D"]
+offset = Vector2( 0, -50 )
+current = true
+zoom = Vector2( 0.9, 0.9 )
+limit_left = 0
+limit_top = 0
+limit_bottom = 3216
+smoothing_enabled = true
+smoothing_speed = 8.0
+script = ExtResource( 1 )
