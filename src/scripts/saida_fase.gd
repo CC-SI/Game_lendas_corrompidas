@@ -1,13 +1,10 @@
 extends Node2D
 
-export var nome_proxima_fase: String
-
 onready var texto_ajuda = $TextoAjuda
 
-export var precisa_inimigos_mortos: bool
-export var quantidade_inimigos = 0
-
 var player_na_area = false
+
+signal sair_fase
 
 func _ready():
 	texto_ajuda.visible = false
@@ -24,5 +21,4 @@ func _on_Area2D_body_exited(body):
 
 func _process(delta):
 	if player_na_area and Input.is_action_just_pressed("interact"):
-		if nome_proxima_fase != "":
-			get_tree().change_scene_to_file("res://src/Cenas/Fases/" + nome_proxima_fase + ".tscn")
+		emit_signal("sair_fase")
