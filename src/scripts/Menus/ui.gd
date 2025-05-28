@@ -67,3 +67,9 @@ func _on_Game_Over_menu_pressed():
 
 func _on_Player_jogador_morto():
 	abrir_menu_game_over()
+
+func _on_Pausa_recomecar_pressed():
+	animacao.play("transicao_preta")
+	yield(animacao, "animation_finished")
+	get_tree().paused = false
+	get_tree().change_scene(get_tree().current_scene.filename)
