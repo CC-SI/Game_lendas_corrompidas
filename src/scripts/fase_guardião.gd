@@ -26,6 +26,9 @@ func terminar_cutscene():
 	player.cutscene = false
 	curupira.cutscene = false
 
+func proxima_cena():
+	get_tree().change_scene("res://src/Cenas/Final.tscn")
+
 func on_morte_curupira():
 	animacao.play("transicao_preta")
 	yield(animacao, "animation_finished")
