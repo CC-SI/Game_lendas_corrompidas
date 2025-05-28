@@ -13,7 +13,6 @@ onready var posicoes_bola_fogo = [
 var bolas_fogo = []
 var bolas_fogo_restantes = []
 
-onready var bgm = $Som/BGM
 onready var assobioASP = $Som/Assobio
 onready var acertadoASP = $Som/Acertado
 
@@ -45,7 +44,6 @@ var contagem_ondas_sonoras = 0
 func _ready():
 	randomize()
 	iniciar_timer_ataque()
-	bgm.play(0);
 
 func _physics_process(delta):
 	var direcao = Vector2.ZERO
@@ -204,7 +202,6 @@ func _on_Timer_timeout():
 
 func morrer():
 	estado = "morto"
-	bgm.stop();
 
 func _on_AssobioTimer_timeout():
 	if contagem_ondas_sonoras >= 3:
