@@ -23,11 +23,18 @@ anchor_bottom = 1.0
 color = Color( 1, 1, 1, 0.227451 )
 
 [node name="Botao Continuar" parent="." instance=ExtResource( 4 )]
+margin_top = 311.0
+margin_bottom = 361.0
 
 [node name="Botao Menu" parent="." instance=ExtResource( 4 )]
-margin_top = 440.0
-margin_bottom = 490.0
+margin_top = 471.0
+margin_bottom = 521.0
 text = "IR PRO MENU"
+
+[node name="Botao Recomeçar" parent="." instance=ExtResource( 4 )]
+margin_top = 391.0
+margin_bottom = 441.0
+text = "RECOMEÇAR"
 
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
@@ -45,3 +52,4 @@ stream = ExtResource( 1 )
 
 [connection signal="pressed" from="Botao Continuar" to="." method="_on_Botao_Continuar_pressed"]
 [connection signal="pressed" from="Botao Menu" to="." method="_on_Botao_Menu_pressed"]
+[connection signal="pressed" from="Botao Recomeçar" to="." method="_on_Botao_Recomear_pressed"]
