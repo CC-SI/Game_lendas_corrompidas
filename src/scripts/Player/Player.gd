@@ -10,7 +10,7 @@ var bolaDeFogo = preload("res://src/Cenas/Player/BolaDeFogo.tscn")
 # -- ESTADO --
 var estado_jogador = "padrao"
 var lado = 1
-var pulos_restantes = 1
+var pulos_restantes = 2
 var direcao = Vector2.ZERO
 var esta_vuneravel = true
 var cutscene = false
@@ -29,6 +29,8 @@ onready var quedaASP = $Sons/Queda
 onready var uivo_cooldown = $UivoCooldown
 onready var bola_fogo_cooldown = $BolaFogoCooldown
 onready var dash_cooldown = $DashCooldown
+
+onready var ui_comandos = $"../CanvasLayer/InformaçõesVisuais"
 
 # -- CONTROLE DE INIMIGOS --
 var inimigo_na_area = []
@@ -57,8 +59,11 @@ func _physics_process(delta):
 	direcao.y += gravidade
 	
 	if estado_jogador == "morto" or estado_jogador == "dano" or cutscene:
+		ui_comandos.visible = false
 		direcao = move_and_slide(direcao, Vector2.UP)
 		return
+	
+	ui_comandos.visible = true
 	
 	morrer()
 	
@@ -87,12 +92,12 @@ func movePlayer():
 	elif Input.is_action_pressed("ui_right"):
 		direcao.x = velocidade
 		lado = 1
-
+	
+	if is_on_floor():
+		pulos_restantes = 2
+	
 	if Input.is_action_just_pressed("ui_accept"):
-		if is_on_floor():
-			direcao.y = -forca_pulo
-			pulos_restantes = 1
-		elif pulos_restantes > 0:
+		if pulos_restantes > 0:
 			direcao.y = -forca_pulo
 			pulos_restantes -= 1
 
@@ -104,6 +109,7 @@ func dash():
 		estado_jogador = "dash"
 		esta_vuneravel = false
 		dash_cooldown.start()
+		ui_comandos.exibir_cooldown_dash(true)
 		criar_fantasma()
 		direcao.x = lado * force_dash
 
@@ -136,6 +142,7 @@ func atirar_bola():
 	
 	if Input.is_action_just_pressed("atirar"):
 		bola_fogo_cooldown.start()
+		ui_comandos.exibir_cooldown_fogo(true)
 		
 		var bola = bolaDeFogo.instance()
 		get_parent().add_child(bola)
@@ -193,6 +200,7 @@ func usar_uivo():
 		estado_jogador = "uivo"
 		esta_vuneravel = false
 		uivo_cooldown.start()
+		ui_comandos.exibir_cooldown_uivo(true)
 		
 		for inimigo in inimigos_no_uivo:
 			var mudar_velocidade = 0
