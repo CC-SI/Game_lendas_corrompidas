@@ -35,5 +35,4 @@ func _on_Area2D_body_entered(body):
 		if player.size() > 0:	
 			player[0].levar_dano(1)
 
-	yield(get_tree().create_timer(1), "timeout")
 	queue_free()
