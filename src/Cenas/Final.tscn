@@ -1,0 +1,134 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://src/Shaders/nevoa.gdshader" type="Shader" id=1]
+[ext_resource path="res://src/Fonts/Cinzel/cinzel.regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://src/Texturas/Cenario/BG/camada_4.png" type="Texture" id=3]
+[ext_resource path="res://src/Texturas/Cenario/BG/camada_5.png" type="Texture" id=4]
+[ext_resource path="res://src/Texturas/Cenario/BG/camada_1.png" type="Texture" id=5]
+[ext_resource path="res://src/Texturas/Cenario/BG/camada_3.png" type="Texture" id=6]
+[ext_resource path="res://src/Texturas/Cenario/BG/camada_2.png" type="Texture" id=7]
+[ext_resource path="res://src/Texturas/Arvore Mae/arvore_mae_corrompida.png" type="Texture" id=8]
+[ext_resource path="res://src/scripts/final.gd" type="Script" id=9]
+[ext_resource path="res://src/Texturas/Cenario/Efeitos/circulo_gradiente.png" type="Texture" id=10]
+[ext_resource path="res://src/Texturas/Cenario/Efeitos/filtro_preto.png" type="Texture" id=11]
+[ext_resource path="res://src/Sons/AmbienteInicial.wav" type="AudioStream" id=12]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/fog_intensity = 0.113
+shader_param/fog_color = Plane( 0.6, 0.6, 0.6, 1 )
+shader_param/speed = 0.05
+shader_param/scale = 80.0
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "final"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 5, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=4]
+size = 69
+font_data = ExtResource( 2 )
+
+[node name="Final" type="Node2D"]
+script = ExtResource( 9 )
+
+[node name="fundo" type="Node2D" parent="."]
+modulate = Color( 0.184314, 0.184314, 0.184314, 1 )
+position = Vector2( 450, -331 )
+scale = Vector2( 0.7, 0.7 )
+
+[node name="Sprite5" type="Sprite" parent="fundo"]
+texture = ExtResource( 4 )
+
+[node name="Sprite4" type="Sprite" parent="fundo"]
+texture = ExtResource( 3 )
+
+[node name="Sprite3" type="Sprite" parent="fundo"]
+texture = ExtResource( 6 )
+
+[node name="Sprite2" type="Sprite" parent="fundo"]
+texture = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="fundo"]
+texture = ExtResource( 5 )
+
+[node name="Chao" type="Node2D" parent="."]
+position = Vector2( -431, 14 )
+scale = Vector2( 2, 1 )
+
+[node name="Sprite" type="Sprite" parent="Chao"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 475, 953 )
+texture = ExtResource( 10 )
+
+[node name="ArvoreMae" type="Node2D" parent="."]
+modulate = Color( 0.27451, 0.27451, 0.27451, 1 )
+position = Vector2( 517, 342 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Sprite" type="Sprite" parent="ArvoreMae"]
+texture = ExtResource( 8 )
+
+[node name="nevoa" type="Sprite" parent="."]
+material = SubResource( 1 )
+position = Vector2( 12708, 1800 )
+scale = Vector2( 25.8203, 4.65625 )
+z_index = 99
+texture = ExtResource( 11 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "final"
+anims/RESET = SubResource( 2 )
+anims/final = SubResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchor_left = 0.1
+anchor_top = 0.119
+anchor_right = 0.9
+anchor_bottom = 0.231
+custom_fonts/font = SubResource( 4 )
+text = "CONTINUA..."
+align = 1
+valign = 1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+
+[node name="AudioInicial" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -15.0
+pitch_scale = 0.9
+autoplay = true
+bus = "Musica"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
