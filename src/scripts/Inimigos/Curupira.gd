@@ -145,7 +145,7 @@ func modo_bravo():
 	intervalo_bola_fogo = 0.5
 
 func descansar():
-	$DescansoTimer.start(6)
+	$DescansoTimer.start(4)
 
 func assobiar():
 	criar_onda_sonora()
