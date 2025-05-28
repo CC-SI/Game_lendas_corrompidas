@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://src/Texturas/Player/animacao_correndo.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=2]
@@ -30,6 +30,7 @@
 [ext_resource path="res://src/Texturas/UI/SimpleFlatKeys/Light/Shift-Key.png" type="Texture" id=28]
 [ext_resource path="res://src/Texturas/UI/SimpleFlatKeys/Light/A-Key.png" type="Texture" id=29]
 [ext_resource path="res://src/Texturas/UI/SimpleFlatKeys/Light/W-Key.png" type="Texture" id=30]
+[ext_resource path="res://src/Cenas/Player/BarraDeVida.tscn" type="PackedScene" id=31]
 [ext_resource path="res://src/scripts/Menus/ui_comandos.gd" type="Script" id=32]
 
 [sub_resource type="ShaderMaterial" id=38]
@@ -404,7 +405,7 @@ position = Vector2( -85, 0 )
 texture = ExtResource( 6 )
 hframes = 4
 vframes = 6
-frame = 9
+frame = 2
 region_rect = Rect2( 92, 2, 21, 33 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -733,6 +734,8 @@ custom_fonts/font = SubResource( 43 )
 text = "2"
 align = 1
 valign = 1
+
+[node name="BarraDeVida" parent="CanvasLayer/InformaçõesVisuais" instance=ExtResource( 31 )]
 
 [connection signal="body_entered" from="Player/Mordida" to="Player" method="_on_ZonaDeAtaque_body_entered"]
 [connection signal="body_exited" from="Player/Mordida" to="Player" method="_on_ZonaDeAtaque_body_exited"]
