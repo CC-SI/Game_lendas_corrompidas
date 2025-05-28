@@ -9,6 +9,8 @@ radius = 102.078
 [node name="BlocoDeFogo" type="Node2D"]
 
 [node name="BlocoDeFogo" type="KinematicBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="BlocoDeFogo"]
