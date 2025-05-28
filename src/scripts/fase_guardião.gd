@@ -2,6 +2,7 @@ extends Node2D
 
 onready var animacao = $Animacao/AnimationPlayer
 onready var player = $Player/Player
+onready var tayrin = $Player/Instancias/teste
 onready var curupira = $Curupira/Curupira
 
 var estado = "cutscene"
@@ -12,6 +13,9 @@ func _ready():
 	iniciar_cutscene("comeco_luta")
 
 func iniciar_cutscene(cutscene):
+	if cutscene == "termino_luta":
+		tayrin.visible = false
+	
 	estado = "cutscene"
 	player.cutscene = true
 	curupira.cutscene = true
