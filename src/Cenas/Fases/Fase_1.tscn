@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://src/Texturas/Cenario/Tiles/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Texturas/Cenario/BG/camada_5.png" type="Texture" id=2]
@@ -21,7 +21,6 @@
 [ext_resource path="res://src/Cenas/Espiritos da Floresta/Espirito.tscn" type="PackedScene" id=19]
 [ext_resource path="res://src/Cenas/Ambiente/Buraco.tscn" type="PackedScene" id=20]
 [ext_resource path="res://src/Cenas/Vida.tscn" type="PackedScene" id=21]
-[ext_resource path="res://src/Cenas/Player/BarraDeVida.tscn" type="PackedScene" id=22]
 [ext_resource path="res://src/Som/bgm-fase.ogg" type="AudioStream" id=23]
 [ext_resource path="res://src/Cenas/Telas/Tela Pausa.tscn" type="PackedScene" id=24]
 [ext_resource path="res://src/Cenas/GameOver.tscn" type="PackedScene" id=25]
@@ -702,10 +701,6 @@ scale = Vector2( 0.08, 0.08 )
 position = Vector2( 2238, 2488 )
 scale = Vector2( 0.17, 0.17 )
 
-[node name="HUD" type="CanvasLayer" parent="."]
-
-[node name="BarraDeVida" parent="HUD" instance=ExtResource( 22 )]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 pause_mode = 2
 layer = 2
@@ -813,5 +808,6 @@ limite_direito = 25216
 
 [connection signal="continuar_pressed" from="CanvasLayer/Pausa" to="CanvasLayer" method="_on_Pausa_continuar_pressed"]
 [connection signal="menu_pressed" from="CanvasLayer/Pausa" to="CanvasLayer" method="_on_Pausa_menu_pressed"]
+[connection signal="recomecar_pressed" from="CanvasLayer/Pausa" to="CanvasLayer" method="_on_Pausa_recomecar_pressed"]
 [connection signal="menu_pressed" from="CanvasLayer/GameOver" to="CanvasLayer" method="_on_Game_Over_menu_pressed"]
 [connection signal="renascer_pressed" from="CanvasLayer/GameOver" to="CanvasLayer" method="_on_Game_Over_renascer_pressed"]
