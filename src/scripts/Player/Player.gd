@@ -59,7 +59,8 @@ func _physics_process(delta):
 	direcao.y += gravidade
 	
 	if estado_jogador == "morto" or estado_jogador == "dano" or cutscene:
-		ui_comandos.visible = false
+		if estado_jogador != "dano":
+			ui_comandos.visible = false
 		direcao = move_and_slide(direcao, Vector2.UP)
 		return
 	
