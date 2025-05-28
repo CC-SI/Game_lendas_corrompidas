@@ -7,6 +7,7 @@ onready var curupira = $Curupira/Curupira
 var estado = "cutscene"
 
 func _ready():
+	curupira.connect("morte_curupira", self, "on_morte_curupira")
 	$CanvasLayer.associar_fase(self)
 	iniciar_cutscene("comeco_luta")
 
@@ -20,3 +21,9 @@ func terminar_cutscene():
 	estado = "gameplay"
 	player.cutscene = false
 	curupira.cutscene = false
+
+func on_morte_curupira():
+	animacao.play("transicao_preta")
+	yield(animacao, "animation_finished")
+	$Som/BGM.stop()
+	iniciar_cutscene("termino_luta")

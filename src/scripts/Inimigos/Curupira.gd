@@ -41,6 +41,8 @@ export var vidas = 20
 
 var contagem_ondas_sonoras = 0
 
+signal morte_curupira
+
 func _ready():
 	randomize()
 	iniciar_timer_ataque()
@@ -198,6 +200,7 @@ func mudarLadoSprite():
 	$PosicaoAssobio.position.x = abs($PosicaoAssobio.position.x) * lado
 
 func morrer():
+	emit_signal("morte_curupira")
 	estado = "morto"
 
 func _on_AssobioTimer_timeout():
