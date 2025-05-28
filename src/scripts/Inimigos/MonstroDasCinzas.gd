@@ -25,13 +25,12 @@ func _ready():
 	timer_ataque.connect("timeout", self, "_fim_do_ataque")
 
 func _physics_process(delta):
-	if esta_morto:
-		alvo = null
-		
-	
 	direcao.y += gravidade
 	
 	direcao = move_and_slide(direcao, Vector2.UP)
+	
+	if esta_morto:
+		return
 	
 	if perseguindo and alvo and alvo.is_inside_tree():
 		tempo_no_alvo += delta
@@ -81,7 +80,7 @@ func _fim_do_ataque():
 	parar_ataque()
 
 func _atirar():
-	if not alvo:
+	if not alvo or esta_morto:
 		return
 
 	var quantidade = 5

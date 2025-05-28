@@ -31,6 +31,11 @@ func _ready():
 	timer.connect("timeout", self, "_on_Timer_timeout")
 
 func _physics_process(delta):
+	if esta_morto:
+		direcao.y += 5
+		direcao = move_and_slide(direcao, Vector2.UP)
+		return
+	
 	match estado:
 		"voando":
 			move_patrol(delta)
@@ -41,17 +46,15 @@ func _physics_process(delta):
 			subir_para_posicao(delta)
 		"esperando":
 			move_patrol(delta)
-		"morto":
-			alvo = null
-			return
-
-	morreu()
 
 func mudar_lado_sprite(lado):
 	sprite.flip_h = lado < 0
 	sprite.position.x = abs(sprite.position.x) * lado
 
 func move_patrol(delta):
+	if esta_morto:
+		return
+	
 	global_position.x += direcao_horizontal * velocidade * delta
 
 	var distancia_do_inicio = global_position.x - posicao_x_inicial
@@ -64,6 +67,9 @@ func move_patrol(delta):
 	mudar_lado_sprite(direcao_horizontal)
 
 func seguir_alvo(delta):
+	if esta_morto:
+		return
+	
 	velocidade = velocidade_descendo
 	var direcao = (alvo.global_position - global_position).normalized()
 	global_position += direcao * velocidade * delta
@@ -71,6 +77,9 @@ func seguir_alvo(delta):
 	mudar_lado_sprite(direcao.x)
 
 func subir_para_posicao(delta):
+	if esta_morto:
+		return
+	
 	velocidade = 130
 	var diferenca_y = posicao_y_inicial - global_position.y
 
@@ -82,13 +91,15 @@ func subir_para_posicao(delta):
 		podeAtacar = false
 		timer.start()
 
-func morreu():
-	if vidas <= 0:
-		var direcao = Vector2(0, 200)
-		direcao = move_and_slide(direcao, Vector2.UP)
-		estado = "morto"
+func morrer():
+	.morrer()
+	timer.stop()
+	atacou_player.monitoring = false
 
 func _on_Zona_de_Ataque_body_entered(body):
+	if esta_morto:
+		return
+	
 	if body.is_in_group("player"):
 		alvo = body
 		isPlayerEntryZone = true
@@ -97,6 +108,9 @@ func _on_Zona_de_Ataque_body_entered(body):
 		print("Player entrou na zona")
 
 func _on_Zona_de_Ataque_body_exited(body):
+	if esta_morto:
+		return
+	
 	if body.is_in_group("player"):
 		isPlayerEntryZone = false
 		alvo = null
@@ -105,6 +119,9 @@ func _on_Zona_de_Ataque_body_exited(body):
 		print("Player saiu da zona")
 
 func _on_Encostou_Player_body_entered(body):
+	if esta_morto:
+		return
+	
 	if body.is_in_group("player") and podeAtacar:
 		var player = DadosGlobais.player
 		print("aplicou dano")
@@ -116,6 +133,9 @@ func _on_Encostou_Player_body_entered(body):
 		
 
 func _on_Timer_timeout():
+	if esta_morto:
+		return
+	
 	podeAtacar = true
 	if isPlayerEntryZone and alvo:
 		estado = "perseguindo"

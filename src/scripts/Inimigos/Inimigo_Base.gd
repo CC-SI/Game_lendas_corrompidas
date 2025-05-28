@@ -25,6 +25,9 @@ func follow_player():
 	move_and_slide(direcao, Vector2.UP) 
 
 func levar_dano(valor):
+	if esta_morto:
+		return
+	
 	var material = $Sprite.material
 	material.set_shader_param("flash", true)
 	yield(get_tree().create_timer(0.25), "timeout")
@@ -36,6 +39,9 @@ func levar_dano(valor):
 		morrer()
 
 func aplicar_dano(valor):
+	if esta_morto:
+		return
+	
 	var player = get_tree().get_nodes_in_group("player")
 	if (player.size() > 0):
 		player[0].levar_dano(valor)
