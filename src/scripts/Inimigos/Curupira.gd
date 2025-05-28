@@ -197,9 +197,6 @@ func mudarLadoSprite():
 	area_soco.scale.x = lado
 	$PosicaoAssobio.position.x = abs($PosicaoAssobio.position.x) * lado
 
-func _on_Timer_timeout():
-	pode_atacar = true
-
 func morrer():
 	estado = "morto"
 
@@ -222,3 +219,6 @@ func _on_BolaFogoTimer_timeout():
 		return
 	
 	lancar_bola_fogo()
+
+func _on_AtaqueTimer_timeout():
+	pode_atacar = true
