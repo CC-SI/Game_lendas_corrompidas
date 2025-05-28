@@ -404,7 +404,7 @@ position = Vector2( -85, 0 )
 texture = ExtResource( 6 )
 hframes = 4
 vframes = 6
-frame = 17
+frame = 9
 region_rect = Rect2( 92, 2, 21, 33 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -725,10 +725,10 @@ texture = ExtResource( 26 )
 
 [node name="Label" type="Label" parent="CanvasLayer/InformaçõesVisuais/ContagemPulos"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 223.0
-margin_top = 541.0
-margin_right = 248.0
-margin_bottom = 569.0
+margin_left = 223.5
+margin_top = 542.0
+margin_right = 248.5
+margin_bottom = 570.0
 custom_fonts/font = SubResource( 43 )
 text = "2"
 align = 1
