@@ -25,13 +25,13 @@
 [ext_resource path="res://src/Texturas/Player/animacao_correndo.png" type="Texture" id=23]
 [ext_resource path="res://src/Texturas/Inimigos/Curupira/animacao_parado.png" type="Texture" id=24]
 [ext_resource path="res://src/Animacoes/Inimigos/Curupira/Curupiraparado.tres" type="Animation" id=25]
-[ext_resource path="res://src/Som/bgm-fase.ogg" type="AudioStream" id=26]
+[ext_resource path="res://src/Som/bgm-guardiao.ogg" type="AudioStream" id=26]
 [ext_resource path="res://src/Cenas/Tayrin/Tayrin.tscn" type="PackedScene" id=27]
 [ext_resource path="res://src/Fonts/Cinzel/cinzel.regular.ttf" type="DynamicFontData" id=28]
 [ext_resource path="res://src/Animacoes/bola_fogo.tres" type="Animation" id=29]
 [ext_resource path="res://src/Texturas/Player/animacao_bola_fogo.png" type="Texture" id=30]
 [ext_resource path="res://src/Animacoes/Inimigos/Curupira/Curupiraderrotado.tres" type="Animation" id=31]
-[ext_resource path="res://src/Texturas/Inimigos/Curupira/animacao_derrotado.png" type="Texture" id=32]
+[ext_resource path="res://src/Som/SFX/Curupira/sfx_curupira_teleporte.wav" type="AudioStream" id=32]
 [ext_resource path="res://src/Som/SFX/Heroi/sfx_heroi_bola_de_fogo.wav" type="AudioStream" id=33]
 [ext_resource path="res://src/Sons/Taryn.mp3" type="AudioStream" id=34]
 
@@ -241,6 +241,20 @@ tracks/14/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/15/type = "method"
+tracks/15/path = NodePath("../Cutscene/Som/Teleporte")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
 }
 
 [sub_resource type="Animation" id=111]
@@ -947,8 +961,8 @@ anims/transicao_nevoa = SubResource( 102 )
 anims/transicao_preta = SubResource( 103 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 21 )]
-position = Vector2( 466, 2750.6 )
-zoom = Vector2( 0.39, 0.39 )
+position = Vector2( 655, 2840 )
+zoom = Vector2( 0.4, 0.4 )
 limite_direito = 2112
 
 [node name="Cutscene" type="Node2D" parent="."]
@@ -961,23 +975,20 @@ scale = Vector2( 0.11, 0.11 )
 texture = ExtResource( 22 )
 hframes = 4
 vframes = 6
-frame = 6
 
 [node name="Animacaojogador" type="AnimationPlayer" parent="Cutscene/Jogador"]
 anims/Playercorrendo = SubResource( 106 )
 anims/Playerparado = SubResource( 107 )
 
 [node name="Curupira" type="Node2D" parent="Cutscene"]
-visible = false
 position = Vector2( 656, 2800 )
 scale = Vector2( 0.23, 0.23 )
 
 [node name="Sprite" type="Sprite" parent="Cutscene/Curupira"]
-texture = ExtResource( 32 )
+texture = ExtResource( 24 )
 flip_h = true
 hframes = 6
 vframes = 6
-frame = 30
 
 [node name="AnimationCurupira" type="AnimationPlayer" parent="Cutscene/Curupira"]
 anims/Curupiraaparecendo = SubResource( 108 )
@@ -1001,6 +1012,7 @@ autoplay = "bola_fogo"
 anims/bola_fogo = ExtResource( 29 )
 
 [node name="Tayrin" parent="Cutscene" instance=ExtResource( 27 )]
+visible = false
 position = Vector2( 425, 2766 )
 scale = Vector2( 0.09, 0.09 )
 
@@ -1043,11 +1055,18 @@ volume_db = 3.0
 pitch_scale = 2.59
 bus = "Efeitos"
 
+[node name="Teleporte" type="AudioStreamPlayer" parent="Cutscene/Som"]
+stream = ExtResource( 32 )
+bus = "Efeitos"
+__meta__ = {
+"_editor_description_": ""
+}
+
 [node name="Som" type="Node" parent="."]
 
 [node name="BGM" type="AudioStreamPlayer" parent="Som"]
 stream = ExtResource( 26 )
-volume_db = -5.0
+pitch_scale = 0.9
 autoplay = true
 bus = "Musica"
 
