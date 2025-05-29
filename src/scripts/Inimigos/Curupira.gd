@@ -40,6 +40,7 @@ var intervalo_assobio = 2
 export var vidas = 20
 
 var contagem_ondas_sonoras = 0
+var contagem_dano_recebido = 0
 
 signal morte_curupira
 
@@ -62,6 +63,12 @@ func _physics_process(delta):
 	
 	if estado == "descansando":
 		ativar_defesa(false)
+		
+		if contagem_dano_recebido >= 3:
+			contagem_dano_recebido = 0
+			$DescansoTimer.stop()
+			resetar_estado()
+			return
 	else:
 		ativar_defesa(true)
 	
@@ -103,6 +110,8 @@ func levar_dano(valor):
 			$Escudo/AnimationPlayer.stop()
 		$Escudo/AnimationPlayer.play("escudo_ativando")
 		return
+	
+	contagem_dano_recebido += valor
 	
 	var material = $Sprite.material
 	material.set_shader_param("flash", true)
